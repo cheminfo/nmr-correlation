@@ -5,11 +5,10 @@ const getAtomCountsByMF = (mf) => {
   const counts = {};
 
   elements.forEach((elem) => {
-    const regex = new RegExp('(' + elem + '\\d+)', 'g');
+    const regex = new RegExp(`(${elem}\\d+)`, 'g');
     const match = mf.match(regex);
     let count = 1;
     if (match) {
-      console.log(match[0].split(elem)[1]);
       count = Number(match[0].split(elem)[1]);
     }
     counts[elem] = count;
