@@ -2,14 +2,10 @@
   "name": "nmr-correlation",
   "version": "1.0.1",
   "description": "Create and manage correlations from 1D and 2D NMR data",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "module": "src/index.js",
-  "files": [
-    "lib",
-    "src"
-  ],
   "scripts": {
-    "compile": "rollup -c"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",

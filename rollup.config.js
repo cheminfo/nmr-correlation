@@ -4,17 +4,10 @@ import commonjs from '@rollup/plugin-commonjs';
 const config = {
   input: 'src/index.js',
   output: {
-    file: 'lib/index.js',
+    file: 'dist/index.js',
     format: 'cjs',
-    // exports: 'named',
   },
-  plugins: [
-    resolve(),
-    commonjs({
-      include: /node_modules/,
-    }),
-  ],
-  external: [],
+  plugins: [resolve(), commonjs()],
 };
 
 export default config;
