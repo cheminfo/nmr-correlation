@@ -1,8 +1,21 @@
 import lodash from 'lodash';
-import { MF } from 'mf-parser';
 
 const getAtomCountsByMF = (mf) => {
-  return mf ? new MF(mf).getInfo().atoms : {};
+  const elements = mf ? mf.match(/[A-Z][a-z]{0,1}/g) : [];
+  const counts = {};
+
+  elements.forEach((elem) => {
+    const regex = new RegExp('(' + elem + '\\d+)', 'g');
+    const match = mf.match(regex);
+    let count = 1;
+    if (match) {
+      console.log(match[0].split(elem)[1]);
+      count = Number(match[0].split(elem)[1]);
+    }
+    counts[elem] = count;
+  });
+
+  return counts;
 };
 
 const getAtomCounts = (correlations) => {
