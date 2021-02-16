@@ -15,11 +15,13 @@ const defaultTolerance = {
 };
 
 export default class CorrelationManager {
-  constructor(options = {}, values = []) {
-    this.options = options;
+  constructor(options, values) {
+    this.options = options || {};
     this.options.tolerance = this.options.tolerance || defaultTolerance;
     this.setValues(
-      values.map((correlation) => new Correlation({ ...correlation })),
+      values
+        ? values.map((correlation) => new Correlation({ ...correlation }))
+        : [],
     );
   }
 
