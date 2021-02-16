@@ -20,14 +20,14 @@ const setProtonsCountFromData = (
     ) {
       heavyAtomTypes.push(correlation.getAtomType());
       if (Object.keys(signalsDEPT).length > 0) {
-        setProtonsCountFromDEPT(
+        correlations = setProtonsCountFromDEPT(
           correlations,
           signalsDEPT,
           tolerance,
           correlation.getAtomType(),
         );
       } else {
-        setProtonsCountFromEditedHSQC(
+        correlations = setProtonsCountFromEditedHSQC(
           correlations,
           signals2D,
           tolerance,
@@ -36,6 +36,8 @@ const setProtonsCountFromData = (
       }
     }
   });
+
+  return correlations;
 };
 
 const setProtonsCountFromDEPT = (
@@ -63,6 +65,8 @@ const setProtonsCountFromDEPT = (
     signalsDEPT135,
     tolerance[atomType],
   );
+
+  return correlations;
 };
 
 const setProtonsCountFromEditedHSQC = (
@@ -92,6 +96,8 @@ const setProtonsCountFromEditedHSQC = (
     signalsEditedHSQC,
     tolerance[heavyAtomType],
   );
+
+  return correlations;
 };
 
 const setProtonsCount = (

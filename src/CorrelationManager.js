@@ -1,8 +1,6 @@
-import Correlation from './model/Correlation';
 import {
   buildCorrelationsData,
   buildCorrelationsState,
-  updateCorrelationsData,
 } from './utilities/CorrelationUtilities';
 
 const defaultTolerance = {
@@ -15,14 +13,14 @@ const defaultTolerance = {
 };
 
 export default class CorrelationManager {
-  constructor(options, values) {
+  constructor(options, spectra, correlations) {
     this.options = options || {};
-    this.options.tolerance = this.options.tolerance || defaultTolerance;
-    this.setValues(
-      values
-        ? values.map((correlation) => new Correlation({ ...correlation }))
-        : [],
-    );
+    if (!this.options.tolerance) {
+      this.options.tolerance = defaultTolerance;
+    }
+
+    this.correlations = correlations || [];
+    this.setSpectra(spectra || []);
   }
 
   getOptions() {
@@ -43,7 +41,7 @@ export default class CorrelationManager {
 
   setMF(mf) {
     this.setOption('mf', mf);
-    this.setValues(this.getValues());
+    this.updateCorrelations();
   }
 
   unsetMF() {
@@ -56,7 +54,7 @@ export default class CorrelationManager {
 
   setTolerance(tolerance) {
     this.setOption('tolerance', tolerance);
-    this.setValues(this.getValues());
+    this.updateCorrelations();
   }
 
   getTolerance() {
@@ -67,53 +65,62 @@ export default class CorrelationManager {
     return this.state;
   }
 
-  getValues() {
-    return this.values;
+  getCorrelations() {
+    return this.correlations;
   }
 
-  getValueIndex(id) {
-    return this.values.findIndex((correlation) => correlation.getID() === id);
+  getCorrelationIndex(id) {
+    return this.correlations.findIndex(
+      (correlation) => correlation.getID() === id,
+    );
   }
 
   getData() {
     return {
       options: Object.assign({}, this.options),
-      values: this.values.slice(),
+      correlations: this.correlations.slice(),
       state: Object.assign({}, this.state),
     };
   }
 
-  addValue(correlation) {
-    this.setValues(this.getValues().concat([correlation]));
+  addCorrelation(correlation) {
+    this.correlations = this.correlations.concat([correlation]);
+    this.updateCorrelations();
   }
 
-  deleteValue(id) {
-    this.setValues(this.values.filter((correlation) => correlation.id !== id));
+  deleteCorrelation(id) {
+    this.correlations = this.correlations.filter(
+      (correlation) => correlation.id !== id,
+    );
+    this.updateCorrelations();
   }
 
-  setValue(id, correlation) {
-    let correlationIndex = this.values.findIndex((corr) => corr.id === id);
-    const _values = this.values.slice();
-    _values.splice(correlationIndex, 1, correlation);
-
-    this.setValues(_values);
+  updateCorrelation(id, correlation) {
+    let correlationIndex = this.correlations.findIndex(
+      (_correlation) => _correlation.id === id,
+    );
+    const _correlations = this.correlations.slice();
+    _correlations.splice(correlationIndex, 1, correlation);
+    this.correlations = _correlations;
+    this.updateCorrelations();
   }
 
-  setValues(correlations) {
-    this.values = updateCorrelationsData(correlations, this.getMF());
+  updateCorrelations() {
+    this.correlations = buildCorrelationsData(
+      this.spectra,
+      this.getMF(),
+      this.getTolerance(),
+      this.getCorrelations(),
+    );
     this.state = buildCorrelationsState(this.getData());
   }
 
-  updateValues(signals1D, signals2D, signalsDEPT) {
-    this.setValues(
-      buildCorrelationsData(
-        signals1D,
-        signals2D,
-        signalsDEPT,
-        this.getMF(),
-        this.getTolerance(),
-        this.getValues(),
-      ),
-    );
+  getSpectra() {
+    return this.spectra;
+  }
+
+  setSpectra(spectra) {
+    this.spectra = spectra;
+    this.updateCorrelations();
   }
 }

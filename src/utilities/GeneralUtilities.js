@@ -17,9 +17,9 @@ const getAtomCountsByMF = (mf) => {
   return counts;
 };
 
-const getAtomCounts = (correlations) => {
-  return lodash.get(correlations, 'options.mf', false)
-    ? getAtomCountsByMF(correlations.options.mf)
+const getAtomCounts = (correlationData) => {
+  return lodash.get(correlationData, 'options.mf', false)
+    ? getAtomCountsByMF(correlationData.options.mf)
     : {};
 };
 
