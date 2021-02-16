@@ -13,7 +13,7 @@ export default class Correlation {
     this.link = options.link
       ? options.link.map((link) => new Link({ ...link }))
       : [];
-    this.equivalence = options.equivalence || 0;
+    this.equivalence = options.equivalence || 1;
     this.attachment = options.attachment || {};
     this.protonsCount = options.protonsCount || [];
     this.hybridization = options.hybridization;

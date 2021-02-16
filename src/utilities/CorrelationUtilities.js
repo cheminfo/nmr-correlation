@@ -210,16 +210,15 @@ const setAttachmentsAndProtonEquivalences = (correlations) => {
       correlation.getProtonsCount().length === 1 &&
       correlation.hasAttachmentAtomType('H')
     ) {
-      let equivalences = 0;
+      let equivalences = 1;
       if (correlation.getProtonsCount()[0] === 3) {
-        equivalences = 2;
+        equivalences = 3;
       } else if (correlation.getProtonsCount()[0] === 2) {
-        equivalences = 1;
+        equivalences = 2;
       }
-      const factor = 1 + correlation.getEquivalences();
       const sharedEquivalences =
-        (factor * (1 + equivalences)) / correlation.getAttachments().H.length -
-        1;
+        (correlation.getEquivalences() * equivalences) /
+        correlation.getAttachments().H.length;
       correlation.getAttachments().H.forEach((attachedProtonIndex) => {
         correlations[attachedProtonIndex].setEquivalences(sharedEquivalences);
       });
@@ -247,7 +246,7 @@ const addPseudoCorrelations = (correlations, atoms) => {
     const atomTypeCount = getCorrelationsByAtomType(
       correlations,
       atomType,
-    ).reduce((sum, correlation) => sum + 1 + correlation.getEquivalences(), 0);
+    ).reduce((sum, correlation) => sum + correlation.getEquivalences(), 0);
     // add missing pseudo correlations
     for (let i = atomTypeCount; i < atoms[atomType]; i++) {
       correlations.push(
@@ -269,7 +268,7 @@ const replacePseudoCorrelationsByEquivalences = (correlations, atoms) => {
       (sum, correlation) =>
         correlation.getAtomType() === atomType &&
         correlation.getPseudo() === false
-          ? sum + correlation.getEquivalences()
+          ? sum + (correlation.getEquivalences() - 1)
           : sum,
       0,
     );
@@ -487,7 +486,7 @@ const buildCorrelationsState = (correlationData) => {
       let atomCountAtomType = correlationsAtomType.reduce(
         (sum, correlation) =>
           correlation.getPseudo() === false
-            ? sum + 1 + correlation.getEquivalences()
+            ? sum + correlation.getEquivalences()
             : sum,
         0,
       );
