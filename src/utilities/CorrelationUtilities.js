@@ -452,10 +452,10 @@ const sortCorrelations = (correlations) => {
   return sortedCorrelations;
 };
 
-const buildCorrelationsState = (correlationData) => {
+const buildCorrelationsState = (correlationsData) => {
   const state = {};
-  const atoms = getAtomCounts(correlationData);
-  const atomTypesInCorrelations = correlationData.values.reduce(
+  const atoms = getAtomCounts(correlationsData);
+  const atomTypesInCorrelations = correlationsData.values.reduce(
     (array, correlation) =>
       array.includes(correlation.getAtomType())
         ? array
@@ -465,7 +465,7 @@ const buildCorrelationsState = (correlationData) => {
 
   atomTypesInCorrelations.forEach((atomType) => {
     const correlationsAtomType = getCorrelationsByAtomType(
-      correlationData.values,
+      correlationsData.values,
       atomType,
     );
     // create state for specific atom type only if there is at least one real correlation
@@ -493,7 +493,7 @@ const buildCorrelationsState = (correlationData) => {
 
       if (atomType === 'H') {
         // add protons count from pseudo correlations without any pseudo HSQC correlation
-        correlationData.values.forEach((correlation) => {
+        correlationsData.values.forEach((correlation) => {
           if (
             correlation.getPseudo() === true &&
             correlation.getAtomType() !== 'H' &&
@@ -516,7 +516,7 @@ const buildCorrelationsState = (correlationData) => {
           (array, correlation) =>
             Object.keys(correlation.getAttachments()).length === 0
               ? array.concat(
-                  getCorrelationIndex(correlationData.values, correlation),
+                  getCorrelationIndex(correlationsData.values, correlation),
                 )
               : array,
           [],
@@ -539,7 +539,7 @@ const buildCorrelationsState = (correlationData) => {
                 correlation.getAttachments()[otherAtomType].length > 1,
             )
               ? array.concat(
-                  getCorrelationIndex(correlationData.values, correlation),
+                  getCorrelationIndex(correlationsData.values, correlation),
                 )
               : array,
           [],

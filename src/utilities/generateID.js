@@ -1,4 +1,4 @@
-// the whole file content was copied from https://github.com/cheminfo/nmr-displayer/blob/master/src/data/utilities/generateID.js on master branch on 15th February 2021 at 11:25 AM
+// this file content was copied from https://github.com/cheminfo/nmr-displayer/blob/master/src/data/utilities/generateID.js in "master" branch on 15th February 2021 at 11:25 AM (commit 3d8d70c)
 
 const BASE62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const base62 = Base(BASE62);
