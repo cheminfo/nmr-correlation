@@ -36,40 +36,47 @@ export default class CorrelationManager {
       (_correlation) => _correlation.id === id,
     );
     const _values = data.values.slice();
-    _values.splice(correlationIndex, 1, correlation);
-    data.values = _values;
+    _values.splice(correlationIndex, 1, new Correlation({ ...correlation }));
 
-    return data;
+    return {
+      values: _values,
+      state: data.state,
+      options: data.options,
+    };
   }
 
-  static buildCorrelationObjects(data) {
-    return data && data.values
-      ? data.values.map((correlation) => new Correlation({ ...correlation }))
+  static buildCorrelationObjects(values) {
+    return values
+      ? values.map((correlation) => new Correlation({ ...correlation }))
       : [];
   }
 
   static init(data) {
+    let _data = { values: [], state: {}, options: {} };
     if (data) {
-      data.values = CorrelationManager.buildCorrelationObjects(data);
-      return data;
+      _data = { ..._data, ...data };
     }
-    return { values: [], state: {}, options: {} };
+    _data.values = CorrelationManager.buildCorrelationObjects(_data.values);
+
+    return _data;
   }
 
-  static build(spectra, mf, tolerance, prevData) {
-    const values = buildCorrelationsData(
-      spectra,
-      mf,
-      tolerance,
-      CorrelationManager.buildCorrelationObjects(prevData),
-    );
-    const data = {
-      values,
-      options: { mf, tolerance },
-    };
-    const correlationsState = buildCorrelationsState(data);
-    data.state = correlationsState;
+  static build(spectra, options, prevValues) {
+    const { tolerance, mf = '' } = options;
+    const values =
+      spectra && tolerance
+        ? buildCorrelationsData(
+            spectra,
+            mf,
+            tolerance,
+            CorrelationManager.buildCorrelationObjects(prevValues),
+          )
+        : [];
 
-    return data;
+    return {
+      values,
+      options,
+      state: buildCorrelationsState(values, mf),
+    };
   }
 }

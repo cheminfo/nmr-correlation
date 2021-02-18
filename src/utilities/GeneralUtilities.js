@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 
-const getAtomCountsByMF = (mf) => {
+const getAtomCounts = (mf) => {
   const elements = mf ? mf.match(/[A-Z][a-z]{0,1}/g) : [];
   const counts = {};
 
@@ -15,12 +15,6 @@ const getAtomCountsByMF = (mf) => {
   });
 
   return counts;
-};
-
-const getAtomCounts = (correlationData) => {
-  return lodash.get(correlationData, 'options.mf', false)
-    ? getAtomCountsByMF(correlationData.options.mf)
-    : {};
 };
 
 const getLabel = (correlations, correlation) => {
@@ -119,7 +113,6 @@ const getCorrelationIndex = (correlations, correlation) => {
 export {
   checkSignalMatch,
   getAtomCounts,
-  getAtomCountsByMF,
   getCorrelationsByAtomType,
   getCorrelationIndex,
   getLabel,

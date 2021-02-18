@@ -6,7 +6,6 @@ import Link from '../model/Link';
 import {
   checkSignalMatch,
   getAtomCounts,
-  getAtomCountsByMF,
   getCorrelationIndex,
   getCorrelationsByAtomType,
 } from './GeneralUtilities';
@@ -229,7 +228,7 @@ const setAttachmentsAndProtonEquivalences = (correlations) => {
 };
 
 const updatePseudoCorrelations = (correlations, mf) => {
-  const atoms = getAtomCountsByMF(mf);
+  const atoms = getAtomCounts(mf);
   // add pseudo correlations
   correlations = addPseudoCorrelations(correlations, atoms);
   // remove pseudo correlations to be replaced by equivalences
@@ -452,10 +451,10 @@ const sortCorrelations = (correlations) => {
   return sortedCorrelations;
 };
 
-const buildCorrelationsState = (correlationsData) => {
+const buildCorrelationsState = (values, mf) => {
   const state = {};
-  const atoms = getAtomCounts(correlationsData);
-  const atomTypesInCorrelations = correlationsData.values.reduce(
+  const atoms = getAtomCounts(mf);
+  const atomTypesInCorrelations = values.reduce(
     (array, correlation) =>
       array.includes(correlation.getAtomType())
         ? array
@@ -464,10 +463,7 @@ const buildCorrelationsState = (correlationsData) => {
   );
 
   atomTypesInCorrelations.forEach((atomType) => {
-    const correlationsAtomType = getCorrelationsByAtomType(
-      correlationsData.values,
-      atomType,
-    );
+    const correlationsAtomType = getCorrelationsByAtomType(values, atomType);
     // create state for specific atom type only if there is at least one real correlation
     if (
       correlationsAtomType.some(
@@ -493,7 +489,7 @@ const buildCorrelationsState = (correlationsData) => {
 
       if (atomType === 'H') {
         // add protons count from pseudo correlations without any pseudo HSQC correlation
-        correlationsData.values.forEach((correlation) => {
+        values.forEach((correlation) => {
           if (
             correlation.getPseudo() === true &&
             correlation.getAtomType() !== 'H' &&
@@ -515,9 +511,7 @@ const buildCorrelationsState = (correlationsData) => {
         const notAttached = correlationsAtomType.reduce(
           (array, correlation) =>
             Object.keys(correlation.getAttachments()).length === 0
-              ? array.concat(
-                  getCorrelationIndex(correlationsData.values, correlation),
-                )
+              ? array.concat(getCorrelationIndex(values, correlation))
               : array,
           [],
         );
@@ -538,9 +532,7 @@ const buildCorrelationsState = (correlationsData) => {
               (otherAtomType) =>
                 correlation.getAttachments()[otherAtomType].length > 1,
             )
-              ? array.concat(
-                  getCorrelationIndex(correlationsData.values, correlation),
-                )
+              ? array.concat(getCorrelationIndex(values, correlation))
               : array,
           [],
         );
@@ -578,10 +570,10 @@ const buildCorrelationsState = (correlationsData) => {
   return state;
 };
 
-const buildCorrelationsData = (spectra, mf, tolerance, correlations) => {
+const buildCorrelationsData = (spectra, mf, tolerance, values) => {
   const signals = getSignals(spectra);
 
-  let _correlations = correlations ? correlations.slice() : [];
+  let _correlations = values ? values.slice() : [];
   // remove deleted correlations
   _correlations = removeDeletedCorrelations(
     _correlations,
