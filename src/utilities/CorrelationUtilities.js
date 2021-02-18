@@ -554,10 +554,15 @@ const buildCorrelationsState = (values, mf) => {
         ...state[atomType],
         current: atomCountAtomType,
         total: atomCount,
-        complete: atomCountAtomType === atomCount ? true : false,
+        complete:
+          atomCount === undefined
+            ? undefined
+            : atomCountAtomType === atomCount
+            ? true
+            : false,
       };
 
-      if (!state[atomType].complete) {
+      if (state[atomType].complete === false) {
         createErrorProperty();
         state[atomType].error.incomplete = true;
       }
