@@ -51,6 +51,9 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
 };
 
 const addFromData2D = (correlations, signals2D, tolerance) => {
+  // remove previous set links
+  correlations.forEach((correlation) => correlation.removeLinks());
+  // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
   Object.keys(signals2D).forEach((experimentType) =>
     signals2D[experimentType].forEach((signal2D) =>
       signal2D.atomType.forEach((atomType, dim) => {
@@ -118,7 +121,7 @@ const addFromData2D = (correlations, signals2D, tolerance) => {
           ) {
             correlations[matchedCorrelationIndices[0]].addLink(link);
           }
-          // delete the other matching correlations (after shift tolerance increase)
+          // delete the other matching correlations (i.e. after shift tolerance increase)
           for (let i = 1; i < matchedCorrelationIndices.length; i++) {
             correlations.splice(matchedCorrelationIndices[i], 1);
           }
