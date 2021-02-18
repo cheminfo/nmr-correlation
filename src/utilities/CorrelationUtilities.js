@@ -51,8 +51,13 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
 };
 
 const addFromData2D = (correlations, signals2D, tolerance) => {
-  // remove previous set links
-  correlations.forEach((correlation) => correlation.removeLinks());
+  // remove previous set links, but not pseudo links
+  correlations.forEach((correlation) => {
+    const linksToRemove = correlation
+      .getLinks()
+      .filter((link) => link.getPseudo() === false);
+    linksToRemove.forEach((link) => correlation.removeLink(link.getID()));
+  });
   // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
   Object.keys(signals2D).forEach((experimentType) =>
     signals2D[experimentType].forEach((signal2D) =>

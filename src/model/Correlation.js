@@ -69,10 +69,6 @@ export default class Correlation {
     this.link = this.link.filter((_link) => _link.getID() !== id);
   }
 
-  removeLinks() {
-    this.link = [];
-  }
-
   getLinks() {
     return this.link;
   }
