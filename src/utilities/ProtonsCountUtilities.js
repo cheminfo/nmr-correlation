@@ -20,14 +20,14 @@ const setProtonsCountFromData = (
     ) {
       heavyAtomTypes.push(correlation.getAtomType());
       if (Object.keys(signalsDEPT).length > 0) {
-        correlations = setProtonsCountFromDEPT(
+        setProtonsCountFromDEPT(
           correlations,
           signalsDEPT,
           tolerance,
           correlation.getAtomType(),
         );
       } else {
-        correlations = setProtonsCountFromEditedHSQC(
+        setProtonsCountFromEditedHSQC(
           correlations,
           signals2D,
           tolerance,
