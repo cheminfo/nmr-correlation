@@ -32,16 +32,14 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
             correlation.getPseudo() === true &&
             !correlation.hasLinks(),
         );
+        const newCorrelation = new Correlation({
+          ...signal1D,
+          signal: { ...signal1D.signal, axis: 'x' },
+        });
         if (pseudoIndex >= 0) {
-          correlations[pseudoIndex] = new Correlation({
-            ...signal1D,
-          });
+          correlations[pseudoIndex] = newCorrelation;
         } else {
-          correlations.push(
-            new Correlation({
-              ...signal1D,
-            }),
-          );
+          correlations.push(newCorrelation);
         }
       }
     });
@@ -95,6 +93,7 @@ const addFromData2D = (correlations, signals2D, tolerance) => {
               id: signal2D.signal.id,
               delta: signal2D.signal[axis].delta,
               sign: signal2D.signal.sign,
+              axis,
             },
           });
           newCorrelation.addLink(link);
