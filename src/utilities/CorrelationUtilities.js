@@ -15,17 +15,21 @@ import { getSignals } from './SignalUtilities';
 const addFromData1D = (correlations, signals1D, tolerance) => {
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
-      const match = correlations.some(
-        (correlation) =>
+      const matchedCorrelationIndices = correlations
+        .map((correlation, k) =>
           correlation.getPseudo() === false &&
           correlation.getAtomType() === atomType &&
           checkSignalMatch(
             correlation.getSignal(),
             signal1D.signal,
             tolerance[atomType],
-          ),
-      );
-      if (!match) {
+          )
+            ? k
+            : -1,
+        )
+        .filter((index) => index >= 0)
+        .filter((index, i, a) => a.indexOf(index) === i);
+      if (matchedCorrelationIndices.length === 0) {
         const pseudoIndex = correlations.findIndex(
           (correlation) =>
             correlation.getAtomType() === atomType &&
@@ -41,6 +45,14 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
         } else {
           correlations.push(newCorrelation);
         }
+      } else {
+        // overwrite 2D signal information by 1D signal information (higher priority)
+        matchedCorrelationIndices.forEach((matchIndex) => {
+          const correlation = correlations[matchIndex];
+          correlation.signal = { ...signal1D.signal, axis: 'x' };
+          correlation.experimentID = signal1D.experimentID;
+          correlation.experimentType = signal1D.experimentType;
+        });
       }
     });
   });
