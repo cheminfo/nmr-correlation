@@ -136,7 +136,7 @@ const getSignals1D = (experiments1D) => {
             experimentType: '1d',
             experimentID: experiments1D[`${atomType}`][index].id,
             atomType: atomType,
-            signal: __signal,
+            signal: { ...__signal },
           });
         }
       });

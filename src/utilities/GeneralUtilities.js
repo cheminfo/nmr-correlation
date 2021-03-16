@@ -110,8 +110,22 @@ const getCorrelationIndex = (correlations, correlation) => {
   );
 };
 
+const containsLink = (correlation, link) => {
+  return correlation
+    .getLinks()
+    .some(
+      (_link) =>
+        _link.getExperimentType() === link.getExperimentType() &&
+        _link.getExperimentID() === link.getExperimentID() &&
+        lodash.isEqual(_link.getAtomType(), link.getAtomType()) &&
+        _link.getSignalID() === link.getSignalID() &&
+        _link.getAxis() === link.getAxis(),
+    );
+};
+
 export {
   checkSignalMatch,
+  containsLink,
   getAtomCounts,
   getCorrelationsByAtomType,
   getCorrelationIndex,

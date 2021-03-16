@@ -5,6 +5,7 @@ import Link from '../model/Link';
 
 import {
   checkSignalMatch,
+  containsLink,
   getAtomCounts,
   getCorrelationIndex,
   getCorrelationsByAtomType,
@@ -13,6 +14,13 @@ import { setProtonsCountFromData } from './ProtonsCountUtilities';
 import { getSignals } from './SignalUtilities';
 
 const addFromData1D = (correlations, signals1D, tolerance) => {
+  // remove previous set links from 1D, but not pseudo links
+  correlations.forEach((correlation) => {
+    const linksToRemove = correlation
+      .getLinks()
+      .filter((link) => link.getExperimentType() === '1d');
+    linksToRemove.forEach((link) => correlation.removeLink(link.getID()));
+  });
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
       const matchedCorrelationIndices = correlations
@@ -46,13 +54,17 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
           correlations.push(newCorrelation);
         }
       } else {
-        // overwrite 2D signal information by 1D signal information (higher priority)
-        matchedCorrelationIndices.forEach((matchIndex) => {
-          const correlation = correlations[matchIndex];
-          correlation.signal = { ...signal1D.signal, axis: 'x' };
-          correlation.experimentID = signal1D.experimentID;
-          correlation.experimentType = signal1D.experimentType;
+        const link = new Link({
+          experimentType: signal1D.experimentType,
+          experimentID: signal1D.experimentID,
+          signal: signal1D.signal,
+          axis: 'x',
+          atomType: [atomType],
         });
+        // if allowed then add links from 1D data in first match only
+        if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
+          correlations[matchedCorrelationIndices[0]].addLink(link);
+        }
       }
     });
   });
@@ -61,11 +73,14 @@ const addFromData1D = (correlations, signals1D, tolerance) => {
 };
 
 const addFromData2D = (correlations, signals2D, tolerance) => {
-  // remove previous set links, but not pseudo links
+  // remove previous set links from 2D, but not pseudo links
   correlations.forEach((correlation) => {
     const linksToRemove = correlation
       .getLinks()
-      .filter((link) => link.getPseudo() === false);
+      .filter(
+        (link) =>
+          link.getPseudo() === false && link.getExperimentType() !== '1d',
+      );
     linksToRemove.forEach((link) => correlation.removeLink(link.getID()));
   });
   // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
@@ -123,19 +138,23 @@ const addFromData2D = (correlations, signals2D, tolerance) => {
           }
         } else {
           // if allowed then add links from 2D data in first match only
-          if (
-            !correlations[matchedCorrelationIndices[0]]
-              .getLinks()
-              .some(
-                (_link) =>
-                  _link.getExperimentType() === link.getExperimentType() &&
-                  _link.getExperimentID() === link.getExperimentID() &&
-                  lodash.isEqual(_link.getAtomType(), link.getAtomType()) &&
-                  _link.getSignalID() === link.getSignalID() &&
-                  _link.getAxis() === link.getAxis(),
-              )
-          ) {
+          if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
             correlations[matchedCorrelationIndices[0]].addLink(link);
+            if (
+              correlations[matchedCorrelationIndices[0]].getExperimentType() ===
+              '1d'
+            ) {
+              // overwrite 1D signal information by 2D signal information (higher priority)
+              const correlation = correlations[matchedCorrelationIndices[0]];
+              correlation.signal = {
+                id: signal2D.signal.id,
+                delta: signal2D.signal[axis].delta,
+                sign: signal2D.signal.sign,
+                axis,
+              };
+              correlation.experimentID = signal2D.experimentID;
+              correlation.experimentType = signal2D.experimentType;
+            }
           }
           // delete the other matching correlations (i.e. after shift tolerance increase)
           for (let i = 1; i < matchedCorrelationIndices.length; i++) {
@@ -191,7 +210,10 @@ const setMatches = (correlations) => {
   correlations.forEach((correlation) => {
     const linksToRemove = correlation
       .getLinks()
-      .filter((link) => link.getMatches().length === 0);
+      .filter(
+        (link) =>
+          link.getMatches().length === 0 && link.getExperimentType() !== '1d',
+      );
     linksToRemove.forEach((link) => correlation.removeLink(link.getID()));
   });
 
