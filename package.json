@@ -10,7 +10,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "watch": "rollup -cw",
     "eslint": "eslint --fix 'src/**/*.ts'"
   },
   "repository": {
