@@ -1,52 +1,51 @@
-import lodash from 'lodash';
+import lodashGet from 'lodash/get';
+import lodashIsEqual from 'lodash/isEqual';
 
 import { SignalKindsToInclude } from '../constants/SignalKinds';
+import { Spectra, Experiments, ExperimentsType, Experiment1DSignal, Experiment1DSignals, Spectrum1D, Experiment2DSignals, Experiment2DSignal, Spectrum2D, ExperimentSignals } from '../types/types';
 
 import { checkSignalMatch, isEditedHSQC } from './GeneralUtilities';
 
 function addToExperiments(
-  experiments,
-  experimentsType,
-  type,
-  checkAtomType,
-  experimentKey,
-) {
-  const _experiments = lodash
-    .get(experiments, `${type}`, []) // don't consider DEPT etc. here
+  experiments: Experiments,
+  experimentsType: ExperimentsType,
+  type: string,
+  checkAtomType: boolean,
+  experimentKey: string,
+): void  {
+  const _experiments = (lodashGet(experiments, `${type}`, []) as Array<Spectrum1D | Spectrum2D>) // don't consider DEPT etc. here
     .filter((_experiment) => {
-      const hasValues =
-        lodash.get(
-          _experiment,
-          type.includes('1D') ? 'ranges.values' : 'zones.values',
-          [],
-        ).length > 0;
+      const hasValues = lodashGet(
+        _experiment,
+        type.includes('1D') ? 'ranges.values' : 'zones.values',
+        [],
+      ).length > 0;
       return checkAtomType === true
-        ? getAtomType(_experiment.info.nucleus) === experimentKey && hasValues
+        ? getAtomType((_experiment as Spectrum1D).info.nucleus) === experimentKey && hasValues
         : hasValues;
     });
 
   if (_experiments.length > 0) {
     experimentsType[experimentKey] = _experiments;
   }
-  return _experiments;
 }
 
-function getAtomType(nucleus) {
+function getAtomType(nucleus: string): string {
   return nucleus.split(/\d+/)[1];
 }
 
-const getExperiments = (spectraData) => {
-  const _experiments = {};
+function getExperiments (spectraData: Spectra): Experiments {
+  const _experiments: Experiments = {};
   if (spectraData) {
     spectraData
       .filter((_data) => _data.info.isFid === false)
       .forEach((_data) => {
-        if (!lodash.get(_experiments, `${_data.info.dimension}D`, false)) {
+        if (!lodashGet(_experiments, `${_data.info.dimension}D`, false)) {
           _experiments[`${_data.info.dimension}D`] = {};
         }
-        let _experiment = _data.info.experiment;
+        const _experiment = _data.info.experiment;
         if (
-          !lodash.get(
+          !lodashGet(
             _experiments,
             `${_data.info.dimension}D.${_experiment}`,
             false,
@@ -58,29 +57,28 @@ const getExperiments = (spectraData) => {
       });
   }
   return _experiments;
-};
+}
 
 // general remark for all experiment types:
 // build an array of experiments, because one could have more than
 // one spectrum in spectra list for one atom type or experiment type
 
 // "plain" 1D experiments contain ranges, i.e. without DEPT etc.
-const getExperiments1D = (experiments) => {
-  const _experiments1D = {};
-  lodash
-    .get(experiments, '1D.1d', [])
+function getExperiments1D (experiments: Experiments): ExperimentsType {
+  const _experiments1D: ExperimentsType = {};
+  (lodashGet(experiments, '1D.1d', []) as Array<Spectrum1D>)
     .map((experiment) => getAtomType(experiment.info.nucleus))
     .forEach((atomType) => {
       addToExperiments(experiments, _experiments1D, '1D.1d', true, atomType);
     });
 
   return _experiments1D;
-};
+}
 
 // "extra" 1D experiments contain ranges, e.g. DEPT
-const getExperiments1DExtra = (experiments) => {
-  const _experiments1DExtra = {};
-  Object.keys(lodash.get(experiments, `1D`, {}))
+function getExperiments1DExtra (experiments: Experiments): ExperimentsType {
+  const _experiments1DExtra: ExperimentsType = {};
+  Object.keys(lodashGet(experiments, `1D`, {}))
     .filter((experimentType) => experimentType !== '1d') // don't consider "plain" 1D experiments here
     .forEach((experimentType) => {
       addToExperiments(
@@ -93,12 +91,12 @@ const getExperiments1DExtra = (experiments) => {
     });
 
   return _experiments1DExtra;
-};
+}
 
 // 2D experiments contain zones
-const getExperiments2D = (experiments) => {
-  const _experiments2D = {};
-  Object.keys(lodash.get(experiments, '2D', {})).forEach((experimentType) => {
+function getExperiments2D (experiments: Experiments): ExperimentsType {
+  const _experiments2D: ExperimentsType = {};
+  Object.keys(lodashGet(experiments, '2D', {})).forEach((experimentType) => {
     addToExperiments(
       experiments,
       _experiments2D,
@@ -109,17 +107,18 @@ const getExperiments2D = (experiments) => {
   });
 
   return _experiments2D;
-};
+}
 
-const getSignals1D = (experiments1D) => {
+function getSignals1D (experiments1D: ExperimentsType): Experiment1DSignals {
   // store valid signals from 1D experiments
-  const _signals1D = {};
+  const _signals1D: Experiment1DSignals = {};
   Object.keys(experiments1D).forEach((atomType) => {
-    let _signals = [];
-    if (lodash.get(experiments1D, `${atomType}`, []).length > 0) {
+    const _signals: Array<Experiment1DSignal> = [];
+    if (lodashGet(experiments1D, `${atomType}`, []).length > 0) {
       // @TODO for now we will use the first occurring matched spectrum only (index)
       const index = 0;
-      const __signals = experiments1D[`${atomType}`][index].ranges.values
+      const spectrum1D = experiments1D[`${atomType}`][index] as Spectrum1D;
+      const __signals = spectrum1D.ranges.values
         .map((_range) =>
           _range.signal.filter((_signal) =>
             SignalKindsToInclude.includes(_signal.kind),
@@ -129,13 +128,13 @@ const getSignals1D = (experiments1D) => {
       __signals.forEach((__signal) => {
         if (
           !_signals.some((_signal) =>
-            checkSignalMatch(_signal.signal, __signal, 0.0),
+            checkSignalMatch(_signal.signal.delta, __signal.delta, 0.0),
           )
         ) {
           _signals.push({
             experimentType: '1d',
-            experimentID: experiments1D[`${atomType}`][index].id,
-            atomType: atomType,
+            experimentID: spectrum1D.id,
+            atomType,
             signal: { ...__signal },
           });
         }
@@ -146,22 +145,24 @@ const getSignals1D = (experiments1D) => {
   });
 
   return _signals1D;
-};
+}
 
-const getSignalsDEPT = (experiments1DExtra) => {
+function getSignalsDEPT (experiments1DExtra: ExperimentsType): Experiment1DSignals {
   // store valid signals from 1D extra experiments, e.g. DEPT, APT
-  const _signalsDEPT = {};
+  const _signalsDEPT: Experiment1DSignals = {};
   // store valid signals from 2D experiments
   Object.keys(experiments1DExtra)
     .filter((experimentType) => experimentType === 'dept')
     .forEach((experimentType) =>
-      experiments1DExtra[experimentType].forEach((experimentDEPT) => {
-        let _signals = [];
-        const mode = experimentDEPT.info.pulseSequence
-          .match(/\d/g)
-          .reduce((_mode, digit) => _mode + digit);
-        const atomType = getAtomType(experimentDEPT.info.nucleus);
-        const __signals = experimentDEPT.ranges.values
+      experiments1DExtra[experimentType].forEach((_experimentDEPT) => {
+        const experimentDEPT: Spectrum1D = _experimentDEPT as Spectrum1D;
+        const _signals: Array<Experiment1DSignal> = [];
+        const match: Array<string> | null = experimentDEPT.info.pulseSequence
+        .match(/\d/g);
+        if(match){
+          const mode = match.reduce((_mode, digit) => _mode + digit);
+          const atomType = getAtomType(experimentDEPT.info.nucleus);
+          const __signals = experimentDEPT.ranges.values
           .map((range) =>
             range.signal
               .filter((signal) => SignalKindsToInclude.includes(signal.kind))
@@ -170,41 +171,43 @@ const getSignalsDEPT = (experiments1DExtra) => {
               }),
           )
           .flat();
-        __signals.forEach((signal) => {
-          if (
-            !_signals.some((_signal) =>
-              checkSignalMatch(_signal.signal, signal, 0.0),
-            )
-          ) {
-            _signals.push({
-              experimentType,
-              experimentID: experimentDEPT.id,
-              mode,
-              atomType,
-              signal,
-            });
-          }
-        });
+          __signals.forEach((signal) => {
+            if (
+              !_signals.some((_signal) =>
+                checkSignalMatch(_signal.signal.delta, signal.delta, 0.0),
+              )
+            ) {
+              _signals.push({
+                experimentType,
+                experimentID: experimentDEPT.id,
+                mode,
+                atomType,
+                signal,
+              });
+            }
+          });
 
-        _signalsDEPT[mode] = _signals;
+          _signalsDEPT[mode] = _signals;
+        }        
       }),
     );
 
   return _signalsDEPT;
-};
+}
 
-const getSignals2D = (experiments2D) => {
+function getSignals2D (experiments2D: ExperimentsType): Experiment2DSignals {
   // store valid signals from 2D experiments
-  const _signals2D = {};
+  const _signals2D: Experiment2DSignals = {};
   Object.keys(experiments2D).forEach((experimentType) => {
-    let _signals = [];
+    const _signals: Array<Experiment2DSignal> = [];
     // for now we use the first occurring spectrum only, for each experiment type (current loop) and nuclei combination
-    const indices = [];
-    const nuclei = [];
-    experiments2D[experimentType].forEach((experiment, i) => {
+    const indices: Array<number> = [];
+    const nuclei: Array<Array<string>> = [];
+    experiments2D[experimentType].forEach((_experiment, i) => {
+      const experiment: Spectrum2D = _experiment as Spectrum2D;
       if (
         !nuclei.some((_nuclei) =>
-          lodash.isEqual(_nuclei, experiment.info.nucleus),
+        lodashIsEqual(_nuclei, experiment.info.nucleus),
         )
       ) {
         nuclei.push(experiment.info.nucleus);
@@ -212,10 +215,11 @@ const getSignals2D = (experiments2D) => {
       }
     });
     indices.forEach((index) => {
-      const atomType = experiments2D[experimentType][
+      const spectrum2D: Spectrum2D = experiments2D[experimentType][
         index
-      ].info.nucleus.map((nucleus) => getAtomType(nucleus));
-      const __signals = experiments2D[experimentType][index].zones.values
+      ] as Spectrum2D;
+      const atomType = spectrum2D.info.nucleus.map((nucleus) => getAtomType(nucleus));
+      const __signals = spectrum2D.zones.values
         .map((zone) =>
           zone.signal.filter((signal) =>
             SignalKindsToInclude.includes(signal.kind),
@@ -226,18 +230,18 @@ const getSignals2D = (experiments2D) => {
         if (
           !_signals.some(
             (_signal) =>
-              checkSignalMatch(_signal.signal.x, signal.x, 0.0) &&
-              checkSignalMatch(_signal.signal.y, signal.y, 0.0),
+              checkSignalMatch(_signal.signal.x.delta, signal.x.delta, 0.0) &&
+              checkSignalMatch(_signal.signal.y.delta, signal.y.delta, 0.0),
           )
         ) {
           _signals.push({
             experimentType,
-            experimentID: experiments2D[experimentType][index].id,
+            experimentID: spectrum2D.id,
             atomType,
             // here we assume that only one peak exists for the signal and its intensity indicates the sign
             signal: {
               ...signal,
-              sign: isEditedHSQC(experiments2D[experimentType][index])
+              sign: isEditedHSQC(spectrum2D)
                 ? signal.peak[0].z >= 0
                   ? 1
                   : -1
@@ -252,9 +256,9 @@ const getSignals2D = (experiments2D) => {
   });
 
   return _signals2D;
-};
+}
 
-const getSignals = (spectraData) => {
+function getSignals (spectraData: Spectra): ExperimentSignals  {
   const experiments = getExperiments(spectraData);
   const experiments1D = getExperiments1D(experiments);
   const experiments1DExtra = getExperiments1DExtra(experiments);
@@ -269,6 +273,6 @@ const getSignals = (spectraData) => {
     signals2D,
     signalsDEPT,
   };
-};
+}
 
 export { getSignals };
