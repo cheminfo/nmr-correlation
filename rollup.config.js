@@ -17,36 +17,32 @@ const banner = `
    */
 `;
 
-const config =
-  // CommonJS
-  {
-    input: inputFileName,
-    output: [
-      {
-        file: pkg.main,
-        format: 'cjs',
-        sourcemap: 'inline',
-        banner,
-        // exports: 'default',
-      },
-    ],
-    external: [
-      ...Object.keys(pkg.dependencies || {}),
-      ...Object.keys(pkg.devDependencies || {}),
-    ],
-    plugins: [
-      pluginTypescript(),
-      pluginCommonjs({
-        extensions: ['.js', '.ts'],
-      }),
-      babel({
-        babelHelpers: 'bundled',
-        configFile: path.resolve(__dirname, '.babelrc.js'),
-      }),
-      pluginNodeResolve({
-        browser: false,
-      }),
-    ],
-  };
+const config = {
+  input: inputFileName,
+  output: [
+    {
+      file: pkg.main,
+      format: 'cjs',
+      banner,
+    },
+  ],
+  external: [
+    ...Object.keys(pkg.dependencies || {}),
+    ...Object.keys(pkg.devDependencies || {}),
+  ],
+  plugins: [
+    pluginTypescript(),
+    pluginCommonjs({
+      extensions: ['.js', '.ts'],
+    }),
+    babel({
+      babelHelpers: 'bundled',
+      configFile: path.resolve(__dirname, '.babelrc.js'),
+    }),
+    pluginNodeResolve({
+      browser: false,
+    }),
+  ],
+};
 
 export default config;

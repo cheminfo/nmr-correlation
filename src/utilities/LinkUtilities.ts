@@ -1,6 +1,6 @@
-import { Link, LinkOptions } from '../types/types';
+import { Link } from '../types/primary';
+import { LinkOptions } from '../types/secondary';
 import generateID from './generateID';
-
 
 function buildLink(options: LinkOptions): Link {
   return {
@@ -11,27 +11,26 @@ function buildLink(options: LinkOptions): Link {
     signal: options.signal,
     axis: options.axis,
     match: options.match || [],
-    experimentLabel: options.experimentLabel || "",
+    experimentLabel: options.experimentLabel || '',
     pseudo: options.pseudo || false,
   } as Link;
 }
 
-  function addMatch(link: Link, index: number): void {
-    if (!link.match.includes(index)) {
-      link.match.push(index);
-    }
+function addMatch(link: Link, index: number): void {
+  if (!link.match.includes(index)) {
+    link.match.push(index);
   }
+}
 
-  function removeMatch(link: Link, index: number): void {
-    const indexOf = link.match.indexOf(index);
-    if (indexOf >= 0) {
-      link.match.splice(indexOf, 1);
-    }
+function removeMatch(link: Link, index: number): void {
+  const indexOf = link.match.indexOf(index);
+  if (indexOf >= 0) {
+    link.match.splice(indexOf, 1);
   }
+}
 
-  function removeMatches(link: Link): void {
-    link.match = [];
-  }
+function removeMatches(link: Link): void {
+  link.match = [];
+}
 
-
-  export {addMatch, buildLink, removeMatch, removeMatches}
+export { addMatch, buildLink, removeMatch, removeMatches };

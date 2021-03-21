@@ -1,7 +1,28 @@
 import lodashGet from 'lodash/get';
 import lodashIsEqual from 'lodash/isEqual';
-import { Correlation, Experiment1DSignal, Experiment1DSignals, Experiment2DSignal, Experiment2DSignals, ExperimentSignals, Link, Spectra, State, StateAtomTypeError, Tolerance, Values } from '../types/types';
-import { addAttachment, addLink, buildCorrelation, hasAttachmentAtomType, hasLinks, removeAttachments, removeLink } from './CorrelationUtilities';
+import {
+  Correlation,
+  Link,
+  Spectra,
+  State,
+  StateAtomTypeError,
+  Tolerance,
+  Values,
+} from '../types/primary';
+import {
+  Experiment1DSignals,
+  Experiment2DSignals,
+  ExperimentSignals,
+} from '../types/secondary';
+import {
+  addAttachment,
+  addLink,
+  buildCorrelation,
+  hasAttachmentAtomType,
+  hasLinks,
+  removeAttachments,
+  removeLink,
+} from './CorrelationUtilities';
 
 import {
   checkSignalMatch,
@@ -10,17 +31,25 @@ import {
   getCorrelationIndex,
   getCorrelationsByAtomType,
 } from './GeneralUtilities';
-import { addMatch, buildLink, removeMatch, removeMatches } from './LinkUtilities';
+import {
+  addMatch,
+  buildLink,
+  removeMatch,
+  removeMatches,
+} from './LinkUtilities';
 import { setProtonsCountFromData } from './ProtonsCountUtilities';
 import { getSignals } from './SignalUtilities';
 
-
-function addFromData1D (correlations: Values, signals1D: Experiment1DSignals, tolerance: Tolerance): Values {
+function addFromData1D(
+  correlations: Values,
+  signals1D: Experiment1DSignals,
+  tolerance: Tolerance,
+): Values {
   // remove previous set links from 1D, but not pseudo links
   correlations.forEach((correlation) => {
-    const linksToRemove = correlation
-      .link
-      .filter((link) => link.experimentType === '1d');
+    const linksToRemove = correlation.link.filter(
+      (link) => link.experimentType === '1d',
+    );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });
   Object.keys(signals1D).forEach((atomType) => {
@@ -72,15 +101,16 @@ function addFromData1D (correlations: Values, signals1D: Experiment1DSignals, to
   return correlations;
 }
 
-function addFromData2D (correlations: Values, signals2D: Experiment2DSignals, tolerance: Tolerance): Values {
+function addFromData2D(
+  correlations: Values,
+  signals2D: Experiment2DSignals,
+  tolerance: Tolerance,
+): Values {
   // remove previous set links from 2D, but not pseudo links
   correlations.forEach((correlation) => {
-    const linksToRemove = correlation
-      .link
-      .filter(
-        (link) =>
-          link.pseudo === false && link.experimentType !== '1d',
-      );
+    const linksToRemove = correlation.link.filter(
+      (link) => link.pseudo === false && link.experimentType !== '1d',
+    );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });
   // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
@@ -140,8 +170,7 @@ function addFromData2D (correlations: Values, signals2D: Experiment2DSignals, to
           if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
             addLink(correlations[matchedCorrelationIndices[0]], link);
             if (
-              correlations[matchedCorrelationIndices[0]].experimentType ===
-              '1d'
+              correlations[matchedCorrelationIndices[0]].experimentType === '1d'
             ) {
               // overwrite 1D signal information by 2D signal information (higher priority)
               const correlation = correlations[matchedCorrelationIndices[0]];
@@ -166,7 +195,7 @@ function addFromData2D (correlations: Values, signals2D: Experiment2DSignals, to
   return correlations;
 }
 
-function setMatches (correlations : Values): Values  {
+function setMatches(correlations: Values): Values {
   correlations.forEach((correlation) => {
     correlation.link.forEach((link) => {
       // remove previously added matches
@@ -184,14 +213,9 @@ function setMatches (correlations : Values): Values  {
             correlationOtherAtomType.link.forEach((linkOtherAtomType) => {
               // check for correlation match and avoid possible duplicates
               if (
-                linkOtherAtomType.experimentType ===
-                  link.experimentType &&
-                linkOtherAtomType.experimentID ===
-                  link.experimentID &&
-                lodashIsEqual(
-                  linkOtherAtomType.atomType,
-                  link.atomType,
-                ) &&
+                linkOtherAtomType.experimentType === link.experimentType &&
+                linkOtherAtomType.experimentID === link.experimentID &&
+                lodashIsEqual(linkOtherAtomType.atomType, link.atomType) &&
                 linkOtherAtomType.signal.id === link.signal.id &&
                 linkOtherAtomType.axis !== link.axis
               ) {
@@ -206,35 +230,28 @@ function setMatches (correlations : Values): Values  {
 
   // remove links without any matches
   correlations.forEach((correlation) => {
-    const linksToRemove = correlation
-      .link
-      .filter(
-        (link) =>
-          link.match.length === 0 && link.experimentType !== '1d',
-      );
+    const linksToRemove = correlation.link.filter(
+      (link) => link.match.length === 0 && link.experimentType !== '1d',
+    );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });
 
   return correlations;
 }
 
-function setAttachmentsAndProtonEquivalences (correlations: Values): Values {
+function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
   // update attachment information between heavy atoms and protons via HSQC or HMQC
   correlations.forEach((correlation) => {
     // remove previous set attachments
     removeAttachments(correlation);
     // add attachments
-    correlation
-      .link
+    correlation.link
       .filter(
         (link) =>
-          link.experimentType === 'hsqc' ||
-          link.experimentType === 'hmqc',
+          link.experimentType === 'hsqc' || link.experimentType === 'hmqc',
       )
       .forEach((link) => {
-        const otherAtomType = link.atomType[
-          link.axis === 'x' ? 1 : 0
-        ];
+        const otherAtomType = link.atomType[link.axis === 'x' ? 1 : 0];
         link.match.forEach((matchIndex) => {
           addAttachment(correlation, otherAtomType, matchIndex);
         });
@@ -266,7 +283,7 @@ function setAttachmentsAndProtonEquivalences (correlations: Values): Values {
   return correlations;
 }
 
-function updatePseudoCorrelations (correlations: Values, mf: string): Values {
+function updatePseudoCorrelations(correlations: Values, mf: string): Values {
   const atoms = getAtomCounts(mf);
   // add pseudo correlations
   correlations = addPseudoCorrelations(correlations, atoms);
@@ -278,7 +295,10 @@ function updatePseudoCorrelations (correlations: Values, mf: string): Values {
   return correlations;
 }
 
-function addPseudoCorrelations (correlations: Values, atoms: {[atomType: string]: number}): Values {
+function addPseudoCorrelations(
+  correlations: Values,
+  atoms: { [atomType: string]: number },
+): Values {
   Object.keys(atoms).forEach((atomType) => {
     // consider also pseudo correlations since they do not need to be added again
     const atomTypeCount = getCorrelationsByAtomType(
@@ -299,28 +319,31 @@ function addPseudoCorrelations (correlations: Values, atoms: {[atomType: string]
   return correlations;
 }
 
-function replacePseudoCorrelationsByEquivalences (correlations: Values, atoms: {[atomType: string]: number}): Values {
+function replacePseudoCorrelationsByEquivalences(
+  correlations: Values,
+  atoms: { [atomType: string]: number },
+): Values {
   Object.keys(atoms).forEach((atomType) => {
     // remove pseudo correlations to be replaced by equivalences, starting at the end
     const atomTypeEquivalencesCount = correlations.reduce(
       (sum, correlation) =>
-        correlation.atomType === atomType &&
-        correlation.pseudo === false
+        correlation.atomType === atomType && correlation.pseudo === false
           ? sum + (correlation.equivalence - 1)
           : sum,
       0,
     );
     const pseudoCorrelationsAtomType: Values = correlations.filter(
       (correlation) =>
-        correlation.atomType === atomType &&
-        correlation.pseudo === true,
+        correlation.atomType === atomType && correlation.pseudo === true,
     );
     for (let i = atomTypeEquivalencesCount - 1; i >= 0; i--) {
       if (pseudoCorrelationsAtomType.length === 0) {
         break;
       }
-      const pseudoCorrelationToRemove: Correlation | undefined = pseudoCorrelationsAtomType.pop();
-      if(pseudoCorrelationToRemove){
+      const pseudoCorrelationToRemove:
+        | Correlation
+        | undefined = pseudoCorrelationsAtomType.pop();
+      if (pseudoCorrelationToRemove) {
         correlations.splice(correlations.indexOf(pseudoCorrelationToRemove), 1);
       }
     }
@@ -329,7 +352,10 @@ function replacePseudoCorrelationsByEquivalences (correlations: Values, atoms: {
   return correlations;
 }
 
-function checkPseudoCorrelations (correlations: Values, atoms: {[atomType: string]: number}): Values {
+function checkPseudoCorrelations(
+  correlations: Values,
+  atoms: { [atomType: string]: number },
+): Values {
   Object.keys(atoms).forEach((atomType) => {
     // consider also pseudo correlations
     const correlationsAtomType = getCorrelationsByAtomType(
@@ -339,16 +365,20 @@ function checkPseudoCorrelations (correlations: Values, atoms: {[atomType: strin
     if (correlationsAtomType.length > atoms[atomType]) {
       // remove pseudo correlations which are out of limit and not linked
       const pseudoCorrelationsAtomType = correlationsAtomType.filter(
-        (correlation) =>
-          correlation.pseudo === true && !hasLinks(correlation),
+        (correlation) => correlation.pseudo === true && !hasLinks(correlation),
       );
       for (let i = correlationsAtomType.length - 1; i >= atoms[atomType]; i--) {
         if (pseudoCorrelationsAtomType.length === 0) {
           break;
         }
-        const pseudoCorrelationToRemove: Correlation | undefined = pseudoCorrelationsAtomType.pop();
-        if(pseudoCorrelationToRemove) {
-          correlations.splice(correlations.indexOf(pseudoCorrelationToRemove), 1);
+        const pseudoCorrelationToRemove:
+          | Correlation
+          | undefined = pseudoCorrelationsAtomType.pop();
+        if (pseudoCorrelationToRemove) {
+          correlations.splice(
+            correlations.indexOf(pseudoCorrelationToRemove),
+            1,
+          );
         }
       }
     }
@@ -367,11 +397,9 @@ function checkPseudoCorrelations (correlations: Values, atoms: {[atomType: strin
           const matchIndex = pseudoLink.match[i];
           if (
             !correlations[matchIndex] ||
-            !correlations[matchIndex]
-              .link
-              .some((_link) =>
-                _link.match.includes(pseudoCorrelationIndex),
-              )
+            !correlations[matchIndex].link.some((_link) =>
+              _link.match.includes(pseudoCorrelationIndex),
+            )
           ) {
             removeMatch(pseudoLink, matchIndex);
           }
@@ -386,9 +414,9 @@ function checkPseudoCorrelations (correlations: Values, atoms: {[atomType: strin
       // correct protons count if no HSQC link was found anymore and the field was not edited manually
       if (
         !pseudoCorrelation.edited.protonsCount &&
-        !pseudoCorrelation
-          .link
-          .some((pseudoLink) => pseudoLink.experimentType === 'hsqc')
+        !pseudoCorrelation.link.some(
+          (pseudoLink) => pseudoLink.experimentType === 'hsqc',
+        )
       ) {
         pseudoCorrelation.protonsCount = [];
       }
@@ -398,7 +426,11 @@ function checkPseudoCorrelations (correlations: Values, atoms: {[atomType: strin
   return correlations;
 }
 
-function removeDeletedCorrelations (correlations: Values, signals1D: Experiment1DSignals, signals2D: Experiment2DSignals): Values {
+function removeDeletedCorrelations(
+  correlations: Values,
+  signals1D: Experiment1DSignals,
+  signals2D: Experiment2DSignals,
+): Values {
   const _correlations = correlations.filter(
     (correlation) => correlation.pseudo === false,
   );
@@ -407,8 +439,9 @@ function removeDeletedCorrelations (correlations: Values, signals1D: Experiment1
     if (correlation.experimentType === '1d') {
       // search in 1D data
       if (
-        lodashGet(signals1D, correlation.atomType, [])
-          .some((signal1D: Experiment1DSignal) => signal1D.signal.id === correlation.signal.id)
+        lodashGet(signals1D, correlation.atomType, []).some(
+          (signal1D) => signal1D.signal.id === correlation.signal.id,
+        )
       ) {
         const index = removeList.indexOf(correlation);
         if (index >= 0) {
@@ -418,12 +451,11 @@ function removeDeletedCorrelations (correlations: Values, signals1D: Experiment1
     } else {
       // search in 2D data
       if (
-        lodashGet(signals2D, `${correlation.experimentType}`, [])
-          .some(
-            (signal2D: Experiment2DSignal) =>
-              signal2D.atomType.indexOf(correlation.atomType) !== -1 &&
-              signal2D.signal.id === correlation.signal.id,
-          )
+        lodashGet(signals2D, `${correlation.experimentType}`, []).some(
+          (signal2D) =>
+            signal2D.atomType.indexOf(correlation.atomType) !== -1 &&
+            signal2D.signal.id === correlation.signal.id,
+        )
       ) {
         const index = removeList.indexOf(correlation);
         if (index >= 0) {
@@ -443,23 +475,22 @@ function removeDeletedCorrelations (correlations: Values, signals1D: Experiment1
   return correlations;
 }
 
-function setLabels (correlations: Values): void {
-  const atomTypeCounts: {[atomType: string]: number} = {};
+function setLabels(correlations: Values): void {
+  const atomTypeCounts: { [atomType: string]: number } = {};
   correlations.forEach((correlation) => {
     if (!lodashGet(atomTypeCounts, correlation.atomType, false)) {
       atomTypeCounts[correlation.atomType] = 0;
     }
     atomTypeCounts[correlation.atomType]++;
-    correlation.label['origin'] =
-      `${correlation.atomType}${
-        atomTypeCounts[correlation.atomType]
-      }`;
+    correlation.label['origin'] = `${correlation.atomType}${
+      atomTypeCounts[correlation.atomType]
+    }`;
   });
 }
 
-function sortCorrelations (correlations: Values): Values {
+function sortCorrelations(correlations: Values): Values {
   const compare = (corr1: Correlation, corr2: Correlation) => {
-    if(corr1.pseudo === true && corr2.pseudo === true){
+    if (corr1.pseudo === true && corr2.pseudo === true) {
       return 0;
     }
     if (
@@ -493,7 +524,7 @@ function sortCorrelations (correlations: Values): Values {
   return sortedCorrelations;
 }
 
-function buildState (values: Values, mf: string): State {
+function buildState(values: Values, mf: string): State {
   const state: State = {};
   const atoms = getAtomCounts(mf);
   const atomTypesInCorrelations: Array<string> = values.reduce(
@@ -508,9 +539,7 @@ function buildState (values: Values, mf: string): State {
     const correlationsAtomType = getCorrelationsByAtomType(values, atomType);
     // create state for specific atom type only if there is at least one real correlation
     if (
-      correlationsAtomType.some(
-        (correlation) => correlation.pseudo === false,
-      )
+      correlationsAtomType.some((correlation) => correlation.pseudo === false)
     ) {
       // create state error
       const stateAtomTypeError: StateAtomTypeError = {};
@@ -518,9 +547,7 @@ function buildState (values: Values, mf: string): State {
       const atomCount = atoms[atomType];
       let atomCountAtomType = correlationsAtomType.reduce(
         (sum, correlation) =>
-          correlation.pseudo === false
-            ? sum + correlation.equivalence
-            : sum,
+          correlation.pseudo === false ? sum + correlation.equivalence : sum,
         0,
       );
 
@@ -531,17 +558,14 @@ function buildState (values: Values, mf: string): State {
             correlation.pseudo === true &&
             correlation.atomType !== 'H' &&
             correlation.protonsCount.length === 1 &&
-            !correlation
-              .link
-              .some((link) => link.experimentType === 'hsqc')
+            !correlation.link.some((link) => link.experimentType === 'hsqc')
           ) {
             atomCountAtomType += correlation.protonsCount[0];
           }
         });
         // determine the number of pseudo correlations
         const pseudoCorrelationCount = correlationsAtomType.reduce(
-          (sum, correlation) =>
-            correlation.pseudo === true ? sum + 1 : sum,
+          (sum, correlation) => (correlation.pseudo === true ? sum + 1 : sum),
           0,
         );
         // determine the not attached protons
@@ -587,11 +611,12 @@ function buildState (values: Values, mf: string): State {
         stateAtomTypeError.outOfLimit = true;
       }
 
-      const complete = atomCount === undefined
-      ? undefined
-      : atomCountAtomType === atomCount
-      ? true
-      : false;
+      const complete =
+        atomCount === undefined
+          ? undefined
+          : atomCountAtomType === atomCount
+          ? true
+          : false;
 
       if (complete === false) {
         stateAtomTypeError.incomplete = true;
@@ -601,7 +626,7 @@ function buildState (values: Values, mf: string): State {
         current: atomCountAtomType,
         total: atomCount,
         complete,
-        error: stateAtomTypeError,    
+        error: stateAtomTypeError,
       };
     }
   });
@@ -609,7 +634,12 @@ function buildState (values: Values, mf: string): State {
   return state;
 }
 
-function buildValues (spectra: Spectra, mf: string, tolerance: Tolerance, values: Values): Values {
+function buildValues(
+  spectra: Spectra,
+  mf: string,
+  tolerance: Tolerance,
+  values: Values,
+): Values {
   const signals: ExperimentSignals = getSignals(spectra);
 
   let _correlations = values ? values.slice() : [];
@@ -637,7 +667,7 @@ function buildValues (spectra: Spectra, mf: string, tolerance: Tolerance, values
   return _correlations;
 }
 
-function updateValues (correlations: Values, mf: string): Values {
+function updateValues(correlations: Values, mf: string): Values {
   // sort by atom type and shift value
   correlations = sortCorrelations(correlations);
   // link signals via matches to same 2D signal: e.g. 13C -> HSQC <- 1H

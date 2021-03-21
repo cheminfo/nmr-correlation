@@ -1,12 +1,13 @@
 import lodashGet from 'lodash/get';
-import { Experiment1DSignals, Experiment2DSignals, Tolerance, Values } from '../types/types';
+import { Tolerance, Values } from '../types/primary';
+import { Experiment1DSignals, Experiment2DSignals } from '../types/secondary';
 
 import {
   checkSignalMatch,
   getCorrelationsByAtomType,
 } from './GeneralUtilities';
 
-function setProtonsCountFromData (
+function setProtonsCountFromData(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,
   signals2D: Experiment2DSignals,
@@ -41,7 +42,7 @@ function setProtonsCountFromData (
   return correlations;
 }
 
-function setProtonsCountFromDEPT (
+function setProtonsCountFromDEPT(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,
   tolerance: Tolerance,
@@ -68,7 +69,7 @@ function setProtonsCountFromDEPT (
   return correlations;
 }
 
-function setProtonsCountFromEditedHSQC (
+function setProtonsCountFromEditedHSQC(
   correlations: Values,
   signals2D: Experiment2DSignals,
   tolerance: Tolerance,
@@ -76,8 +77,7 @@ function setProtonsCountFromEditedHSQC (
 ): Values {
   const correlationsAtomTypeHSQC = correlations.filter(
     (correlation) =>
-      correlation.pseudo === false &&
-      correlation.atomType === heavyAtomType,
+      correlation.pseudo === false && correlation.atomType === heavyAtomType,
   );
   const signalsEditedHSQC = lodashGet(signals2D, 'hsqc', [])
     .filter(
@@ -98,10 +98,10 @@ function setProtonsCountFromEditedHSQC (
   return correlations;
 }
 
-function setProtonsCount (
+function setProtonsCount(
   correlationsAtomType: Values,
-  signals90: Array<{delta: number}>,
-  signals135: Array<{delta: number, sign?: number}>,
+  signals90: Array<{ delta: number }>,
+  signals135: Array<{ delta: number; sign?: number }>,
   toleranceAtomType: number,
 ): void {
   for (let i = 0; i < correlationsAtomType.length; i++) {
