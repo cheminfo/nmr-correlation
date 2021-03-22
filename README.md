@@ -3,9 +3,9 @@
 [![NPM version][npm-image]][npm-url]
 [![npm download][download-image]][download-url]
 
-This package provides methods to build correlation data from NMR spectra.
+This package provides methods to build correlation data from NMR spectra. The NMR dataset has to be already processed and given in a certain format (see below).
 
-Mainly, this is done by a grouping of signals with same nuclei between 1D and 2D or 2D and 2D NMR spectra. Each group is then represented by one single signal (correlation).
+Mainly, this is done by a grouping of signals with same nuclei between 1D and 2D or 2D and 2D NMR spectra. Each group is then represented by one correlation.
 
 If a molecular formula is given, then missing correlations will be added as placeholder to complete the list.
 
@@ -15,8 +15,15 @@ Another feature is to determine the number of attached protons by using informat
 
 ### Spectra
 
-- array of 1D, 2D, DEPT 90/135 spectra
-- each spectrum has to be in same format as from [nmr-parser](https://github.com/cheminfo/nmr-parser)
+- array of 1D, 2D, DEPT 90/135 spectra, e.g. obtained by [nmr-parser](https://github.com/cheminfo/nmr-parser)
+- each spectrum has to be processed, e.g. via [nmr-processing](https://github.com/cheminfo/nmr-processing)
+- declared type for spectra is
+
+```ts
+type Spectra = Array<Spectrum1D | Spectrum2D>;
+```
+
+- further type definitions are available in `src/types/primary.ts`
 
 ### Options
 
@@ -26,7 +33,7 @@ Another feature is to determine the number of attached protons by using informat
 ### Values
 
 - optional, previously built correlations
-- useful for keeping the following information if marked as "edited":
+- useful to not override the following information if it is set to `true` in `edited` property:
   - hybridization, equivalence, protonsCount
 
 ## Output
@@ -41,15 +48,15 @@ Another feature is to determine the number of attached protons by using informat
 
 An array of correlations with following content:
 
-- link
-  - signal, axis (2D signal and current axis which links to signals in another spectra)
+- link (array)
+  - signal, axis (1D/2D signal and current axis which links to signals in another spectra)
   - match (indices of correlations with signal shift matches)
   - pseudo (whether this link is artificial)
   - some further meta information
 - attachment (contains indices of each attached correlation/atom)
 - protonsCount (array of possible numbers of attached protons)
 - equivalence (number of equivalences, default is 1)
-- hybridization (not set by default)
+- hybridization (not set, except a CH3 group was detected)
 - pseudo (whether this is a placeholder, e.g. if molecular formula is given)
 - some further meta information, e.g. the group representing signal
 
@@ -61,7 +68,7 @@ An array of correlations with following content:
 
 ```js
 import { fromJCAMP } from 'nmr-parser';
-import { CorrelationManager } from 'nmr-correlation';
+import { Build } from 'nmr-correlation';
 
 // parse spectra (symbolic example)
 const data1H = fromJCAMP('1h.dx');
@@ -71,6 +78,12 @@ const dataHMBC = fromJCAMP('hmbc.dx');
 const dataCOSY = fromJCAMP('cosy.dx');
 const dataDEPT90 = fromJCAMP('dept90.dx');
 const dataDEPT135 = fromJCAMP('dept135.dx');
+
+// process data (ranges/zones picking)
+// ...
+// put all the information together into specified format
+// ...
+
 // combine spectra into one array
 const spectra = [
   data1H,
@@ -90,7 +103,7 @@ const options = {
   mf: 'C11H14N2O', // molecular formula
 };
 // build correlation data
-const correlationData = CorrelationManager.build(spectra, options);
+const correlationData = Build.build(spectra, options);
 ```
 
 ## License
