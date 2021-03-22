@@ -21,9 +21,6 @@ function buildCorrelation(options: CorrelationOptions): Correlation {
 }
 
 function addLink(correlation: Correlation, link: Link): void {
-  // console.log(correlation);
-  // console.log(link);
-
   correlation.link.push(link);
 }
 

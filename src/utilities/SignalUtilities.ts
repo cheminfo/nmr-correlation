@@ -1,5 +1,6 @@
 import lodashGet from 'lodash/get';
 import lodashIsEqual from 'lodash/isEqual';
+import lodashCloneDeep from 'lodash/cloneDeep';
 
 import { SignalKindsToInclude } from '../constants/SignalKinds';
 import { Spectra, Spectrum1D, Spectrum2D } from '../types/primary';
@@ -148,7 +149,7 @@ function getSignals1D(experiments1D: ExperimentsType): Experiment1DSignals {
             experimentType: '1d',
             experimentID: spectrum1D.id,
             atomType,
-            signal: { ...__signal },
+            signal: lodashCloneDeep(__signal),
           });
         }
       });
@@ -198,7 +199,7 @@ function getSignalsDEPT(
                 experimentID: experimentDEPT.id,
                 mode,
                 atomType,
-                signal,
+                signal: lodashCloneDeep(signal),
               });
             }
           });
@@ -258,7 +259,7 @@ function getSignals2D(experiments2D: ExperimentsType): Experiment2DSignals {
             atomType,
             // here we assume that only one peak exists for the signal and its intensity indicates the sign
             signal: {
-              ...signal,
+              ...lodashCloneDeep(signal),
               sign: isEditedHSQC(spectrum2D)
                 ? signal.peak[0].z >= 0
                   ? 1
