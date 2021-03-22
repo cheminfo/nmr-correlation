@@ -285,6 +285,12 @@ function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
 
 function updatePseudoCorrelations(correlations: Values, mf: string): Values {
   const atoms = getAtomCounts(mf);
+  if (Object.keys(atoms).length === 0) {
+    correlations = correlations.filter(
+      (correlation) => correlation.pseudo === false,
+    );
+    console.log(correlations.length);
+  }
   // add pseudo correlations
   correlations = addPseudoCorrelations(correlations, atoms);
   // remove pseudo correlations to be replaced by equivalences
@@ -662,24 +668,18 @@ function buildValues(
     tolerance,
   );
 
-  _correlations = updateValues(_correlations, mf);
+  // sort by atom type and shift value
+  _correlations = sortCorrelations(_correlations);
+  // link signals via matches to same 2D signal: e.g. 13C -> HSQC <- 1H
+  setMatches(_correlations);
+  // set attachments via HSQC or HMQC
+  setAttachmentsAndProtonEquivalences(_correlations);
+  // update pseudo correlation
+  _correlations = updatePseudoCorrelations(_correlations, mf);
+  // set labels
+  setLabels(_correlations);
 
   return _correlations;
 }
 
-function updateValues(correlations: Values, mf: string): Values {
-  // sort by atom type and shift value
-  correlations = sortCorrelations(correlations);
-  // link signals via matches to same 2D signal: e.g. 13C -> HSQC <- 1H
-  setMatches(correlations);
-  // set attachments via HSQC or HMQC
-  setAttachmentsAndProtonEquivalences(correlations);
-  // update pseudo correlation
-  updatePseudoCorrelations(correlations, mf);
-  // set labels
-  setLabels(correlations);
-
-  return correlations;
-}
-
-export { buildValues, buildState, updateValues };
+export { buildValues, buildState };
