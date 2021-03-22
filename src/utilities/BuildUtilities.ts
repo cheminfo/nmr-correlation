@@ -289,7 +289,6 @@ function updatePseudoCorrelations(correlations: Values, mf: string): Values {
     correlations = correlations.filter(
       (correlation) => correlation.pseudo === false,
     );
-    console.log(correlations.length);
   }
   // add pseudo correlations
   correlations = addPseudoCorrelations(correlations, atoms);
