@@ -38,7 +38,7 @@ import {
   removeMatches,
 } from './LinkUtilities';
 import { setProtonsCountFromData } from './ProtonsCountUtilities';
-import { getSignals } from './SignalUtilities';
+import getSignals from './signals/getSignals';
 
 function addFromData1D(
   correlations: Values,
