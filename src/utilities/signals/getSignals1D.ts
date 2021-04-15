@@ -1,14 +1,14 @@
-import { SignalKindsToInclude } from '../../constants/SignalKinds';
+import signalKindsToInclude from '../../constants/signalKinds';
 import { Spectrum1D } from '../../types/primary';
 import {
   Experiment1DSignal,
   Experiment1DSignals,
   ExperimentsType,
 } from '../../types/secondary';
-import { checkSignalMatch } from '../GeneralUtilities';
 
 import lodashGet from 'lodash/get';
 import lodashCloneDeep from 'lodash/cloneDeep';
+import checkSignalMatch from '../general/checkSignalMatch';
 
 /**
  * Get all different 1D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
@@ -28,7 +28,7 @@ export default function getSignals1D(
       const __signals = spectrum1D.ranges.values
         .map((_range) =>
           _range.signal.filter((_signal) =>
-            SignalKindsToInclude.includes(_signal.kind),
+            signalKindsToInclude.includes(_signal.kind),
           ),
         )
         .flat();

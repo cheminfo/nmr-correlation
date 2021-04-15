@@ -1,6 +1,6 @@
 import { Spectra, Tolerance, Values } from "../../types/primary";
 import { ExperimentSignals } from "../../types/secondary";
-import { setProtonsCountFromData } from "../ProtonsCountUtilities";
+import setProtonsCountFromData from "../protonsCount/setProtonsCountFromData";
 import getSignals from "../signals/getSignals";
 import addFromData1D from "./addFromData1D";
 import addFromData2D from "./addFromData2D";

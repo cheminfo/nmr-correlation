@@ -1,5 +1,5 @@
 import { Correlation, Values } from "../../types/primary";
-import { getCorrelationsByAtomType } from "../GeneralUtilities";
+import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
 
 function sortCorrelations(correlations: Values): Values {
   const compare = (corr1: Correlation, corr2: Correlation) => {

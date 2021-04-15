@@ -1,6 +1,7 @@
 import lodashGet from 'lodash/get';
 import { Spectrum1D, Spectrum2D } from '../../types/primary';
 import { Experiments, ExperimentsType } from '../../types/secondary';
+import getAtomTypeFromNucleus from '../general/getAtomTypeFromNucleus';
 
 /**
  * Add experiment of certain type to experiments
@@ -28,7 +29,7 @@ export default function addToExperiments(
           [],
         ).length > 0;
       return checkAtomType === true
-        ? getAtomType((_experiment as Spectrum1D).info.nucleus) ===
+        ? getAtomTypeFromNucleus((_experiment as Spectrum1D).info.nucleus) ===
             experimentKey && hasValues
         : hasValues;
     });

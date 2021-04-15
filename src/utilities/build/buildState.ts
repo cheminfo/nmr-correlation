@@ -1,5 +1,7 @@
 import { State, StateAtomTypeError, Values } from "../../types/primary";
-import { getAtomCounts, getCorrelationIndex, getCorrelationsByAtomType } from "../GeneralUtilities";
+import getCorrelationIndex from "../correlation/getCorrelationIndex";
+import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
+import getAtomCounts from "../general/getAtomCounts";
 
 function buildState(values: Values, mf: string): State {
   const state: State = {};

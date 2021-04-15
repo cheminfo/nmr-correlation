@@ -1,5 +1,7 @@
 import { Values } from "../../types/primary";
-import { addAttachment, hasAttachmentAtomType, removeAttachments } from "../CorrelationUtilities";
+import addAttachment from "../correlation/addAttachment";
+import hasAttachmentAtomType from "../correlation/hasAttachmentAtomType";
+import removeAttachments from "../correlation/removeAttachments";
 
 function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
   // update attachment information between heavy atoms and protons via HSQC or HMQC

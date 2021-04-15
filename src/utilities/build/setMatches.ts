@@ -1,8 +1,10 @@
 import { Values } from "../../types/primary";
-import { removeLink } from "../CorrelationUtilities";
-import { getCorrelationIndex, getCorrelationsByAtomType } from "../GeneralUtilities";
-import { addMatch, removeMatches } from "../LinkUtilities";
 import lodashIsEqual from "lodash/isEqual";
+import removeMatches from "../link/removeMatches";
+import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
+import getCorrelationIndex from "../correlation/getCorrelationIndex";
+import addMatch from "../link/addMatch";
+import removeLink from "../correlation/removeLink";
 
 function setMatches(correlations: Values): Values {
   correlations.forEach((correlation) => {

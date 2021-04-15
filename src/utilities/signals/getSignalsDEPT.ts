@@ -1,14 +1,14 @@
-import { SignalKindsToInclude } from '../../constants/SignalKinds';
+import signalKindsToInclude from '../../constants/signalKinds';
 import { Spectrum1D } from '../../types/primary';
 import {
   Experiment1DSignal,
   Experiment1DSignals,
   ExperimentsType,
 } from '../../types/secondary';
-import { checkSignalMatch } from '../GeneralUtilities';
 
 import lodashCloneDeep from 'lodash/cloneDeep';
 import getAtomTypeFromNucleus from '../general/getAtomTypeFromNucleus';
+import checkSignalMatch from '../general/checkSignalMatch';
 
 /**
  * Get all DEPT signals from experiments with allowed signal kinds in "SignalKindsToInclude"
@@ -35,7 +35,7 @@ export default function getSignalsDEPT(
           const __signals = experimentDEPT.ranges.values
             .map((range) =>
               range.signal
-                .filter((signal) => SignalKindsToInclude.includes(signal.kind))
+                .filter((signal) => signalKindsToInclude.includes(signal.kind))
                 .map((signal) => {
                   return { ...signal, sign: range.absolute > 0 ? 1 : -1 };
                 }),

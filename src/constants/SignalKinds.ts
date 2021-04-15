@@ -1,3 +1,3 @@
-const SignalKindsToInclude = ['signal'];
+const signalKindsToInclude = ['signal'];
 
-export { SignalKindsToInclude };
+export default signalKindsToInclude;

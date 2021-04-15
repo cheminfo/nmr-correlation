@@ -1,8 +1,9 @@
 import { Correlation, Link, Values } from "../../../types/primary";
-import { hasLinks, removeLink } from "../../CorrelationUtilities";
-import { getCorrelationIndex, getCorrelationsByAtomType } from "../../GeneralUtilities";
-import { removeMatch } from "../../LinkUtilities";
-
+import getCorrelationIndex from "../../correlation/getCorrelationIndex";
+import getCorrelationsByAtomType from "../../correlation/getCorrelationsByAtomType";
+import hasLinks from "../../correlation/hasLinks";
+import removeLink from "../../correlation/removeLink";
+import removeMatch from "../../link/removeMatch";
 function checkPseudoCorrelations(
   correlations: Values,
   atoms: { [atomType: string]: number },

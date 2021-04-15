@@ -1,5 +1,5 @@
 import { Values } from "../../../types/primary";
-import { getAtomCounts } from "../../GeneralUtilities";
+import getAtomCounts from "../../general/getAtomCounts";
 import addPseudoCorrelations from "./addPseudoCorrelations";
 import checkPseudoCorrelations from "./checkPseudoCorrelations";
 import replacePseudoCorrelationsByEquivalences from "./replacePseudoCorrelationsByEquivalences";

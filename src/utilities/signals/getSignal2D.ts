@@ -4,13 +4,14 @@ import {
   Experiment2DSignals,
   ExperimentsType,
 } from '../../types/secondary';
-import { checkSignalMatch, isEditedHSQC } from '../GeneralUtilities';
 
 import lodashIsEqual from 'lodash/isEqual';
 import getAtomTypeFromNucleus from '../general/getAtomTypeFromNucleus';
-import { SignalKindsToInclude } from '../../constants/SignalKinds';
+import signalKindsToInclude from '../../constants/signalKinds';
 
 import lodashCloneDeep from 'lodash/cloneDeep';
+import checkSignalMatch from '../general/checkSignalMatch';
+import isEditedHSQC from '../general/isEditedHSQC';
 
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
@@ -47,7 +48,7 @@ export default function getSignals2D(
       const __signals = spectrum2D.zones.values
         .map((zone) =>
           zone.signal.filter((signal) =>
-            SignalKindsToInclude.includes(signal.kind),
+            signalKindsToInclude.includes(signal.kind),
           ),
         )
         .flat();
