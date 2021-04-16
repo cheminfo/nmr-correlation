@@ -3,5 +3,5 @@
  * @param {string} nucleus
  */
 export function getAtomTypeFromNucleus(nucleus: string): string {
-  return nucleus.split(/\d+/)[1];
+  return nucleus.length > 0 ? nucleus.split(/\d+/)[1] : '';
 }
