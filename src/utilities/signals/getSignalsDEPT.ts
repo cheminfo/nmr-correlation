@@ -1,7 +1,7 @@
 import { signalKindsToInclude } from '../../constants/signalKinds';
 import lodashCloneDeep from 'lodash/cloneDeep';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
-import { checkSignalMatch } from '../general/checkSignalMatch';
+import { checkMatch } from '../general/checkMatch';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { Spectrum1D } from '../../types/spectrum/spectrum1D';
@@ -41,7 +41,7 @@ export function getSignalsDEPT(
           __signals.forEach((signal) => {
             if (
               !_signals.some((_signal) =>
-                checkSignalMatch(_signal.signal.delta, signal.delta, 0.0),
+                checkMatch(_signal.signal.delta, signal.delta, 0.0),
               )
             ) {
               _signals.push({

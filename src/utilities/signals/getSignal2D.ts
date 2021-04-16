@@ -2,7 +2,7 @@ import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashIsEqual from 'lodash/isEqual';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { signalKindsToInclude } from '../../constants/signalKinds';
-import { checkSignalMatch } from '../general/checkSignalMatch';
+import { checkMatch } from '../general/checkMatch';
 import { isEditedHSQC } from '../general/isEditedHSQC';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
@@ -52,8 +52,8 @@ export function getSignals2D(
         if (
           !_signals.some(
             (_signal) =>
-              checkSignalMatch(_signal.signal.x.delta, signal.x.delta, 0.0) &&
-              checkSignalMatch(_signal.signal.y.delta, signal.y.delta, 0.0),
+              checkMatch(_signal.signal.x.delta, signal.x.delta, 0.0) &&
+              checkMatch(_signal.signal.y.delta, signal.y.delta, 0.0),
           )
         ) {
           _signals.push({

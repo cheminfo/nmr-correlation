@@ -6,7 +6,7 @@ import {buildCorrelation} from "../correlation/buildCorrelation";
 import {containsLink} from "../correlation/containsLink";
 import {hasLinks} from "../correlation/hasLinks";
 import {removeLink} from "../correlation/removeLink";
-import {checkSignalMatch} from "../general/checkSignalMatch";
+import {checkMatch} from "../general/checkMatch";
 import {buildLink} from "../correlation/buildLink";
 
 export function addFromData2D(
@@ -30,7 +30,7 @@ export function addFromData2D(
           .map((correlation, k) =>
             correlation.pseudo === false &&
             correlation.atomType === atomType &&
-            checkSignalMatch(
+            checkMatch(
               correlation.signal.delta,
               signal2D.signal[axis].delta,
               tolerance[atomType],

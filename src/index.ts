@@ -9,7 +9,7 @@ export * from './utilities/correlation/buildLink';
 export * from './utilities/correlation/removeLink';
 export * from './utilities/correlation/setCorrelation';
 
-export * from './utilities/general/checkSignalMatch';
+export * from './utilities/general/checkMatch';
 export * from './utilities/general/getAtomCounts';
 export * from './utilities/general/getAtomTypeFromNucleus';
 export * from './utilities/general/getCorrelationIndex';

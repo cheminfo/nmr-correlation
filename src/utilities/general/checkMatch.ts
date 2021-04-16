@@ -1,4 +1,4 @@
-export function checkSignalMatch(
+export function checkMatch(
   signalDelta1: number,
   signalDelta2: number,
   tolerance: number,

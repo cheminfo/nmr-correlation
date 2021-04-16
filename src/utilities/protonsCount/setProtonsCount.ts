@@ -1,5 +1,5 @@
 import { Values } from '../../types/correlation/values';
-import { checkSignalMatch } from '../general/checkSignalMatch';
+import { checkMatch } from '../general/checkMatch';
 
 export function setProtonsCount(
   correlationsAtomType: Values,
@@ -17,7 +17,7 @@ export function setProtonsCount(
     for (let k = 0; k < signals90.length; k++) {
       if (
         // signals90[k].sign === 1 &&
-        checkSignalMatch(
+        checkMatch(
           correlationsAtomType[i].signal.delta,
           signals90[k].delta,
           toleranceAtomType,
@@ -29,7 +29,7 @@ export function setProtonsCount(
     }
     for (let k = 0; k < signals135.length; k++) {
       if (
-        checkSignalMatch(
+        checkMatch(
           correlationsAtomType[i].signal.delta,
           signals135[k].delta,
           toleranceAtomType,
