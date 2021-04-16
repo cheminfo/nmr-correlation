@@ -1,14 +1,13 @@
-import { Experiments, ExperimentsType } from '../../types/secondary';
-import addToExperiments from './addToExperiments';
 import lodashGet from 'lodash/get';
+import { addToExperiments } from './addToExperiments';
+import { Experiments } from '../../types/experiment/experiments';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
 
 /**
  * Get 2D experiments containing zones
  * @param {Spectra} spectraData
  */
-export default function getExperiments2D(
-  experiments: Experiments,
-): ExperimentsType {
+export function getExperiments2D(experiments: Experiments): ExperimentsType {
   const _experiments2D: ExperimentsType = {};
   Object.keys(lodashGet(experiments, '2D', {})).forEach((experimentType) => {
     addToExperiments(

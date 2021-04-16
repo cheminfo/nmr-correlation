@@ -1,10 +1,11 @@
-import { Tolerance, Values } from '../../types/primary';
-import { Experiment1DSignals } from '../../types/secondary';
-import getCorrelationsByAtomType from '../correlation/getCorrelationsByAtomType';
-import setProtonsCount from './setProtonsCount';
 import lodashGet from 'lodash/get';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+import { setProtonsCount } from './setProtonsCount';
+import { Values } from '../../types/correlation/values';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { Tolerance } from '../../types/correlation/tolerance';
 
-function setProtonsCountFromDEPT(
+export function setProtonsCountFromDEPT(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,
   tolerance: Tolerance,
@@ -30,5 +31,3 @@ function setProtonsCountFromDEPT(
 
   return correlations;
 }
-
-export default setProtonsCountFromDEPT;

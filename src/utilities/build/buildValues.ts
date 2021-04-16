@@ -1,17 +1,20 @@
-import { Spectra, Tolerance, Values } from "../../types/primary";
-import { ExperimentSignals } from "../../types/secondary";
-import setProtonsCountFromData from "../protonsCount/setProtonsCountFromData";
-import getSignals from "../signals/getSignals";
-import addFromData1D from "./addFromData1D";
-import addFromData2D from "./addFromData2D";
-import updatePseudoCorrelations from "./pseudo/updatePseudoCorrelations";
-import removeDeletedCorrelations from "./removeDeletedCorrelations";
-import setAttachmentsAndProtonEquivalences from "./setAttachmentsAndProtonEquivalences";
-import setLabels from "./setLabels";
-import setMatches from "./setMatches";
-import sortCorrelations from "./sortCorrelations";
 
-function buildValues(
+import { Tolerance } from "../../types/correlation/tolerance";
+import { Values } from "../../types/correlation/values";
+import { ExperimentSignals } from "../../types/experiment/experimentSignals";
+import { Spectra } from "../../types/spectrum/spectra";
+import {setProtonsCountFromData} from "../protonsCount/setProtonsCountFromData";
+import {getSignals} from "../signals/getSignals";
+import {addFromData1D} from "./addFromData1D";
+import {addFromData2D} from "./addFromData2D";
+import {updatePseudoCorrelations} from "./pseudo/updatePseudoCorrelations";
+import {removeDeletedCorrelations} from "./removeDeletedCorrelations";
+import {setAttachmentsAndProtonEquivalences} from "./setAttachmentsAndProtonEquivalences";
+import {setLabels} from "./setLabels";
+import {setMatches} from "./setMatches";
+import {sortCorrelations} from "./sortCorrelations";
+
+export function buildValues(
   spectra: Spectra,
   mf: string,
   tolerance: Tolerance,
@@ -53,4 +56,3 @@ function buildValues(
   return _correlations;
 }
 
-export default buildValues;

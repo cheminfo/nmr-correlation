@@ -1,20 +1,18 @@
-import signalKindsToInclude from '../../constants/signalKinds';
-import { Spectrum1D } from '../../types/primary';
-import {
-  Experiment1DSignal,
-  Experiment1DSignals,
-  ExperimentsType,
-} from '../../types/secondary';
+import { signalKindsToInclude } from '../../constants/signalKinds';
 
-import lodashGet from 'lodash/get';
 import lodashCloneDeep from 'lodash/cloneDeep';
-import checkSignalMatch from '../general/checkSignalMatch';
+import lodashGet from 'lodash/get';
+import { checkSignalMatch } from '../general/checkSignalMatch';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
+import { Spectrum1D } from '../../types/spectrum/spectrum1D';
 
 /**
  * Get all different 1D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
  * @param {ExperimentsType} experiments1D
  */
-export default function getSignals1D(
+export function getSignals1D(
   experiments1D: ExperimentsType,
 ): Experiment1DSignals {
   // store valid signals from 1D experiments

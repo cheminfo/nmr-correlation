@@ -23,7 +23,7 @@ Another feature is to determine the number of attached protons by using informat
 type Spectra = Array<Spectrum1D | Spectrum2D>;
 ```
 
-- further type definitions are available in `src/types/primary.ts`
+- further type definitions are available in `src/types`
 
 ### Options
 
@@ -68,7 +68,7 @@ An array of correlations with following content:
 
 ```js
 import { fromJCAMP } from 'nmr-parser';
-import { Build } from 'nmr-correlation';
+import { buildCorrelationData } from 'nmr-correlation';
 
 // parse spectra (symbolic example)
 const data1H = fromJCAMP('1h.dx');
@@ -103,7 +103,7 @@ const options = {
   mf: 'C11H14N2O', // molecular formula
 };
 // build correlation data
-const correlationData = Build.build(spectra, options);
+const correlationData = buildCorrelationData(spectra, options);
 ```
 
 ## License

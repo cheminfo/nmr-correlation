@@ -1,6 +1,6 @@
-import { Correlation } from '../../types/primary';
+import { Correlation } from '../../types/correlation/correlation';
 
-function hasAttachmentAtomType(
+export function hasAttachmentAtomType(
   correlation: Correlation,
   atomType: string,
 ): boolean {
@@ -9,5 +9,3 @@ function hasAttachmentAtomType(
     ? true
     : false;
 }
-
-export default hasAttachmentAtomType;

@@ -1,7 +1,7 @@
-import { Values } from "../../types/primary";
 import lodashGet from "lodash/get";
+import { Values } from "../../types/correlation/values";
 
-function setLabels(correlations: Values): void {
+export function setLabels(correlations: Values): Values {
   const atomTypeCounts: { [atomType: string]: number } = {};
   correlations.forEach((correlation) => {
     if (!lodashGet(atomTypeCounts, correlation.atomType, false)) {
@@ -12,6 +12,6 @@ function setLabels(correlations: Values): void {
       atomTypeCounts[correlation.atomType]
     }`;
   });
-}
 
-export default setLabels;
+  return correlations;
+}

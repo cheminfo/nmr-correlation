@@ -1,9 +1,7 @@
-import { Correlation } from '../../types/primary';
+import { Correlation } from '../../types/correlation/correlation';
 
-function removeAttachments(correlation: Correlation): Correlation {
+export function removeAttachments(correlation: Correlation): Correlation {
   correlation.attachment = {};
 
   return correlation;
 }
-
-export default removeAttachments;

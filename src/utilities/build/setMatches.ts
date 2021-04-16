@@ -1,12 +1,12 @@
-import { Values } from "../../types/primary";
 import lodashIsEqual from "lodash/isEqual";
-import removeMatches from "../link/removeMatches";
-import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
-import getCorrelationIndex from "../correlation/getCorrelationIndex";
-import addMatch from "../link/addMatch";
-import removeLink from "../correlation/removeLink";
+import {getCorrelationIndex} from "../general/getCorrelationIndex";
+import {addMatch} from "../correlation/addMatch";
+import {removeLink} from "../correlation/removeLink";
+import { Values } from "../../types/correlation/values";
+import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
+import { removeMatches } from "../correlation/removeMatches";
 
-function setMatches(correlations: Values): Values {
+export function setMatches(correlations: Values): Values {
   correlations.forEach((correlation) => {
     correlation.link.forEach((link) => {
       // remove previously added matches
@@ -50,4 +50,3 @@ function setMatches(correlations: Values): Values {
   return correlations;
 }
 
-export default setMatches;

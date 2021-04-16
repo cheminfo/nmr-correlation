@@ -1,9 +1,10 @@
-import { Tolerance, Values } from '../../types/primary';
-import { Experiment2DSignals } from '../../types/secondary';
 import lodashGet from 'lodash/get';
-import setProtonsCount from './setProtonsCount';
+import { Tolerance } from '../../types/correlation/tolerance';
+import { Values } from '../../types/correlation/values';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import { setProtonsCount } from './setProtonsCount';
 
-function setProtonsCountFromEditedHSQC(
+export function setProtonsCountFromEditedHSQC(
   correlations: Values,
   signals2D: Experiment2DSignals,
   tolerance: Tolerance,
@@ -31,5 +32,3 @@ function setProtonsCountFromEditedHSQC(
 
   return correlations;
 }
-
-export default setProtonsCountFromEditedHSQC;

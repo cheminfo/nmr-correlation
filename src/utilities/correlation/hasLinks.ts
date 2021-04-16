@@ -1,7 +1,5 @@
-import { Correlation } from '../../types/primary';
+import { Correlation } from '../../types/correlation/correlation';
 
-function hasLinks(correlation: Correlation): boolean {
+export function hasLinks(correlation: Correlation): boolean {
   return correlation.link.length > 0;
 }
-
-export default hasLinks;

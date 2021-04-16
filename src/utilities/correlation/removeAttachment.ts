@@ -1,7 +1,7 @@
-import { Correlation } from '../../types/primary';
-import hasAttachmentAtomType from './hasAttachmentAtomType';
+import { Correlation } from '../../types/correlation/correlation';
+import { hasAttachmentAtomType } from './hasAttachmentAtomType';
 
-function removeAttachment(
+export function removeAttachment(
   correlation: Correlation,
   atomType: string,
   attachment: number,
@@ -15,5 +15,3 @@ function removeAttachment(
 
   return correlation;
 }
-
-export default removeAttachment;

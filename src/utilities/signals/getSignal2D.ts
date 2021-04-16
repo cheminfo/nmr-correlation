@@ -1,23 +1,19 @@
-import { Spectrum2D } from '../../types/primary';
-import {
-  Experiment2DSignal,
-  Experiment2DSignals,
-  ExperimentsType,
-} from '../../types/secondary';
-
-import lodashIsEqual from 'lodash/isEqual';
-import getAtomTypeFromNucleus from '../general/getAtomTypeFromNucleus';
-import signalKindsToInclude from '../../constants/signalKinds';
-
 import lodashCloneDeep from 'lodash/cloneDeep';
-import checkSignalMatch from '../general/checkSignalMatch';
-import isEditedHSQC from '../general/isEditedHSQC';
+import lodashIsEqual from 'lodash/isEqual';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+import { signalKindsToInclude } from '../../constants/signalKinds';
+import { checkSignalMatch } from '../general/checkSignalMatch';
+import { isEditedHSQC } from '../general/isEditedHSQC';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
+import { Spectrum2D } from '../../types/spectrum/spectrum2D';
 
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
  * @param {ExperimentsType} experiments1D
  */
-export default function getSignals2D(
+export function getSignals2D(
   experiments2D: ExperimentsType,
 ): Experiment2DSignals {
   // store valid signals from 2D experiments

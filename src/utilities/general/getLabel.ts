@@ -1,6 +1,10 @@
-import { Correlation, Values } from '../../types/primary';
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
 
-function getLabel(correlations: Values, correlation: Correlation): string {
+export function getLabel(
+  correlations: Values,
+  correlation: Correlation,
+): string {
   const label = Object.keys(correlation.attachment)
     .map((otherAtomType) =>
       correlation.attachment[otherAtomType] // eslint-disable-next-line no-unexpected-multiline
@@ -25,5 +29,3 @@ function getLabel(correlations: Values, correlation: Correlation): string {
 
   return correlation.label['origin'];
 }
-
-export default getLabel;

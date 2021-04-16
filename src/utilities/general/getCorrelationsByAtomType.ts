@@ -1,6 +1,6 @@
-import { Values } from '../../types/primary';
+import { Values } from '../../types/correlation/values';
 
-function getCorrelationsByAtomType(
+export function getCorrelationsByAtomType(
   correlations: Values,
   atomType: string,
 ): Values {
@@ -8,5 +8,3 @@ function getCorrelationsByAtomType(
     ? correlations.filter((correlation) => correlation.atomType === atomType)
     : [];
 }
-
-export default getCorrelationsByAtomType;

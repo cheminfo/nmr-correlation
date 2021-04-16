@@ -1,7 +1,7 @@
-import { Correlation } from '../../types/primary';
-import hasAttachmentAtomType from './hasAttachmentAtomType';
+import { Correlation } from '../../types/correlation/correlation';
+import { hasAttachmentAtomType } from './hasAttachmentAtomType';
 
-function addAttachmentAtomType(
+export function addAttachmentAtomType(
   correlation: Correlation,
   atomType: string,
 ): Correlation {
@@ -11,5 +11,3 @@ function addAttachmentAtomType(
 
   return correlation;
 }
-
-export default addAttachmentAtomType;

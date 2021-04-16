@@ -1,12 +1,12 @@
 import lodashGet from 'lodash/get';
-import { Spectra } from '../../types/primary';
-import { Experiments } from '../../types/secondary';
+import { Experiments } from '../../types/experiment/experiments';
+import { Spectra } from '../../types/spectrum/spectra';
 
 /**
  * Get all different experiments from spectra data
  * @param {Spectra} spectraData
  */
-export default function getExperiments(spectraData: Spectra): Experiments {
+export function getExperiments(spectraData: Spectra): Experiments {
   const _experiments: Experiments = {};
   if (spectraData) {
     spectraData

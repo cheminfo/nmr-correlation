@@ -1,12 +1,13 @@
-import { Experiments, ExperimentsType } from '../../types/secondary';
-import addToExperiments from './addToExperiments';
 import lodashGet from 'lodash/get';
+import { addToExperiments } from './addToExperiments';
+import { Experiments } from '../../types/experiment/experiments';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
 
 /**
  * Get "extra" 1D experiments containing ranges, e.g. DEPT
  * @param {Spectra} spectraData
  */
-export default function getExperiments1DExtra(
+export function getExperiments1DExtra(
   experiments: Experiments,
 ): ExperimentsType {
   const _experiments1DExtra: ExperimentsType = {};

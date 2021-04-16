@@ -1,8 +1,9 @@
-import { Correlation, Values } from '../../types/primary';
-import getLabel from './getLabel';
-import sortLabels from './sortLabels';
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
+import { getLabel } from './getLabel';
+import { sortLabels } from './sortLabels';
 
-function getLabels(
+export function getLabels(
   correlations: Values,
   correlation: Correlation,
   experimentType: string,
@@ -22,5 +23,3 @@ function getLabels(
 
   return sortLabels(labels);
 }
-
-export default getLabels;

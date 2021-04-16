@@ -6,7 +6,7 @@ const base62 = Base(BASE62);
 const LENGTH = 8;
 const bytes = new Uint8Array(LENGTH);
 
-export default function generateID() {
+export function generateID() {
   for (let i = 0; i < LENGTH; i++) {
     bytes[i] = Math.floor(Math.random() * 256);
   }

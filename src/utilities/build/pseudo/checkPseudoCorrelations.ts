@@ -1,10 +1,13 @@
-import { Correlation, Link, Values } from "../../../types/primary";
-import getCorrelationIndex from "../../correlation/getCorrelationIndex";
-import getCorrelationsByAtomType from "../../correlation/getCorrelationsByAtomType";
-import hasLinks from "../../correlation/hasLinks";
-import removeLink from "../../correlation/removeLink";
-import removeMatch from "../../link/removeMatch";
-function checkPseudoCorrelations(
+import { Correlation } from "../../../types/correlation/correlation";
+import { Link } from "../../../types/correlation/link";
+import { Values } from "../../../types/correlation/values";
+import {getCorrelationIndex} from "../../general/getCorrelationIndex";
+import {hasLinks} from "../../correlation/hasLinks";
+import {removeLink} from "../../correlation/removeLink";
+import {removeMatch} from "../../correlation/removeMatch";
+import { getCorrelationsByAtomType } from "../../general/getCorrelationsByAtomType";
+
+export function checkPseudoCorrelations(
   correlations: Values,
   atoms: { [atomType: string]: number },
 ): Values {
@@ -77,5 +80,3 @@ function checkPseudoCorrelations(
 
   return correlations;
 }
-
-export default checkPseudoCorrelations;

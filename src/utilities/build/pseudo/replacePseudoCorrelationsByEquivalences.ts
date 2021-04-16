@@ -1,6 +1,7 @@
-import { Correlation, Values } from "../../../types/primary";
+import { Correlation } from "../../../types/correlation/correlation";
+import { Values } from "../../../types/correlation/values";
 
-function replacePseudoCorrelationsByEquivalences(
+export function replacePseudoCorrelationsByEquivalences(
   correlations: Values,
   atoms: { [atomType: string]: number },
 ): Values {
@@ -33,4 +34,3 @@ function replacePseudoCorrelationsByEquivalences(
   return correlations;
 }
 
-export default replacePseudoCorrelationsByEquivalences;

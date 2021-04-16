@@ -1,5 +1,6 @@
-import { Correlation, CorrelationData } from '../../types/primary';
-import buildCorrelation from './buildCorrelation';
+import { Correlation } from '../../types/correlation/correlation';
+import { CorrelationData } from '../../types/correlation/correlationData';
+import { buildCorrelation } from './buildCorrelation';
 
 /**
  * Searches for a correlation index by id in correlation data and replaces it with a given correlation.
@@ -8,7 +9,7 @@ import buildCorrelation from './buildCorrelation';
  * @param {string} id
  * @param {Correlation} correlation
  */
-function setCorrelation(
+export function setCorrelation(
   data: CorrelationData,
   id: string,
   correlation: Correlation,
@@ -25,5 +26,3 @@ function setCorrelation(
     options: data.options,
   };
 }
-
-export default setCorrelation;

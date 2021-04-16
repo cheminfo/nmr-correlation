@@ -1,12 +1,11 @@
-import { Tolerance, Values } from '../../types/primary';
-import {
-  Experiment1DSignals,
-  Experiment2DSignals,
-} from '../../types/secondary';
-import setProtonsCountFromDEPT from './setProtonsCountFromDEPT';
-import setProtonsCountFromEditedHSQC from './setProtonsCountFromEditedHSQC';
+import { Tolerance } from '../../types/correlation/tolerance';
+import { Values } from '../../types/correlation/values';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT';
+import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC';
 
-function setProtonsCountFromData(
+export function setProtonsCountFromData(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,
   signals2D: Experiment2DSignals,
@@ -40,5 +39,3 @@ function setProtonsCountFromData(
 
   return correlations;
 }
-
-export default setProtonsCountFromData;

@@ -1,8 +1,6 @@
-import { Spectrum2D } from '../../types/primary';
+import { Spectrum2D } from '../../types/spectrum/spectrum2D';
 
-function isEditedHSQC(experiment: Spectrum2D): boolean {
+export function isEditedHSQC(experiment: Spectrum2D): boolean {
   // detection whether experiment is an edited HSQC
   return experiment.info.pulseSequence.includes('hsqced');
 }
-
-export default isEditedHSQC;

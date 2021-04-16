@@ -1,8 +1,8 @@
-import { Values } from "../../../types/primary";
-import buildCorrelation from "../../correlation/buildCorrelation";
-import getCorrelationsByAtomType from "../../correlation/getCorrelationsByAtomType";
+import { Values } from "../../../types/correlation/values";
+import {buildCorrelation} from "../../correlation/buildCorrelation";
+import { getCorrelationsByAtomType } from "../../general/getCorrelationsByAtomType";
 
-function addPseudoCorrelations(
+export function addPseudoCorrelations(
   correlations: Values,
   atoms: { [atomType: string]: number },
 ): Values {
@@ -25,4 +25,3 @@ function addPseudoCorrelations(
 
   return correlations;
 }
-export default addPseudoCorrelations;

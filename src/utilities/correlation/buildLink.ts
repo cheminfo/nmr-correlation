@@ -1,8 +1,8 @@
-import { Link } from '../../types/primary';
-import { LinkOptions } from '../../types/secondary';
-import generateID from '../general/generateID';
+import { Link } from '../../types/correlation/link';
+import { LinkOptions } from '../../types/correlation/linkOptions';
+import { generateID } from '../general/generateID';
 
-function buildLink(options: LinkOptions): Link {
+export function buildLink(options: LinkOptions): Link {
   return {
     id: options.id || generateID(),
     experimentType: options.experimentType,
@@ -15,5 +15,3 @@ function buildLink(options: LinkOptions): Link {
     pseudo: options.pseudo || false,
   } as Link;
 }
-
-export default buildLink;

@@ -1,7 +1,7 @@
-import { Values } from '../../types/primary';
-import checkSignalMatch from '../general/checkSignalMatch';
+import { Values } from '../../types/correlation/values';
+import { checkSignalMatch } from '../general/checkSignalMatch';
 
-function setProtonsCount(
+export function setProtonsCount(
   correlationsAtomType: Values,
   signals90: Array<{ delta: number }>,
   signals135: Array<{ delta: number; sign?: number }>,
@@ -83,5 +83,3 @@ function setProtonsCount(
 
   return correlationsAtomType;
 }
-
-export default setProtonsCount;

@@ -1,9 +1,9 @@
-import { Values } from "../../types/primary";
-import addAttachment from "../correlation/addAttachment";
-import hasAttachmentAtomType from "../correlation/hasAttachmentAtomType";
-import removeAttachments from "../correlation/removeAttachments";
+import { Values } from "../../types/correlation/values";
+import {addAttachment} from "../correlation/addAttachment";
+import {hasAttachmentAtomType} from "../correlation/hasAttachmentAtomType";
+import {removeAttachments} from "../correlation/removeAttachments";
 
-function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
+export function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
   // update attachment information between heavy atoms and protons via HSQC or HMQC
   correlations.forEach((correlation) => {
     // remove previous set attachments
@@ -47,4 +47,3 @@ function setAttachmentsAndProtonEquivalences(correlations: Values): Values {
   return correlations;
 }
 
-export default setAttachmentsAndProtonEquivalences;

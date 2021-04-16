@@ -1,9 +1,11 @@
-import { State, StateAtomTypeError, Values } from "../../types/primary";
-import getCorrelationIndex from "../correlation/getCorrelationIndex";
-import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
-import getAtomCounts from "../general/getAtomCounts";
+import { State } from "../../types/correlation/state";
+import { StateAtomTypeError } from "../../types/correlation/stateAtomTypeError";
+import { Values } from "../../types/correlation/values";
+import {getCorrelationIndex} from "../general/getCorrelationIndex";
+import {getAtomCounts} from "../general/getAtomCounts";
+import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
 
-function buildState(values: Values, mf: string): State {
+export function buildState(values: Values, mf: string): State {
   const state: State = {};
   const atoms = getAtomCounts(mf);
   const atomTypesInCorrelations: Array<string> = values.reduce(
@@ -113,4 +115,3 @@ function buildState(values: Values, mf: string): State {
   return state;
 }
 
-export default buildState;

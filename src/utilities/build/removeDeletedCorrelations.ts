@@ -1,8 +1,9 @@
-import { Values } from "../../types/primary";
-import { Experiment1DSignals, Experiment2DSignals } from "../../types/secondary";
 import lodashGet from "lodash/get";
+import { Values } from "../../types/correlation/values";
+import { Experiment1DSignals } from "../../types/experiment/experiment1DSignals";
+import { Experiment2DSignals } from "../../types/experiment/experiment2DSignals";
 
-function removeDeletedCorrelations(
+export function removeDeletedCorrelations(
   correlations: Values,
   signals1D: Experiment1DSignals,
   signals2D: Experiment2DSignals,
@@ -51,4 +52,3 @@ function removeDeletedCorrelations(
   return correlations;
 }
 
-export default removeDeletedCorrelations;

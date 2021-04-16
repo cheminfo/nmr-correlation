@@ -1,4 +1,4 @@
-function checkSignalMatch(
+export function checkSignalMatch(
   signalDelta1: number,
   signalDelta2: number,
   tolerance: number,
@@ -8,5 +8,3 @@ function checkSignalMatch(
     signalDelta2 <= signalDelta1 + tolerance
   );
 }
-
-export default checkSignalMatch;

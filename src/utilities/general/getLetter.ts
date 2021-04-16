@@ -1,7 +1,5 @@
-import labelLetters from '../../constants/labelLetters';
+import { labelLetters } from '../../constants/labelLetters';
 
-function getLetter(number: number): string {
+export function getLetter(number: number): string {
   return labelLetters[number];
 }
-
-export default getLetter;

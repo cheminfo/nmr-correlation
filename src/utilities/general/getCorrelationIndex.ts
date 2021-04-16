@@ -1,6 +1,7 @@
-import { Correlation, Values } from '../../types/primary';
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
 
-function getCorrelationIndex(
+export function getCorrelationIndex(
   correlations: Values,
   correlation: Correlation,
 ): number {
@@ -8,5 +9,3 @@ function getCorrelationIndex(
     (_correlation) => _correlation.id === correlation.id,
   );
 }
-
-export default getCorrelationIndex;

@@ -1,8 +1,8 @@
-import { Correlation } from '../../types/primary';
-import { CorrelationOptions } from '../../types/secondary';
-import generateID from '../general/generateID';
+import { Correlation } from '../../types/correlation/correlation';
+import { CorrelationOptions } from '../../types/correlation/correlationOptions';
+import { generateID } from '../general/generateID';
 
-function buildCorrelation(options: CorrelationOptions): Correlation {
+export function buildCorrelation(options: CorrelationOptions): Correlation {
   return {
     id: options.id || generateID(),
     experimentType: options.experimentType,
@@ -19,5 +19,3 @@ function buildCorrelation(options: CorrelationOptions): Correlation {
     edited: options.edited || {},
   } as Correlation;
 }
-
-export default buildCorrelation;

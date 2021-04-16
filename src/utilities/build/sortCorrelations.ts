@@ -1,7 +1,8 @@
-import { Correlation, Values } from "../../types/primary";
-import getCorrelationsByAtomType from "../correlation/getCorrelationsByAtomType";
+import { Correlation } from "../../types/correlation/correlation";
+import { Values } from "../../types/correlation/values";
+import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
 
-function sortCorrelations(correlations: Values): Values {
+export function sortCorrelations(correlations: Values): Values {
   const compare = (corr1: Correlation, corr2: Correlation) => {
     if (corr1.pseudo === false && corr2.pseudo === false) {
       if (corr1.signal.delta < corr2.signal.delta) {
@@ -35,4 +36,3 @@ function sortCorrelations(correlations: Values): Values {
   return sortedCorrelations;
 }
 
-export default sortCorrelations;
