@@ -1,12 +1,11 @@
-// this file content was copied from https://github.com/cheminfo/nmr-displayer/blob/master/src/data/utilities/generateID.js in "master" branch on 15th February 2021 at 11:25 AM (commit 3d8d70c)
-
-const BASE62 = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const BASE62: string =
+  '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const base62 = Base(BASE62);
 
-const LENGTH = 8;
+const LENGTH: number = 8;
 const bytes = new Uint8Array(LENGTH);
 
-export function generateID() {
+export function generateID(): string {
   for (let i = 0; i < LENGTH; i++) {
     bytes[i] = Math.floor(Math.random() * 256);
   }
@@ -20,7 +19,7 @@ export function generateID() {
 // Distributed under the MIT software license, see the accompanying
 // file LICENSE or http://www.opensource.org/licenses/mit-license.php.
 // @ts-ignore
-function Base(ALPHABET) {
+function Base(ALPHABET: string) {
   if (ALPHABET.length >= 255) {
     throw new TypeError('Alphabet too long');
   }
@@ -40,7 +39,7 @@ function Base(ALPHABET) {
   let LEADER = ALPHABET.charAt(0);
   let iFACTOR = Math.log(256) / Math.log(BASE); // log(256) / log(BASE), rounded up
 
-  function encode(source) {
+  function encode(source: Uint8Array) {
     if (source.length === 0) {
       return '';
     }
