@@ -1,7 +1,7 @@
 import { Signal2D } from './signal2D';
 
 export type Zone = {
-  id: number;
+  id: string;
   signal: Array<Signal2D>;
   kind: string;
 };
