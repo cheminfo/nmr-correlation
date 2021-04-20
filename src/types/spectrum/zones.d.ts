@@ -1,6 +1,6 @@
 import { Zone } from './zone';
 
-export type Zones = {
+export interface Zones {
   values: Array<Zone>;
   options?: any;
-};
+}

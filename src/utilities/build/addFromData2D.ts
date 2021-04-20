@@ -1,13 +1,13 @@
-import { Tolerance } from "../../types/correlation/tolerance";
-import { Values } from "../../types/correlation/values";
-import { Experiment2DSignals } from "../../types/experiment/experiment2DSignals";
-import {addLink} from "../correlation/addLink";
-import {buildCorrelation} from "../correlation/buildCorrelation";
-import {containsLink} from "../correlation/containsLink";
-import {hasLinks} from "../correlation/hasLinks";
-import {removeLink} from "../correlation/removeLink";
-import {checkSignalMatch} from "../general/checkSignalMatch";
-import {buildLink} from "../correlation/buildLink";
+import { Tolerance } from '../../types/correlation/tolerance';
+import { Values } from '../../types/correlation/values';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import { addLink } from '../correlation/addLink';
+import { buildCorrelation } from '../correlation/buildCorrelation';
+import { buildLink } from '../correlation/buildLink';
+import { containsLink } from '../correlation/containsLink';
+import { hasLinks } from '../correlation/hasLinks';
+import { removeLink } from '../correlation/removeLink';
+import { checkSignalMatch } from '../general/checkSignalMatch';
 
 export function addFromData2D(
   correlations: Values,

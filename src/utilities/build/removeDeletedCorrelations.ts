@@ -1,7 +1,8 @@
-import lodashGet from "lodash/get";
-import { Values } from "../../types/correlation/values";
-import { Experiment1DSignals } from "../../types/experiment/experiment1DSignals";
-import { Experiment2DSignals } from "../../types/experiment/experiment2DSignals";
+import lodashGet from 'lodash/get';
+
+import { Values } from '../../types/correlation/values';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 
 export function removeDeletedCorrelations(
   correlations: Values,
@@ -30,7 +31,7 @@ export function removeDeletedCorrelations(
       if (
         lodashGet(signals2D, `${correlation.experimentType}`, []).some(
           (signal2D) =>
-            signal2D.atomType.indexOf(correlation.atomType) !== -1 &&
+            signal2D.atomType.includes(correlation.atomType) &&
             signal2D.signal.id === correlation.signal.id,
         )
       ) {
@@ -51,4 +52,3 @@ export function removeDeletedCorrelations(
 
   return correlations;
 }
-

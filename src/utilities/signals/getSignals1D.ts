@@ -1,12 +1,12 @@
-import { signalKindsToInclude } from '../../constants/signalKinds';
-
 import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashGet from 'lodash/get';
-import { checkSignalMatch } from '../general/checkSignalMatch';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+
+import { signalKindsToInclude } from '../../constants/signalKinds';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import { checkSignalMatch } from '../general/checkSignalMatch';
 
 /**
  * Get all different 1D signals from experiments with allowed signal kinds in "SignalKindsToInclude"

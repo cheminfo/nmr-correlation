@@ -1,5 +1,5 @@
 import { ExperimentsType } from './experimentsType';
 
-export type Experiments = {
+export interface Experiments {
   [key: string]: ExperimentsType;
-};
+}

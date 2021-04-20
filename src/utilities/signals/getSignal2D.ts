@@ -1,13 +1,14 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashIsEqual from 'lodash/isEqual';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+
 import { signalKindsToInclude } from '../../constants/signalKinds';
-import { checkSignalMatch } from '../general/checkSignalMatch';
-import { isEditedHSQC } from '../general/isEditedHSQC';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 import { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { Spectrum2D } from '../../types/spectrum/spectrum2D';
+import { checkSignalMatch } from '../general/checkSignalMatch';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+import { isEditedHSQC } from '../general/isEditedHSQC';
 
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "SignalKindsToInclude"

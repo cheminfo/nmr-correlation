@@ -5,7 +5,7 @@ export function getAtomCounts(mf: string): { [atomType: string]: number } {
   if (elements) {
     elements.forEach((elem) => {
       const regex = new RegExp(`(${elem}\\d+)`, 'g');
-      const match = mf.match(regex);
+      const match = regex.exec(mf);
       let count = 1;
       if (match) {
         count = Number(match[0].split(elem)[1]);

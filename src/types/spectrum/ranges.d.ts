@@ -1,6 +1,6 @@
 import { Range } from './range';
 
-export type Ranges = {
+export interface Ranges {
   values: Array<Range>;
   options?: any;
-};
+}

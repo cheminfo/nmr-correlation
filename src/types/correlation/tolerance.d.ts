@@ -1,3 +1,3 @@
-export type Tolerance = {
+export interface Tolerance {
   [atomType: string]: number;
-};
+}

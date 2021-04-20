@@ -1,5 +1,6 @@
 import { Correlation } from '../../types/correlation/correlation';
 import { Values } from '../../types/correlation/values';
+
 import { getLabel } from './getLabel';
 import { sortLabels } from './sortLabels';
 

@@ -1,5 +1,5 @@
 import { Experiment1DSignal } from './experiment1DSignal';
 
-export type Experiment1DSignals = {
+export interface Experiment1DSignals {
   [atomType: string]: Array<Experiment1DSignal>;
-};
+}

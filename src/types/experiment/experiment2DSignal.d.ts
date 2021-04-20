@@ -1,4 +1,5 @@
 import { Signal2D } from '../spectrum/signal2D';
+
 import { ExperimentSignal } from './experimentSignal';
 
 export interface Experiment2DSignal extends ExperimentSignal {

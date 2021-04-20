@@ -1,10 +1,14 @@
-import { Values } from "../../../types/correlation/values";
-import {getAtomCounts} from "../../general/getAtomCounts";
-import {addPseudoCorrelations} from "./addPseudoCorrelations";
-import {checkPseudoCorrelations} from "./checkPseudoCorrelations";
-import {replacePseudoCorrelationsByEquivalences} from "./replacePseudoCorrelationsByEquivalences";
+import { Values } from '../../../types/correlation/values';
+import { getAtomCounts } from '../../general/getAtomCounts';
 
-export function updatePseudoCorrelations(correlations: Values, mf: string): Values {
+import { addPseudoCorrelations } from './addPseudoCorrelations';
+import { checkPseudoCorrelations } from './checkPseudoCorrelations';
+import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences';
+
+export function updatePseudoCorrelations(
+  correlations: Values,
+  mf: string,
+): Values {
   const atoms = getAtomCounts(mf);
   if (Object.keys(atoms).length === 0) {
     correlations = correlations.filter(

@@ -1,4 +1,5 @@
 import { Correlation } from '../../types/correlation/correlation';
+
 import { hasAttachmentAtomType } from './hasAttachmentAtomType';
 
 export function removeAttachment(

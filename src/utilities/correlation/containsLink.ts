@@ -1,4 +1,5 @@
 import lodashIsEqual from 'lodash/isEqual';
+
 import { Correlation } from '../../types/correlation/correlation';
 import { Link } from '../../types/correlation/link';
 

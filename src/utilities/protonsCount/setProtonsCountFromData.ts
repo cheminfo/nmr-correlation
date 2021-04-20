@@ -2,6 +2,7 @@ import { Tolerance } from '../../types/correlation/tolerance';
 import { Values } from '../../types/correlation/values';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+
 import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT';
 import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC';
 

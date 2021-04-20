@@ -1,5 +1,6 @@
 import { Signal1D } from '../spectrum/signal1D';
 import { Signal2D } from '../spectrum/signal2D';
+
 import { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
 
 export interface LinkOptions extends CorrelationAndLinkOptions {

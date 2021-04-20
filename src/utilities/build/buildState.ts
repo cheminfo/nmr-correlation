@@ -1,9 +1,9 @@
-import { State } from "../../types/correlation/state";
-import { StateAtomTypeError } from "../../types/correlation/stateAtomTypeError";
-import { Values } from "../../types/correlation/values";
-import {getCorrelationIndex} from "../general/getCorrelationIndex";
-import {getAtomCounts} from "../general/getAtomCounts";
-import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
+import { State } from '../../types/correlation/state';
+import { StateAtomTypeError } from '../../types/correlation/stateAtomTypeError';
+import { Values } from '../../types/correlation/values';
+import { getAtomCounts } from '../general/getAtomCounts';
+import { getCorrelationIndex } from '../general/getCorrelationIndex';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
 export function buildState(values: Values, mf: string): State {
   const state: State = {};
@@ -114,4 +114,3 @@ export function buildState(values: Values, mf: string): State {
 
   return state;
 }
-

@@ -1,9 +1,11 @@
 import lodashGet from 'lodash/get';
-import { addToExperiments } from './addToExperiments';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+
 import { Experiments } from '../../types/experiment/experiments';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+
+import { addToExperiments } from './addToExperiments';
 
 /**
  * Get "plain" 1D experiments containing ranges, i.e. without DEPT etc.

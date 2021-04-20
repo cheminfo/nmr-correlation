@@ -1,7 +1,9 @@
 import lodashGet from 'lodash/get';
+
 import { Tolerance } from '../../types/correlation/tolerance';
 import { Values } from '../../types/correlation/values';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+
 import { setProtonsCount } from './setProtonsCount';
 
 export function setProtonsCountFromEditedHSQC(

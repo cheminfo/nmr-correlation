@@ -1,6 +1,6 @@
-import { Correlation } from "../../types/correlation/correlation";
-import { Values } from "../../types/correlation/values";
-import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
 export function sortCorrelations(correlations: Values): Values {
   const compare = (corr1: Correlation, corr2: Correlation) => {
@@ -11,10 +11,10 @@ export function sortCorrelations(correlations: Values): Values {
         return 1;
       }
     }
-    if (corr1.label['origin'] < corr2.label['origin']) {
+    if (corr1.label.origin < corr2.label.origin) {
       return -1;
     }
-    if (corr1.label['origin'] > corr2.label['origin']) {
+    if (corr1.label.origin > corr2.label.origin) {
       return 1;
     }
     return 0;
@@ -35,4 +35,3 @@ export function sortCorrelations(correlations: Values): Values {
 
   return sortedCorrelations;
 }
-

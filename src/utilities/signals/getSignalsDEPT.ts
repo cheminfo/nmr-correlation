@@ -1,11 +1,12 @@
-import { signalKindsToInclude } from '../../constants/signalKinds';
 import lodashCloneDeep from 'lodash/cloneDeep';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
-import { checkSignalMatch } from '../general/checkSignalMatch';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+
+import { signalKindsToInclude } from '../../constants/signalKinds';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { ExperimentsType } from '../../types/experiment/experimentsType';
+import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import { checkSignalMatch } from '../general/checkSignalMatch';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 /**
  * Get all DEPT signals from experiments with allowed signal kinds in "SignalKindsToInclude"
