@@ -37,6 +37,7 @@ export function addFromData1D(
         )
         .filter((index) => index >= 0)
         .filter((index, i, a) => a.indexOf(index) === i);
+
       if (matchedCorrelationIndices.length === 0) {
         const pseudoIndex = correlations.findIndex(
           (correlation) =>
@@ -45,7 +46,10 @@ export function addFromData1D(
             !hasLinks(correlation),
         );
         const newCorrelation = buildCorrelation({
-          ...signal1D,
+          atomType: signal1D.atomType,
+          experimentID: signal1D.experimentID,
+          experimentType: signal1D.experimentType,
+          signal: { delta: signal1D.signal.delta, id: signal1D.signal.id },
         });
         if (pseudoIndex >= 0) {
           correlations[pseudoIndex] = newCorrelation;
