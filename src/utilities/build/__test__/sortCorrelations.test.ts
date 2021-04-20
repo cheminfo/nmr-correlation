@@ -1,5 +1,5 @@
-import { sortCorrelations } from '../build/sortCorrelations';
-import { buildCorrelation } from '../correlation/buildCorrelation';
+import { sortCorrelations } from '../sortCorrelations';
+import { buildCorrelation } from '../../correlation/buildCorrelation';
 
 describe('sortCorrelations', () => {
   const correlation1 = buildCorrelation({
