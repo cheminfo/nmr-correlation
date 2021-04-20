@@ -1,6 +1,6 @@
-import { Correlation } from "../../types/correlation/correlation";
-import { Values } from "../../types/correlation/values";
-import { getCorrelationsByAtomType } from "../general/getCorrelationsByAtomType";
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
 export function sortCorrelations(correlations: Values): Values {
   const compare = (corr1: Correlation, corr2: Correlation) => {
@@ -35,4 +35,3 @@ export function sortCorrelations(correlations: Values): Values {
 
   return sortedCorrelations;
 }
-

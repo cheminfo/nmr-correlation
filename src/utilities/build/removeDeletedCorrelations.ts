@@ -1,7 +1,7 @@
-import lodashGet from "lodash/get";
-import { Values } from "../../types/correlation/values";
-import { Experiment1DSignals } from "../../types/experiment/experiment1DSignals";
-import { Experiment2DSignals } from "../../types/experiment/experiment2DSignals";
+import lodashGet from 'lodash/get';
+import { Values } from '../../types/correlation/values';
+import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 
 export function removeDeletedCorrelations(
   correlations: Values,
@@ -51,4 +51,3 @@ export function removeDeletedCorrelations(
 
   return correlations;
 }
-

@@ -1,5 +1,5 @@
-import lodashGet from "lodash/get";
-import { Values } from "../../types/correlation/values";
+import lodashGet from 'lodash/get';
+import { Values } from '../../types/correlation/values';
 
 export function setLabels(correlations: Values): Values {
   const atomTypeCounts: { [atomType: string]: number } = {};
