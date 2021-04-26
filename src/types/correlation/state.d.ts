@@ -1,5 +1,5 @@
 import { StateAtomType } from './stateAtomType';
 
-export type State = {
+export interface State {
   [atomType: string]: StateAtomType;
-};
+}

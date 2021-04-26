@@ -1,11 +1,12 @@
 import { Correlation } from '../../../types/correlation/correlation';
 import { Link } from '../../../types/correlation/link';
 import { Values } from '../../../types/correlation/values';
-import { getCorrelationIndex } from '../../general/getCorrelationIndex';
 import { hasLinks } from '../../correlation/hasLinks';
 import { removeLink } from '../../correlation/removeLink';
 import { removeMatch } from '../../correlation/removeMatch';
+import { getCorrelationIndex } from '../../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
+
 
 export function checkPseudoCorrelations(
   correlations: Values,

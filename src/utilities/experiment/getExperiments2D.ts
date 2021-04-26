@@ -1,7 +1,9 @@
 import lodashGet from 'lodash/get';
-import { addToExperiments } from './addToExperiments';
+
 import { Experiments } from '../../types/experiment/experiments';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
+
+import { addToExperiments } from './addToExperiments';
 
 /**
  * Get 2D experiments containing zones

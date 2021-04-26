@@ -1,6 +1,6 @@
 import { Tolerance } from './tolerance';
 
-export type Options = {
+export interface Options {
   tolerance: Tolerance;
   mf?: string;
-};
+}

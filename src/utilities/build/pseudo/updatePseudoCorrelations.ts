@@ -4,6 +4,7 @@ import { addPseudoCorrelations } from './addPseudoCorrelations';
 import { checkPseudoCorrelations } from './checkPseudoCorrelations';
 import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences';
 
+
 export function updatePseudoCorrelations(
   correlations: Values,
   mf: string,

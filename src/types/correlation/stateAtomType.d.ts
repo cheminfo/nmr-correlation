@@ -1,8 +1,8 @@
 import { StateAtomTypeError } from './stateAtomTypeError';
 
-export type StateAtomType = {
+export interface StateAtomType {
   current: number;
   total?: number;
   complete?: boolean;
   error?: StateAtomTypeError;
-};
+}

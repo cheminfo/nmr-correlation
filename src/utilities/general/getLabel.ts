@@ -8,7 +8,7 @@ export function getLabel(
   const label = Object.keys(correlation.attachment)
     .map((otherAtomType) =>
       correlation.attachment[otherAtomType] // eslint-disable-next-line no-unexpected-multiline
-        .map((index) => correlation.label[correlations[index].label['origin']])
+        .map((index) => correlation.label[correlations[index].label.origin])
         .filter((_label) => _label),
     )
     .flat()
@@ -27,5 +27,5 @@ export function getLabel(
     return label;
   }
 
-  return correlation.label['origin'];
+  return correlation.label.origin;
 }

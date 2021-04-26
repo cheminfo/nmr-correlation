@@ -1,5 +1,5 @@
 import lodashGet from 'lodash/get';
-import { Values } from '../../types/correlation/values';
+import { Values } from '../../types';
 
 export function setLabels(correlations: Values): Values {
   const atomTypeCounts: { [atomType: string]: number } = {};
@@ -8,7 +8,7 @@ export function setLabels(correlations: Values): Values {
       atomTypeCounts[correlation.atomType] = 0;
     }
     atomTypeCounts[correlation.atomType]++;
-    correlation.label['origin'] = `${correlation.atomType}${
+    correlation.label.origin = `${correlation.atomType}${
       atomTypeCounts[correlation.atomType]
     }`;
   });

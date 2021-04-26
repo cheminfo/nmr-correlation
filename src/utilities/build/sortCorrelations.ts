@@ -36,10 +36,10 @@ export function sortCorrelations(correlations: Values): Values {
         return 1;
       }
     }
-    if (corr1.label['origin'] < corr2.label['origin']) {
+    if (corr1.label.origin < corr2.label.origin) {
       return -1;
     }
-    if (corr1.label['origin'] > corr2.label['origin']) {
+    if (corr1.label.origin > corr2.label.origin) {
       return 1;
     }
     return 0;

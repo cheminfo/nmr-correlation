@@ -1,9 +1,11 @@
 import lodashGet from 'lodash/get';
-import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
-import { setProtonsCount } from './setProtonsCount';
+
+import { Tolerance } from '../../types/correlation/tolerance';
 import { Values } from '../../types/correlation/values';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import { Tolerance } from '../../types/correlation/tolerance';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+
+import { setProtonsCount } from './setProtonsCount';
 
 export function setProtonsCountFromDEPT(
   correlations: Values,

@@ -1,4 +1,5 @@
 import { Correlation } from '../../types/correlation/correlation';
+
 import { addAttachmentAtomType } from './addAttachmentAtomType';
 
 export function addAttachment(

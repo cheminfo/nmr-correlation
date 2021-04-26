@@ -1,12 +1,13 @@
+import { ExperimentSignals } from '../../types/experiment/experimentSignals';
+import { Spectra } from '../../types/spectrum/spectra';
 import { getExperiments } from '../experiment/getExperiments';
 import { getExperiments1D } from '../experiment/getExperiments1D';
 import { getExperiments1DExtra } from '../experiment/getExperiments1DExtra';
 import { getExperiments2D } from '../experiment/getExperiments2D';
+
+import { getSignals2D } from './getSignal2D';
 import { getSignals1D } from './getSignals1D';
 import { getSignalsDEPT } from './getSignalsDEPT';
-import { getSignals2D } from './getSignal2D';
-import { Spectra } from '../../types/spectrum/spectra';
-import { ExperimentSignals } from '../../types/experiment/experimentSignals';
 
 // general remark for all experiment types:
 // build an array of experiments, because one could have more than
