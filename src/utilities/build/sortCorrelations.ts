@@ -2,6 +2,11 @@ import { Correlation } from '../../types/correlation/correlation';
 import { Values } from '../../types/correlation/values';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
+/**
+ * Sorts the correlations according to its atom type value and signal delta.
+ *
+ * @param {Values} values
+ */
 export function sortCorrelations(correlations: Values): Values {
   const compareAtomTypes = (atomType1: string, atomType2: string) => {
     // C and H highest priority

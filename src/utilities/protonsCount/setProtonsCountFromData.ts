@@ -6,6 +6,14 @@ import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals'
 import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT';
 import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC';
 
+/**
+ * Sets proton counts from DEPT90 and/or DEPT135/edited HSQC signals, depending on what spectra data is given.
+ *
+ * @param {Values} correlations
+ * @param {Experiment1DSignals} signalsDEPT
+ * @param {Experiment2DSignals} signals2D
+ * @param {Tolerance} tolerance
+ */
 export function setProtonsCountFromData(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,

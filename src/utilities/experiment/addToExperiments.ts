@@ -7,7 +7,8 @@ import { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 /**
- * Add experiment of certain type to experiments
+ * Add experiment of certain type to experiments.
+ *
  * @param {Experiments} experiments
  * @param {ExperimentsType} experimentsType
  * @param {string} type

@@ -14,7 +14,8 @@ import { getSignalsDEPT } from './getSignalsDEPT';
 // one spectrum in spectra list for one atom type or experiment type
 
 /**
- * Get all signals from experiments with allowed signal kinds in "SignalKindsToInclude"
+ * Get all signals from experiments with allowed signal kinds in "signalKindsToInclude".
+ *
  * @param {Spectra} spectraData
  */
 export function getSignals(spectraData: Spectra): ExperimentSignals {

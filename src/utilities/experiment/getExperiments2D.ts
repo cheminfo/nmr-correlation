@@ -6,7 +6,8 @@ import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { addToExperiments } from './addToExperiments';
 
 /**
- * Get 2D experiments containing zones
+ * Get 2D experiments containing zones.
+ *
  * @param {Spectra} spectraData
  */
 export function getExperiments2D(experiments: Experiments): ExperimentsType {

@@ -1,10 +1,14 @@
+/**
+ * Checks for a numeric match within a certain tolerance.
+ *
+ * @param {number} value1
+ * @param {number} value2
+ * @param {number} tolerance
+ */
 export function checkMatch(
-  signalDelta1: number,
-  signalDelta2: number,
+  value1: number,
+  value2: number,
   tolerance: number,
 ): boolean {
-  return (
-    signalDelta1 - tolerance <= signalDelta2 &&
-    signalDelta2 <= signalDelta1 + tolerance
-  );
+  return value1 - tolerance <= value2 && value2 <= value1 + tolerance;
 }

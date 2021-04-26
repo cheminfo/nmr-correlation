@@ -8,7 +8,8 @@ import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { addToExperiments } from './addToExperiments';
 
 /**
- * Get "plain" 1D experiments containing ranges, i.e. without DEPT etc.
+ * Get "plain" 1D experiments containing ranges, i.e. without DEPT etc..
+ *
  * @param {Spectra} spectraData
  */
 export function getExperiments1D(experiments: Experiments): ExperimentsType {

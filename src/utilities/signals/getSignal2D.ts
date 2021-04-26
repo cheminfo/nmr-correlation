@@ -11,7 +11,8 @@ import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { isEditedHSQC } from '../general/isEditedHSQC';
 
 /**
- * Get all different 2D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
+ * Get all different 2D signals from experiments with allowed signal kinds in "signalKindsToInclude".
+ *
  * @param {ExperimentsType} experiments1D
  */
 export function getSignals2D(

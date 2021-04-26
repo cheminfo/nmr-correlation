@@ -1,5 +1,5 @@
 /**
- * Get atom type from nucleus
+ * Returns the atom type from nucleus.
  * @param {string} nucleus
  */
 export function getAtomTypeFromNucleus(nucleus: string): string {

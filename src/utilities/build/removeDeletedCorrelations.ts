@@ -4,6 +4,13 @@ import { Values } from '../../types/correlation/values';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 
+/**
+ * Removes non-pseudo correlations which signal id can not be found anymore since the last correlation data build.
+ *
+ * @param {Values} values
+ * @param {Experiment1DSignals} signals1D
+ * @param {Experiment2DSignals} signals2D
+ */
 export function removeDeletedCorrelations(
   correlations: Values,
   signals1D: Experiment1DSignals,

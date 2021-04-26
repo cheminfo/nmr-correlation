@@ -9,6 +9,13 @@ import { hasLinks } from '../correlation/hasLinks';
 import { removeLink } from '../correlation/removeLink';
 import { checkMatch } from '../general/checkMatch';
 
+/**
+ * Adds new correlations from 1D data or adds links to already existing ones.
+ *
+ * @param {Values} correlations
+ * @param {Experiment1DSignals} signals1D
+ * @param {Tolerance} tolerance
+ */
 export function addFromData1D(
   correlations: Values,
   signals1D: Experiment1DSignals,

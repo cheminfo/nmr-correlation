@@ -7,6 +7,11 @@ import { removeMatches } from '../correlation/removeMatches';
 import { getCorrelationIndex } from '../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
+/**
+ * Sets the match indices for each link within a correlation.
+ *
+ * @param {Values} values
+ */
 export function setMatches(correlations: Values): Values {
   correlations.forEach((correlation) => {
     correlation.link.forEach((link) => {

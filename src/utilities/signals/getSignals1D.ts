@@ -9,7 +9,8 @@ import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { checkMatch } from '../general/checkMatch';
 
 /**
- * Get all different 1D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
+ * Get all different 1D signals from experiments with allowed signal kinds in "signalKindsToInclude".
+ *
  * @param {ExperimentsType} experiments1D
  */
 export function getSignals1D(

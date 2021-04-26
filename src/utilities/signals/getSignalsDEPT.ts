@@ -9,7 +9,8 @@ import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 /**
- * Get all DEPT signals from experiments with allowed signal kinds in "SignalKindsToInclude"
+ * Get all DEPT signals from experiments with allowed signal kinds in "signalKindsToInclude".
+ *
  * @param {ExperimentsType} experiments1DExtra
  */
 export function getSignalsDEPT(

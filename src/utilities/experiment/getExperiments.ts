@@ -4,7 +4,8 @@ import { Experiments } from '../../types/experiment/experiments';
 import { Spectra } from '../../types/spectrum/spectra';
 
 /**
- * Get all different experiments from spectra data
+ * Get all different experiments from spectra data.
+ *
  * @param {Spectra} spectraData
  */
 export function getExperiments(spectraData: Spectra): Experiments {

@@ -5,6 +5,12 @@ import { getAtomCounts } from '../general/getAtomCounts';
 import { getCorrelationIndex } from '../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
+/**
+ * Builds a state from current values and an optional molecular formula.
+ *
+ * @param {Values} values
+ * @param {string} mf
+ */
 export function buildState(values: Values, mf: string): State {
   const state: State = {};
   const atoms = getAtomCounts(mf);

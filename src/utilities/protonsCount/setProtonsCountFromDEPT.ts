@@ -7,6 +7,14 @@ import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType'
 
 import { setProtonsCount } from './setProtonsCount';
 
+/**
+ * Sets proton counts from DEPT90 signals and DEPT135 signals.
+ *
+ * @param {Values} correlations
+ * @param {Experiment1DSignals} signalsDEPT
+ * @param {Tolerance} tolerance
+ * @param {string} atomType
+ */
 export function setProtonsCountFromDEPT(
   correlations: Values,
   signalsDEPT: Experiment1DSignals,

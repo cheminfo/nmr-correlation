@@ -3,6 +3,12 @@ import lodashIsEqual from 'lodash/isEqual';
 import { Correlation } from '../../types/correlation/correlation';
 import { Link } from '../../types/correlation/link';
 
+/**
+ * Checks whether a correlation contains a link by id search.
+ *
+ * @param {Correlation} correlation
+ * @param {Link} link
+ */
 export function containsLink(correlation: Correlation, link: Link): boolean {
   return correlation.link.some(
     (_link) =>

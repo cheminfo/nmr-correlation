@@ -6,7 +6,8 @@ import { ExperimentsType } from '../../types/experiment/experimentsType';
 import { addToExperiments } from './addToExperiments';
 
 /**
- * Get "extra" 1D experiments containing ranges, e.g. DEPT
+ * Get "extra" 1D experiments containing ranges, e.g. DEPT.
+ *
  * @param {Spectra} spectraData
  */
 export function getExperiments1DExtra(

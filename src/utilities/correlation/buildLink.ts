@@ -2,6 +2,11 @@ import { Link } from '../../types/correlation/link';
 import { LinkOptions } from '../../types/correlation/linkOptions';
 import { generateID } from '../general/generateID';
 
+/**
+ * Builds a link object with some existing default values.
+ *
+ * @param {LinkOptions} options
+ */
 export function buildLink(options: LinkOptions): Link {
   return {
     id: options.id || generateID(),

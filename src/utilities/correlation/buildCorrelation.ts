@@ -2,6 +2,11 @@ import { Correlation } from '../../types/correlation/correlation';
 import { CorrelationOptions } from '../../types/correlation/correlationOptions';
 import { generateID } from '../general/generateID';
 
+/**
+ * Builds a correlation object with some existing default values.
+ *
+ * @param {CorrelationOptions} options
+ */
 export function buildCorrelation(options: CorrelationOptions): Correlation {
   return {
     id: options.id || generateID(),

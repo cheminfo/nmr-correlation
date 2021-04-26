@@ -2,6 +2,11 @@ import lodashGet from 'lodash/get';
 
 import { Values } from '../../types';
 
+/**
+ * Sets the origin (default) label for each correlation, e.g. C1 or H2, depending on its order.
+ *
+ * @param {Values} values
+ */
 export function setLabels(correlations: Values): Values {
   const atomTypeCounts: { [atomType: string]: number } = {};
   correlations.forEach((correlation) => {

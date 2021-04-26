@@ -2,6 +2,13 @@ import { Correlation } from '../../types/correlation/correlation';
 
 import { addAttachmentAtomType } from './addAttachmentAtomType';
 
+/**
+ * Adds an attachment for a certain atom type to a correlation.
+ *
+ * @param {Correlation} correlation
+ * @param {string} atomType
+ * @param {number} attachment
+ */
 export function addAttachment(
   correlation: Correlation,
   atomType: string,

@@ -7,7 +7,7 @@ export function getLabel(
 ): string {
   const label = Object.keys(correlation.attachment)
     .map((otherAtomType) =>
-      correlation.attachment[otherAtomType] // eslint-disable-next-line no-unexpected-multiline
+      correlation.attachment[otherAtomType]
         .map((index) => correlation.label[correlations[index].label.origin])
         .filter((_label) => _label),
     )

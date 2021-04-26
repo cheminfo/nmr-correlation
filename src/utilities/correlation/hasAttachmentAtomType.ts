@@ -1,5 +1,11 @@
 import { Correlation } from '../../types/correlation/correlation';
 
+/**
+ * Checks whether an atom type key in attachments already exists.
+ *
+ * @param {Correlation} correlation
+ * @param {string} atomType
+ */
 export function hasAttachmentAtomType(
   correlation: Correlation,
   atomType: string,

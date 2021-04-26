@@ -6,6 +6,14 @@ import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals'
 
 import { setProtonsCount } from './setProtonsCount';
 
+/**
+ * Sets proton counts from edited HSQC signals.
+ *
+ * @param {Values} correlations
+ * @param {Experiment2DSignals} signals2D
+ * @param {Tolerance} tolerance
+ * @param {string} heavyAtomType
+ */
 export function setProtonsCountFromEditedHSQC(
   correlations: Values,
   signals2D: Experiment2DSignals,
