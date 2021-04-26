@@ -23,14 +23,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michaelwenk/nmr-correlation.git"
+    "url": "git+https://github.com/cheminfo/nmr-correlation.git"
   },
   "author": "Michael Wenk",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/michaelwenk/nmr-correlation/issues"
+    "url": "https://github.com/cheminfo/nmr-correlation/issues"
   },
-  "homepage": "https://github.com/michaelwenk/nmr-correlation#readme",
+  "homepage": "https://github.com/cheminfo/nmr-correlation#readme",
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
