@@ -82,14 +82,16 @@ export function buildState(values: Values, mf: string): State {
         }
       }
 
-      const outOfLimit = correlationsAtomType.some(
-        (correlation, k) =>
-          correlation.pseudo === false &&
-          correlation.atomType === atomType &&
-          k >= atomCount,
-      );
-      if (outOfLimit) {
-        stateAtomTypeError.outOfLimit = true;
+      if (atomCount !== undefined) {
+        const outOfLimit = correlationsAtomType.some(
+          (correlation, k) =>
+            correlation.pseudo === false &&
+            correlation.atomType === atomType &&
+            k >= atomCount,
+        );
+        if (outOfLimit) {
+          stateAtomTypeError.outOfLimit = true;
+        }
       }
 
       const complete =
