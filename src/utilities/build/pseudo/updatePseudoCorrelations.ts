@@ -1,9 +1,9 @@
 import { Values } from '../../../types/correlation/values';
 import { getAtomCounts } from '../../general/getAtomCounts';
+
 import { addPseudoCorrelations } from './addPseudoCorrelations';
 import { checkPseudoCorrelations } from './checkPseudoCorrelations';
 import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences';
-
 
 export function updatePseudoCorrelations(
   correlations: Values,

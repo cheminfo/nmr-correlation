@@ -7,7 +7,6 @@ import { removeMatch } from '../../correlation/removeMatch';
 import { getCorrelationIndex } from '../../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
 
-
 export function checkPseudoCorrelations(
   correlations: Values,
   atoms: { [atomType: string]: number },

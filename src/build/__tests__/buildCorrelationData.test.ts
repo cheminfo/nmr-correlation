@@ -1,3 +1,6 @@
+import { spectraDataSet1 } from '../../data/spectraDataSet1';
+import { spectraDataSet2 } from '../../data/spectraDataSet2';
+import { spectrumEditedHSQC } from '../../data/spectrumEditedHSQC';
 import {
   Correlation,
   CorrelationData,
@@ -6,11 +9,8 @@ import {
   State,
 } from '../../types';
 import { buildCorrelation } from '../../utilities/correlation/buildCorrelation';
-import { spectraDataSet1 } from '../../data/spectraDataSet1';
-import { buildCorrelationData } from '../buildCorrelationData';
-import { spectraDataSet2 } from '../../data/spectraDataSet2';
 import { buildLink } from '../../utilities/correlation/buildLink';
-import { spectrumEditedHSQC } from '../../data/spectrumEditedHSQC';
+import { buildCorrelationData } from '../buildCorrelationData';
 
 describe('buildCorrelationData', () => {
   const options: Options = { tolerance: { C: 0.25, H: 0.05 } };

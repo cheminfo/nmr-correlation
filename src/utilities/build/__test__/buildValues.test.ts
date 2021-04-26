@@ -1,12 +1,12 @@
-import { Spectra, Tolerance, Values } from '../../../types/index';
-import { buildValues } from '../buildValues';
-import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { spectraDataSet1 } from '../../../data/spectraDataSet1';
+import { Spectra, Tolerance, Values } from '../../../types/index';
+import { buildCorrelation } from '../../correlation/buildCorrelation';
+import { buildValues } from '../buildValues';
 
 describe('buildValues', () => {
   it('test 1, no values', () => {
     const spectra: Spectra = [];
-    const mf: string = '';
+    const mf = '';
     const tolerance: Tolerance = { C: 0.25 };
     const prevValues: Values = [];
     expect(buildValues(spectra, mf, tolerance, prevValues)).toStrictEqual([]);
@@ -14,7 +14,7 @@ describe('buildValues', () => {
 
   it('test 2, mf only', () => {
     const spectra: Spectra = [];
-    const mf: string = 'CH3';
+    const mf = 'CH3';
     const tolerance: Tolerance = { C: 0.25 };
     const prevValues: Values = [];
     expect(buildValues(spectra, mf, tolerance, prevValues)).toHaveLength(4);
@@ -27,7 +27,7 @@ describe('buildValues', () => {
       id: 'id1',
     });
     const spectra: Spectra = [];
-    const mf: string = '';
+    const mf = '';
     const tolerance: Tolerance = { C: 0.25 };
     const prevValues: Values = [correlation];
     expect(buildValues(spectra, mf, tolerance, prevValues)).toStrictEqual([]);

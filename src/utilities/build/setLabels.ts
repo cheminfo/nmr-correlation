@@ -1,4 +1,5 @@
 import lodashGet from 'lodash/get';
+
 import { Values } from '../../types';
 
 export function setLabels(correlations: Values): Values {

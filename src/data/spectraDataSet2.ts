@@ -1,4 +1,5 @@
 import { Spectra } from '../types/index';
+
 import { spectrum13C } from './spectrum13C';
 import { spectrum1H } from './spectrum1H';
 import { spectrumDEPT135 } from './spectrumDEPT135';

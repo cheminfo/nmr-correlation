@@ -10,7 +10,6 @@ import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { isEditedHSQC } from '../general/isEditedHSQC';
 
-
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "SignalKindsToInclude"
  * @param {ExperimentsType} experiments1D
