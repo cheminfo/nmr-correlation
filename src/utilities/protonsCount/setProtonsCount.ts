@@ -55,10 +55,6 @@ export function setProtonsCount(
           // in case of both DEPT90 and DEPT135 are given
           // CH3
           correlationsAtomType[i].protonsCount = [3];
-          if (!correlationsAtomType[i].edited.hybridization) {
-            // do not overwrite a manually edited value
-            correlationsAtomType[i].hybridization = 'SP3';
-          }
         } else {
           // in case of DEPT135 is given only
           // CH or CH3

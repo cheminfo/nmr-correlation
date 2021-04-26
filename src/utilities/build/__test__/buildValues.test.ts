@@ -1,7 +1,7 @@
 import { Spectra, Tolerance, Values } from '../../../types/index';
 import { buildValues } from '../buildValues';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
-import { spectraData1 } from './spectraData1';
+import { spectraDataSet1 } from '../../../data/spectraDataSet1';
 
 describe('buildValues', () => {
   it('test 1, no values', () => {
@@ -35,16 +35,18 @@ describe('buildValues', () => {
 
   it('test 4, spectra data: only take first 13C spectrum, no mf', () => {
     const tolerance: Tolerance = { C: 0.25, H: 0.05 };
-    expect(buildValues(spectraData1, '', tolerance, [])).toHaveLength(4);
+    expect(buildValues(spectraDataSet1, '', tolerance, [])).toHaveLength(5);
   });
 
   it('test 5, spectra data: only take first 13C spectrum, no mf, increased tolerance for H', () => {
     const tolerance: Tolerance = { C: 0.25, H: 0.1 };
-    expect(buildValues(spectraData1, '', tolerance, [])).toHaveLength(3);
+    expect(buildValues(spectraDataSet1, '', tolerance, [])).toHaveLength(4);
   });
 
   it('test 6, spectra data: only take first 13C spectrum, with mf', () => {
     const tolerance: Tolerance = { C: 0.25, H: 0.05 };
-    expect(buildValues(spectraData1, 'C6H6', tolerance, [])).toHaveLength(12);
+    expect(buildValues(spectraDataSet1, 'C6H6', tolerance, [])).toHaveLength(
+      12,
+    );
   });
 });
