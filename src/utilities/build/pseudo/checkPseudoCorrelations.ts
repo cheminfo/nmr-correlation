@@ -48,6 +48,7 @@ export function checkPseudoCorrelations(
         pseudoCorrelation,
       );
       pseudoCorrelation.link.forEach((pseudoLink: Link) => {
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let i = 0; i < pseudoLink.match.length; i++) {
           const matchIndex = pseudoLink.match[i];
           if (
