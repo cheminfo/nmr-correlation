@@ -1,6 +1,6 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 
-import { signalKindsToInclude } from '../../constants/signalKinds';
+import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import { Spectrum1D } from '../../types';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
@@ -34,7 +34,7 @@ export function getSignalsDEPT(
           const __signals = experimentDEPT.ranges.values
             .map((range) =>
               range.signal
-                .filter((signal) => signalKindsToInclude.includes(signal.kind))
+                .filter((signal) => allowedSignalKinds.includes(signal.kind))
                 .map((signal) => {
                   return { ...signal, sign: range.absolute > 0 ? 1 : -1 };
                 }),

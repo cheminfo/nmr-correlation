@@ -1,7 +1,7 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashGet from 'lodash/get';
 
-import { signalKindsToInclude } from '../../constants/signalKinds';
+import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import { Spectrum1D } from '../../types';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
@@ -27,7 +27,7 @@ export function getSignals1D(
       const __signals = spectrum1D.ranges.values
         .map((_range) =>
           _range.signal.filter((_signal) =>
-            signalKindsToInclude.includes(_signal.kind),
+            allowedSignalKinds.includes(_signal.kind),
           ),
         )
         .flat();

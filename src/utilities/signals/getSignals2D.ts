@@ -1,7 +1,7 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashIsEqual from 'lodash/isEqual';
 
-import { signalKindsToInclude } from '../../constants/signalKinds';
+import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import { Spectrum2D } from '../../types';
 import { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
@@ -46,7 +46,7 @@ export function getSignals2D(
       const __signals = spectrum2D.zones.values
         .map((zone) =>
           zone.signal.filter((signal) =>
-            signalKindsToInclude.includes(signal.kind),
+            allowedSignalKinds.includes(signal.kind),
           ),
         )
         .flat();
