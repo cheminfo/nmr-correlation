@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.0...v1.3.1) (2021-05-03)
+
+
+### Bug Fixes
+
+* cheminfo-bot npm access ([d6b5a1c](https://www.github.com/cheminfo/nmr-correlation/commit/d6b5a1c3da89b1fceb9fba3116fc356c64b138d2))
+
 ## [1.3.0](https://www.github.com/cheminfo/nmr-correlation/compare/v1.1.6...v1.3.0) (2021-05-03)
 
 
