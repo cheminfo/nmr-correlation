@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.2](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.1...v1.3.2) (2021-05-06)
+
+
+### Bug Fixes
+
+* add prepack ([b5e3a7b](https://www.github.com/cheminfo/nmr-correlation/commit/b5e3a7bccc9de303117f3dfa0a8d6ceebd1011ce))
+
 ### [1.3.1](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.0...v1.3.1) (2021-05-03)
 
 
