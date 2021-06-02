@@ -41,6 +41,12 @@ export function sortCorrelations(correlations: Values): Values {
         return 1;
       }
     }
+    if (corr1.pseudo === false && corr2.pseudo === true) {
+      return -1;
+    }
+    if (corr1.pseudo === true && corr2.pseudo === false) {
+      return 1;
+    }
     if (corr1.label.origin < corr2.label.origin) {
       return -1;
     }
