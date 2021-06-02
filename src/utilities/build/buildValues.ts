@@ -37,10 +37,9 @@ export function buildValues(
     signals.signals1D,
     signals.signals2D,
   );
-  // add all 1D signals
+  // add signals from either 1D or 2D if not already existing as correlation
+  // if a signal already exists then add a link within matched correlation
   _correlations = addFromData1D(_correlations, signals.signals1D, tolerance);
-  // add signals from 2D if 1D signals for an atom type and belonging shift are missing
-  // add correlations: 1D -> 2D
   _correlations = addFromData2D(_correlations, signals.signals2D, tolerance);
   // set the number of attached protons via DEPT or edited HSQC
   _correlations = setProtonsCountFromData(
