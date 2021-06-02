@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.3.3](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.2...v1.3.3) (2021-06-02)
+
+
+### Bug Fixes
+
+* update of obsolete description ([57d6a08](https://www.github.com/cheminfo/nmr-correlation/commit/57d6a08d9f25b70b692f8fd44b33903efebc5884))
+* wrong order of pseudo correlations ([95af02a](https://www.github.com/cheminfo/nmr-correlation/commit/95af02a39ee82fde5d3190b83c6b0d649f7a3c09))
+
 ### [1.3.2](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.1...v1.3.2) (2021-05-06)
 
 
