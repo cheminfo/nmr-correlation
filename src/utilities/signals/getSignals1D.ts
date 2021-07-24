@@ -25,13 +25,13 @@ export function getSignals1D(
     const spectrum1D = experiment[index] as Spectrum1D;
 
     for (const range of spectrum1D.ranges.values) {
-      for (const signal of range.signal) {
+      for (const signal of range.signals) {
         if (!allowedSignalKinds.includes(signal.kind)) continue;
         if (!checkExistence(signal, signals)) {
           signals.push({
             experimentType: '1d',
             experimentID: spectrum1D.id,
-            integration: signal.integration ? signal.integration : range.integral,
+            integration: signal.integration ? signal.integration : range.integration,
             atomType,
             signal: { ...signal },
           });
@@ -45,8 +45,8 @@ export function getSignals1D(
 }
 
 function checkExistence(current: any, group: Array<Experiment1DSignal>) {
-  for (let i = 0; i < group.length; i++) {
-    if (checkMatch(group[i].signal.delta, current.delta, 0.0)) {
+  for (const element of group) {
+    if (checkMatch(element.signal.delta, current.delta, 0.0)) {
       return true;
     }
   }

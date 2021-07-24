@@ -14,9 +14,9 @@ export const spectrum1H: Spectrum1D = {
       {
         id: 'spectrum1H_range1',
         absolute: 100,
-        integral: 1,
+        integration: 1,
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'spectrum1H_range1_1',
             delta: 1.7,
