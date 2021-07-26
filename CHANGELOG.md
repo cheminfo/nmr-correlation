@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.3...v2.0.0) (2021-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* use plural - signals instead of signal ranges instead range (#8)
+
+### Features
+
+* use plural - signals instead of signal ranges instead range ([#8](https://www.github.com/cheminfo/nmr-correlation/issues/8)) ([9424408](https://www.github.com/cheminfo/nmr-correlation/commit/9424408ff44c7637e882136178cec658c2c59d29))
+
 ### [1.3.3](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.2...v1.3.3) (2021-06-02)
 
 
