@@ -33,7 +33,7 @@ export function getSignalsDEPT(
           const atomType = getAtomTypeFromNucleus(experimentDEPT.info.nucleus);
           const __signals = experimentDEPT.ranges.values
             .map((range) =>
-              range.signal
+              range.signals
                 .filter((signal) => allowedSignalKinds.includes(signal.kind))
                 .map((signal) => {
                   return { ...signal, sign: range.absolute > 0 ? 1 : -1 };

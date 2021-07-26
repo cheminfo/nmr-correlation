@@ -1,6 +1,3 @@
-import lodashCloneDeep from 'lodash/cloneDeep';
-import lodashGet from 'lodash/get';
-
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import { Spectrum1D } from '../../types';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
@@ -17,38 +14,41 @@ export function getSignals1D(
   experiments1D: ExperimentsType,
 ): Experiment1DSignals {
   // store valid signals from 1D experiments
-  const _signals1D: Experiment1DSignals = {};
-  Object.keys(experiments1D).forEach((atomType) => {
-    const _signals: Array<Experiment1DSignal> = [];
-    if (lodashGet(experiments1D, `${atomType}`, []).length > 0) {
-      // @TODO for now we will use the first occurring matched spectrum only (index)
-      const index = 0;
-      const spectrum1D = experiments1D[`${atomType}`][index] as Spectrum1D;
-      const __signals = spectrum1D.ranges.values
-        .map((_range) =>
-          _range.signal.filter((_signal) =>
-            allowedSignalKinds.includes(_signal.kind),
-          ),
-        )
-        .flat();
-      __signals.forEach((__signal) => {
-        if (
-          !_signals.some((_signal) =>
-            checkMatch(_signal.signal.delta, __signal.delta, 0.0),
-          )
-        ) {
-          _signals.push({
+  const signals1DByAtomType: Experiment1DSignals = {};
+  for (const atomType in experiments1D) {
+    const signals: Array<Experiment1DSignal> = [];
+    const experiment = experiments1D[`${atomType}`] || [];
+
+    if (experiment.length === 0) continue;
+
+    const index = 0;
+    const spectrum1D = experiment[index] as Spectrum1D;
+
+    for (const range of spectrum1D.ranges.values) {
+      for (const signal of range.signals) {
+        if (!allowedSignalKinds.includes(signal.kind)) continue;
+        if (!checkExistence(signal, signals)) {
+          signals.push({
             experimentType: '1d',
             experimentID: spectrum1D.id,
+            integration: signal.integration ? signal.integration : range.integration,
             atomType,
-            signal: lodashCloneDeep(__signal),
+            signal: { ...signal },
           });
         }
-      });
-
-      _signals1D[atomType] = _signals;
+      }
     }
-  });
 
-  return _signals1D;
+    signals1DByAtomType[atomType] = signals;
+  }
+  return signals1DByAtomType;
+}
+
+function checkExistence(current: any, group: Array<Experiment1DSignal>) {
+  for (const element of group) {
+    if (checkMatch(element.signal.delta, current.delta, 0.0)) {
+      return true;
+    }
+  }
+  return false;
 }

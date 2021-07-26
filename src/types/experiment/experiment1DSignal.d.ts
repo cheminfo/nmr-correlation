@@ -5,5 +5,6 @@ import { ExperimentSignal } from './experimentSignal';
 export interface Experiment1DSignal extends ExperimentSignal {
   atomType: string;
   signal: Signal1D;
+  integration?: number;
   mode?: string;
 }

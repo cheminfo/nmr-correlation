@@ -14,9 +14,9 @@ export const spectrum13C: Spectrum1D = {
       {
         id: 'spectrum13C_range1',
         absolute: 100,
-        integral: 1,
+        integration: 1,
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'spectrum13C_range1_1',
             delta: 110.9,
@@ -29,9 +29,9 @@ export const spectrum13C: Spectrum1D = {
       {
         id: 'spectrum13C_range2',
         absolute: 100,
-        integral: 1,
+        integration: 1,
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'spectrum13C_range2_1',
             delta: 16.4,

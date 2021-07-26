@@ -15,10 +15,10 @@ export const spectrumDEPT135: Spectrum1D = {
       {
         // CH3
         absolute: 1000,
-        integral: 1,
+        integration: 1,
         id: 'DEPT90_range1',
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'DEPT90_range1_1',
             delta: 16.4,
@@ -31,10 +31,10 @@ export const spectrumDEPT135: Spectrum1D = {
       {
         // CH2
         absolute: -1000,
-        integral: 1,
+        integration: 1,
         id: 'DEPT90_range2',
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'DEPT90_range2_1',
             delta: 51.3,

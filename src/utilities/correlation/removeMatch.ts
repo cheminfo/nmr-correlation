@@ -11,6 +11,5 @@ export function removeMatch(link: Link, index: number): Link {
   if (indexOf >= 0) {
     link.match.splice(indexOf, 1);
   }
-
   return link;
 }
