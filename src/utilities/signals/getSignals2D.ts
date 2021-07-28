@@ -45,7 +45,7 @@ export function getSignals2D(
       );
       const __signals = spectrum2D.zones.values
         .map((zone) =>
-          zone.signal.filter((signal) =>
+          zone.signals.filter((signal) =>
             allowedSignalKinds.includes(signal.kind),
           ),
         )

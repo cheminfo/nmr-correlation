@@ -14,7 +14,7 @@ export const spectrumHSQC: Spectrum2D = {
       {
         id: 'spectrumHSQC_zone1',
         kind: 'signal',
-        signal: [
+        signals: [
           {
             id: 'spectrumHSQC_zone1_1',
             x: { delta: 1.7 },
