@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.0...v2.0.1) (2021-07-28)
+
+
+### Bug Fixes
+
+* missing plural names changes ([#10](https://www.github.com/cheminfo/nmr-correlation/issues/10)) ([4e1b40e](https://www.github.com/cheminfo/nmr-correlation/commit/4e1b40e530cca4738d89aa7a1780db180035e72b))
+
 ## [2.0.0](https://www.github.com/cheminfo/nmr-correlation/compare/v1.3.3...v2.0.0) (2021-07-26)
 
 
