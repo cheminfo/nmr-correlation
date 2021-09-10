@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.3](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.2...v2.0.3) (2021-09-10)
+
+
+### Bug Fixes
+
+* do not export input values ([95b5c98](https://www.github.com/cheminfo/nmr-correlation/commit/95b5c987eb8dde3cd1b21ea35ce663d339f93102))
+
 ### [2.0.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.1...v2.0.2) (2021-09-10)
 
 
