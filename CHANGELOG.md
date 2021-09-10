@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.3...v2.1.0) (2021-09-10)
+
+
+### Features
+
+* invoke on NPM ([beb2c3b](https://www.github.com/cheminfo/nmr-correlation/commit/beb2c3be06fb32160358b25687c124165d6cb11d))
+
 ### [2.0.3](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.2...v2.0.3) (2021-09-10)
 
 
