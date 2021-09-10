@@ -17,6 +17,8 @@ export function buildCorrelationData(
   const { tolerance = {}, mf = '', values: prevValues = [] } = options;
   const values = spectra ? buildValues(spectra, mf, tolerance, prevValues) : [];
 
+  delete options.values;
+
   return {
     values,
     options,
