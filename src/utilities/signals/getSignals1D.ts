@@ -31,7 +31,9 @@ export function getSignals1D(
           signals.push({
             experimentType: '1d',
             experimentID: spectrum1D.id,
-            integration: signal.integration ? signal.integration : range.integration,
+            integration: signal.integration
+              ? signal.integration
+              : range.integration,
             atomType,
             signal: { ...signal },
           });
