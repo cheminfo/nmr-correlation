@@ -148,7 +148,7 @@ describe('buildCorrelationData', () => {
         signal: {
           id: 'spectrumHSQC_zone1_1',
           kind: 'signal',
-          peak: [],
+          peaks: [],
           sign: 0,
           x: {
             delta: 1.7,
@@ -193,7 +193,7 @@ describe('buildCorrelationData', () => {
         signal: {
           id: 'spectrumHSQC_zone1_1',
           kind: 'signal',
-          peak: [],
+          peaks: [],
           sign: 0,
           x: {
             delta: 1.7,
@@ -238,7 +238,7 @@ describe('buildCorrelationData', () => {
       signal: {
         id: 'spectrumEditedHSQC_zone1_1',
         kind: 'signal',
-        peak: [{ z: 1000 }],
+        peaks: [{ z: 1000 }],
         sign: 1,
         x: {
           delta: 1.7,
@@ -258,7 +258,7 @@ describe('buildCorrelationData', () => {
       signal: {
         id: 'spectrumEditedHSQC_zone2_1',
         kind: 'signal',
-        peak: [{ z: -1000 }],
+        peaks: [{ z: -1000 }],
         sign: -1,
         x: {
           delta: 1.8,

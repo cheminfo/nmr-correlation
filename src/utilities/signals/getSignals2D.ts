@@ -66,7 +66,7 @@ export function getSignals2D(
             signal: {
               ...lodashCloneDeep(signal),
               sign: isEditedHSQC(spectrum2D)
-                ? signal.peak[0].z >= 0
+                ? signal.peaks[0].z >= 0
                   ? 1
                   : -1
                 : 0,
