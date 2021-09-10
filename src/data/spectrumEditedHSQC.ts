@@ -20,7 +20,7 @@ export const spectrumEditedHSQC: Spectrum2D = {
             x: { delta: 1.7 },
             y: { delta: 16.4 },
             kind: 'signal',
-            peak: [{ z: 1000 }], // for determination of sign
+            peaks: [{ z: 1000 }], // for determination of sign
             sign: 0, // dummy value
           },
         ],
@@ -34,7 +34,7 @@ export const spectrumEditedHSQC: Spectrum2D = {
             x: { delta: 1.8 },
             y: { delta: 51.3 },
             kind: 'signal',
-            peak: [{ z: -1000 }], // for determination of sign
+            peaks: [{ z: -1000 }], // for determination of sign
             sign: 0, // dummy value
           },
         ],

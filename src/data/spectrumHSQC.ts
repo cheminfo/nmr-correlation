@@ -20,7 +20,7 @@ export const spectrumHSQC: Spectrum2D = {
             x: { delta: 1.7 },
             y: { delta: 51.3 },
             kind: 'signal',
-            peak: [],
+            peaks: [],
             sign: 0,
           },
         ],
