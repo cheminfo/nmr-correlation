@@ -1,5 +1,13 @@
 # Changelog
 
+### [2.0.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.1...v2.0.2) (2021-09-10)
+
+
+### Bug Fixes
+
+* eslint error ([57cd626](https://www.github.com/cheminfo/nmr-correlation/commit/57cd626b1652011c560d08b50ac73de0fada8ccb))
+* use plural name for peak ([28241c1](https://www.github.com/cheminfo/nmr-correlation/commit/28241c1978c81a8b686ddffc06ede5ce4e72f199))
+
 ### [2.0.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.0...v2.0.1) (2021-07-28)
 
 
