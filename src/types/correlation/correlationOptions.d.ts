@@ -11,5 +11,4 @@ export interface CorrelationOptions extends CorrelationAndLinkOptions {
   attachment?: { [atomType: string]: Array<number> };
   protonsCount?: Array<number>;
   hybridization?: string;
-  edited?: { [key: string]: boolean };
 }

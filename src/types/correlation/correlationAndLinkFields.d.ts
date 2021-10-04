@@ -3,4 +3,5 @@ export interface CorrelationAndLinkFields {
   experimentType: string;
   experimentID: string;
   pseudo: boolean;
+  edited: { [key: string]: boolean };
 }
