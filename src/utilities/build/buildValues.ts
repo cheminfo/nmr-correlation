@@ -8,7 +8,7 @@ import { getSignals } from '../signals/getSignals';
 import { addFromData1D } from './addFromData1D';
 import { addFromData2D } from './addFromData2D';
 import { updatePseudoCorrelations } from './pseudo/updatePseudoCorrelations';
-import { removeDeletedCorrelations } from './removeDeletedCorrelations';
+import { removeDeletedAndNotLinkedCorrelations } from './removeDeletedAndNotLinkedCorrelations';
 import { setAttachmentsAndProtonEquivalences } from './setAttachmentsAndProtonEquivalences';
 import { setLabels } from './setLabels';
 import { setMatches } from './setMatches';
@@ -32,7 +32,7 @@ export function buildValues(
 
   let _correlations = values ? values.slice() : [];
   // remove deleted correlations
-  _correlations = removeDeletedCorrelations(
+  _correlations = removeDeletedAndNotLinkedCorrelations(
     _correlations,
     signals.signals1D,
     signals.signals2D,
