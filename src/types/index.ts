@@ -1,6 +1,5 @@
 import { Correlation } from './correlation/correlation';
 import { CorrelationData } from './correlation/correlationData';
-import { CorrelationSignal } from './correlation/correlationSignal';
 import { Link } from './correlation/link';
 import { Options } from './correlation/options';
 import { State } from './correlation/state';
@@ -23,7 +22,6 @@ import { Zones } from './spectrum/zones';
 export {
   Correlation,
   CorrelationData,
-  CorrelationSignal,
   Info1D,
   Info2D,
   Link,

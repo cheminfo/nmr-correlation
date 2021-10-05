@@ -1,5 +1,6 @@
 import { Correlation } from '../../types/correlation/correlation';
 import { Values } from '../../types/correlation/values';
+import { getCorrelationDelta } from '../general/getCorrelationDelta';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
 /**
@@ -34,11 +35,20 @@ export function sortCorrelations(correlations: Values): Values {
   };
 
   const compareCorrelations = (corr1: Correlation, corr2: Correlation) => {
-    if (corr1.pseudo === false && corr2.pseudo === false) {
-      if (corr1.signal.delta < corr2.signal.delta) {
-        return -1;
-      } else if (corr1.signal.delta > corr2.signal.delta) {
-        return 1;
+    if (
+      corr1.pseudo === false &&
+      corr2.pseudo === false &&
+      corr1.link.length > 0 &&
+      corr2.link.length > 0
+    ) {
+      const corr1Delta = getCorrelationDelta(corr1);
+      const corr2Delta = getCorrelationDelta(corr2);
+      if (corr1Delta !== undefined && corr2Delta !== undefined) {
+        if (corr1Delta < corr2Delta) {
+          return -1;
+        } else if (corr1Delta > corr2Delta) {
+          return 1;
+        }
       }
     }
     if (corr1.pseudo === false && corr2.pseudo === true) {

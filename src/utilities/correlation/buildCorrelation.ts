@@ -13,7 +13,6 @@ export function buildCorrelation(options: CorrelationOptions): Correlation {
     experimentType: options.experimentType,
     experimentID: options.experimentID,
     atomType: options.atomType,
-    signal: options.signal,
     label: options.label || {},
     link: options.link || [],
     equivalence: options.equivalence || 1,

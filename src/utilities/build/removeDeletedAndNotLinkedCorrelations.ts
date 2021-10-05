@@ -21,31 +21,32 @@ export function removeDeletedAndNotLinkedCorrelations(
   );
   const removeList = _correlations.slice();
   _correlations.forEach((correlation) => {
-    if (correlation.link.length > 0) {
-      if (correlation.experimentType === '1d') {
+    for (const link of correlation.link) {
+      if (link.experimentType === '1d') {
         // search in 1D data
+        const atomType = link.atomType[link.axis === 'x' ? 0 : 1];
         if (
-          lodashGet(signals1D, correlation.atomType, []).some(
-            (signal1D) => signal1D.signal.id === correlation.signal.id,
+          lodashGet(signals1D, atomType, []).some(
+            (signal1D) => signal1D.signal.id === link.signal.id,
           )
         ) {
           const index = removeList.indexOf(correlation);
           if (index >= 0) {
             removeList.splice(index, 1);
+            break;
           }
         }
       } else {
         // search in 2D data
         if (
-          lodashGet(signals2D, `${correlation.experimentType}`, []).some(
-            (signal2D) =>
-              signal2D.atomType.includes(correlation.atomType) &&
-              signal2D.signal.id === correlation.signal.id,
+          lodashGet(signals2D, `${link.experimentType}`, []).some(
+            (signal2D) => signal2D.signal.id === link.signal.id,
           )
         ) {
           const index = removeList.indexOf(correlation);
           if (index >= 0) {
             removeList.splice(index, 1);
+            break;
           }
         }
       }

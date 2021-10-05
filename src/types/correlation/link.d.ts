@@ -9,4 +9,6 @@ export interface Link extends CorrelationAndLinkFields {
   axis: string;
   match: Array<number>;
   experimentLabel: string;
+  experimentType: string;
+  experimentID: string;
 }
