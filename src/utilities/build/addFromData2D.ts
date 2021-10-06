@@ -70,8 +70,6 @@ export function addFromData2D(
           // in case of no signal match -> add new signal from 2D
           if (matchedCorrelationIndices.length === 0) {
             const newCorrelation = buildCorrelation({
-              experimentType: signal2D.experimentType,
-              experimentID: signal2D.experimentID,
               atomType,
             });
             addLink(newCorrelation, link);

@@ -64,8 +64,6 @@ export function addFromData1D(
         );
         const newCorrelation = buildCorrelation({
           atomType: signal1D.atomType,
-          experimentID: signal1D.experimentID,
-          experimentType: signal1D.experimentType,
         });
         addLink(newCorrelation, link);
 
