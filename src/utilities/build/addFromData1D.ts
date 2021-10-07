@@ -8,6 +8,7 @@ import { containsLink } from '../correlation/containsLink';
 import { hasLinks } from '../correlation/hasLinks';
 import { removeLink } from '../correlation/removeLink';
 import { checkMatch } from '../general/checkMatch';
+import { findCorrelationBySignalID } from '../general/findCorrelationBySignalID';
 import { getCorrelationDelta } from '../general/getCorrelationDelta';
 
 /**
@@ -25,57 +26,63 @@ export function addFromData1D(
   // remove previous set links from 1D, but not pseudo links
   correlations.forEach((correlation) => {
     const linksToRemove = correlation.link.filter(
-      (link) => link.experimentType === '1d',
+      (link) => link.experimentType === '1d' && link.edited?.moved === false,
     );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
-      const matchedCorrelationIndices = correlations
-        .map((correlation, k) => {
-          const correlationDelta = getCorrelationDelta(correlation);
-          return correlation.pseudo === false &&
-            correlation.atomType === atomType &&
-            correlationDelta !== undefined &&
-            checkMatch(
-              correlationDelta,
-              signal1D.signal.delta,
-              tolerance[atomType],
-            )
-            ? k
-            : -1;
-        })
-        .filter((index) => index >= 0)
-        .filter((index, i, a) => a.indexOf(index) === i);
+      const linkedCorrelation = findCorrelationBySignalID(
+        correlations,
+        signal1D.signal.id,
+      );
+      if (!linkedCorrelation) {
+        const matchedCorrelationIndices = correlations
+          .map((correlation, k) => {
+            const correlationDelta = getCorrelationDelta(correlation);
+            return correlation.pseudo === false &&
+              correlation.atomType === atomType &&
+              correlationDelta !== undefined &&
+              checkMatch(
+                correlationDelta,
+                signal1D.signal.delta,
+                tolerance[atomType],
+              )
+              ? k
+              : -1;
+          })
+          .filter((index) => index >= 0)
+          .filter((index, i, a) => a.indexOf(index) === i);
 
-      const link = buildLink({
-        experimentType: signal1D.experimentType,
-        experimentID: signal1D.experimentID,
-        signal: signal1D.signal,
-        atomType: [atomType],
-      });
-
-      if (matchedCorrelationIndices.length === 0) {
-        const pseudoIndex = correlations.findIndex(
-          (correlation) =>
-            correlation.atomType === atomType &&
-            correlation.pseudo === true &&
-            !hasLinks(correlation),
-        );
-        const newCorrelation = buildCorrelation({
-          atomType: signal1D.atomType,
+        const link = buildLink({
+          experimentType: signal1D.experimentType,
+          experimentID: signal1D.experimentID,
+          signal: signal1D.signal,
+          atomType: [atomType],
         });
-        addLink(newCorrelation, link);
 
-        if (pseudoIndex >= 0) {
-          correlations[pseudoIndex] = newCorrelation;
+        if (matchedCorrelationIndices.length === 0) {
+          const pseudoIndex = correlations.findIndex(
+            (correlation) =>
+              correlation.atomType === atomType &&
+              correlation.pseudo === true &&
+              !hasLinks(correlation),
+          );
+          const newCorrelation = buildCorrelation({
+            atomType: signal1D.atomType,
+          });
+          addLink(newCorrelation, link);
+
+          if (pseudoIndex >= 0) {
+            correlations[pseudoIndex] = newCorrelation;
+          } else {
+            correlations.push(newCorrelation);
+          }
         } else {
-          correlations.push(newCorrelation);
-        }
-      } else {
-        // if allowed then add links from 1D data in first match only
-        if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
-          addLink(correlations[matchedCorrelationIndices[0]], link);
+          // if allowed then add links from 1D data in first match only
+          if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
+            addLink(correlations[matchedCorrelationIndices[0]], link);
+          }
         }
       }
     });
