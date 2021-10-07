@@ -92,10 +92,6 @@ export function addFromData2D(
             ) {
               addLink(correlations[matchedCorrelationIndices[0]], link);
             }
-            // delete the other matching correlations (i.e. after shift tolerance increase)
-            for (let i = 1; i < matchedCorrelationIndices.length; i++) {
-              correlations.splice(matchedCorrelationIndices[i], 1);
-            }
           }
         });
       }

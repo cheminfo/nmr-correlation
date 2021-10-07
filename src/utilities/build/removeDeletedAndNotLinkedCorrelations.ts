@@ -24,9 +24,8 @@ export function removeDeletedAndNotLinkedCorrelations(
     for (const link of correlation.link) {
       if (link.experimentType === '1d') {
         // search in 1D data
-        const atomType = link.atomType[link.axis === 'x' ? 0 : 1];
         if (
-          lodashGet(signals1D, atomType, []).some(
+          lodashGet(signals1D, link.atomType[0], []).some(
             (signal1D) => signal1D.signal.id === link.signal.id,
           )
         ) {

@@ -62,17 +62,17 @@ export function addFromData1D(
         });
 
         if (matchedCorrelationIndices.length === 0) {
+          const newCorrelation = buildCorrelation({
+            atomType: signal1D.atomType,
+          });
+          addLink(newCorrelation, link);
+
           const pseudoIndex = correlations.findIndex(
             (correlation) =>
               correlation.atomType === atomType &&
               correlation.pseudo === true &&
               !hasLinks(correlation),
           );
-          const newCorrelation = buildCorrelation({
-            atomType: signal1D.atomType,
-          });
-          addLink(newCorrelation, link);
-
           if (pseudoIndex >= 0) {
             correlations[pseudoIndex] = newCorrelation;
           } else {
