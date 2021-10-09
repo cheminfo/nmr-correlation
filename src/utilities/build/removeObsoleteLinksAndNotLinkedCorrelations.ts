@@ -1,5 +1,6 @@
 import lodashGet from 'lodash/get';
 
+import { removeLink } from '../..';
 import { Values } from '../../types/correlation/values';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
@@ -11,7 +12,7 @@ import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals'
  * @param {Experiment1DSignals} signals1D
  * @param {Experiment2DSignals} signals2D
  */
-export function removeDeletedAndNotLinkedCorrelations(
+export function removeObsoleteLinksAndNotLinkedCorrelations(
   correlations: Values,
   signals1D: Experiment1DSignals,
   signals2D: Experiment2DSignals,
@@ -32,7 +33,6 @@ export function removeDeletedAndNotLinkedCorrelations(
           const index = removeList.indexOf(correlation);
           if (index >= 0) {
             removeList.splice(index, 1);
-            break;
           }
         }
       } else {
@@ -45,7 +45,11 @@ export function removeDeletedAndNotLinkedCorrelations(
           const index = removeList.indexOf(correlation);
           if (index >= 0) {
             removeList.splice(index, 1);
-            break;
+          }
+        } else {
+          if (link.pseudo === false) {
+            // remove obsolete link to not anymore existing signal
+            removeLink(correlation, link.id);
           }
         }
       }
