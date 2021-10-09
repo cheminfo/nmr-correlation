@@ -34,6 +34,11 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
           if (index >= 0) {
             removeList.splice(index, 1);
           }
+        } else {
+          if (link.pseudo === false) {
+            // remove obsolete link to not anymore existing signal
+            removeLink(correlation, link.id);
+          }
         }
       } else {
         // search in 2D data
