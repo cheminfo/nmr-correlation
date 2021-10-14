@@ -48,7 +48,10 @@ export function setMatches(correlations: Values): Values {
   // remove links without any matches
   correlations.forEach((correlation) => {
     const linksToRemove = correlation.link.filter(
-      (link) => link.match.length === 0 && link.experimentType !== '1d',
+      (link) =>
+        link.match.length === 0 &&
+        link.experimentType !== '1d' &&
+        link.edited?.moved !== true,
     );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });
