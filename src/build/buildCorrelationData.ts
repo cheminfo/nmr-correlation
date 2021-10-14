@@ -14,14 +14,14 @@ export function buildCorrelationData(
   spectra: Spectra,
   options: Options,
 ): CorrelationData {
-  const { tolerance = {}, mf = '', values: prevValues = [] } = options;
-  const values = spectra ? buildValues(spectra, mf, tolerance, prevValues) : [];
+  const values = spectra ? buildValues(spectra, options) : [];
 
   delete options.values;
+  delete options.skipAddFromData;
 
   return {
     values,
     options,
-    state: buildState(values, mf),
+    state: buildState(values, options.mf || ''),
   };
 }

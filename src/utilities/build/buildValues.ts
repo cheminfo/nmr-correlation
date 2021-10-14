@@ -1,12 +1,11 @@
-import { Tolerance } from '../../types/correlation/tolerance';
+import { Options } from '../../types';
 import { Values } from '../../types/correlation/values';
 import { ExperimentSignals } from '../../types/experiment/experimentSignals';
 import { Spectra } from '../../types/spectrum/spectra';
 import { setProtonsCountFromData } from '../protonsCount/setProtonsCountFromData';
 import { getSignals } from '../signals/getSignals';
 
-import { addFromData1D } from './addFromData1D';
-import { addFromData2D } from './addFromData2D';
+import { addFromData } from './addFromData';
 import { updatePseudoCorrelations } from './pseudo/updatePseudoCorrelations';
 import { removeObsoleteLinksAndNotLinkedCorrelations } from './removeObsoleteLinksAndNotLinkedCorrelations';
 import { setAttachmentsAndProtonEquivalences } from './setAttachmentsAndProtonEquivalences';
@@ -22,25 +21,27 @@ import { sortCorrelations } from './sortCorrelations';
  * @param {Tolerance} tolerance
  * @param {Values} values
  */
-export function buildValues(
-  spectra: Spectra,
-  mf: string,
-  tolerance: Tolerance,
-  values: Values,
-): Values {
+export function buildValues(spectra: Spectra, options: Options): Values {
+  const { tolerance = {}, mf = '', values: prevValues = [] } = options;
   const signals: ExperimentSignals = getSignals(spectra);
 
-  let _correlations = values ? values.slice() : [];
+  let _correlations = prevValues ? prevValues.slice() : [];
   // remove obsolete links/correlations
   _correlations = removeObsoleteLinksAndNotLinkedCorrelations(
     _correlations,
     signals.signals1D,
     signals.signals2D,
   );
-  // add signals from either 1D or 2D if not already existing as correlation
-  // if a signal already exists then add a link within matched correlation
-  _correlations = addFromData1D(_correlations, signals.signals1D, tolerance);
-  _correlations = addFromData2D(_correlations, signals.signals2D, tolerance);
+  if (options.skipAddFromData !== true) {
+    // add signals from either 1D or 2D if not already existing as correlation
+    // if a signal already exists then add a link within matched correlation
+    _correlations = addFromData(
+      _correlations,
+      signals.signals1D,
+      signals.signals2D,
+      tolerance,
+    );
+  }
   // set the number of attached protons via DEPT or edited HSQC
   _correlations = setProtonsCountFromData(
     _correlations,
@@ -48,7 +49,6 @@ export function buildValues(
     signals.signals2D,
     tolerance,
   );
-
   // sort by atom type and shift value
   _correlations = sortCorrelations(_correlations);
   // link signals via matches to same 2D signal: e.g. 13C -> HSQC <- 1H
