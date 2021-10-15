@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.1...v2.1.2) (2021-10-15)
+
+
+### Bug Fixes
+
+* delete correlations with empty link array after external movements ([a5d6e9a](https://www.github.com/cheminfo/nmr-correlation/commit/a5d6e9aed8c76c886324f0641c116d374f888906))
+
 ### [2.1.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.0...v2.1.1) (2021-10-15)
 
 
