@@ -1,5 +1,19 @@
 # Changelog
 
+### [2.1.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.0...v2.1.1) (2021-10-15)
+
+
+### Bug Fixes
+
+* deletion of obsolete links in 1D too ([da60776](https://www.github.com/cheminfo/nmr-correlation/commit/da607765b03ffd5a8197e8bdf38e30701f84690a))
+* deletion of obsolete links to non-existing signals ([c173249](https://www.github.com/cheminfo/nmr-correlation/commit/c1732495a31abd0ff5ee3478f0bbd0e0c87861a6))
+* do not delete moved link with empty match array ([aa7c8c5](https://www.github.com/cheminfo/nmr-correlation/commit/aa7c8c506a2315c87601661a470397ad0b310450))
+* missing consideration of moved signals in addFromData1D ([5986216](https://www.github.com/cheminfo/nmr-correlation/commit/5986216b0b141bc4ad2701e4ac0ba156f92fc21a))
+* remove correlations without any link ([e8d5e6a](https://www.github.com/cheminfo/nmr-correlation/commit/e8d5e6ab87b446f4c87a51a0646175706f5fb97e))
+* removed unnecessary experiment type and id from correlation options ([28ed3c4](https://www.github.com/cheminfo/nmr-correlation/commit/28ed3c4c23ef79ed10d77cfba332859c7b327322))
+* restorage of previously set correlation properties and possibilty to skip the addFromData method ([3d3b81b](https://www.github.com/cheminfo/nmr-correlation/commit/3d3b81b8e1aefa15ac0fa3259b3e85d5f916f79c))
+* using wrong index in atom types array  in removeDeletedAndNotLinkedCorrelations ([658cbe2](https://www.github.com/cheminfo/nmr-correlation/commit/658cbe2af647cc0720b41056cb56dfce953b67b5))
+
 ## [2.1.0](https://www.github.com/cheminfo/nmr-correlation/compare/v2.0.3...v2.1.0) (2021-09-10)
 
 
