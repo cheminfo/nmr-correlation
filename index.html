@@ -1,260 +1,97 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>nmr-correlation</title>
-	<meta name="description" content="Documentation for nmr-correlation">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">nmr-correlation</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>nmr-correlation</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#nmr-correlation" id="nmr-correlation" style="color: inherit; text-decoration: none;">
-					<h1>nmr-correlation</h1>
-				</a>
-				<p><a href="https://www.npmjs.com/package/nmr-correlation"><img src="https://img.shields.io/npm/v/nmr-correlation.svg" alt="NPM version"></a>
-				<a href="https://www.npmjs.com/package/nmr-correlation"><img src="https://img.shields.io/npm/dm/nmr-correlation.svg" alt="npm download"></a></p>
-				<p>This package provides methods to build correlation data from NMR spectra. The NMR dataset has to be already processed and given in a certain format (see below).</p>
-				<p>Mainly, this is done by a grouping of signals with same nuclei between 1D and 2D or 2D and 2D NMR spectra. Each group is then represented by one correlation.</p>
-				<p>If a molecular formula is given, then missing correlations will be added as placeholder to complete the list.</p>
-				<p>Another feature is to determine the number of attached protons by using information from DEPT 90/135 or multiplicity-edited HSQC.</p>
-				<a href="#input" id="input" style="color: inherit; text-decoration: none;">
-					<h2>Input</h2>
-				</a>
-				<a href="#spectra" id="spectra" style="color: inherit; text-decoration: none;">
-					<h3>Spectra</h3>
-				</a>
-				<ul>
-					<li>array of 1D, 2D, DEPT 90/135 spectra, e.g. obtained by <a href="https://github.com/cheminfo/nmr-parser">nmr-parser</a></li>
-					<li>each spectrum has to be processed, e.g. via <a href="https://github.com/cheminfo/nmr-processing">nmr-processing</a></li>
-					<li>declared type for spectra is</li>
-				</ul>
-				<pre><code class="language-ts"><span style="color: #0000FF">type</span><span style="color: #000000"> </span><span style="color: #267F99">Spectra</span><span style="color: #000000"> = </span><span style="color: #267F99">Array</span><span style="color: #000000">&lt;</span><span style="color: #267F99">Spectrum1D</span><span style="color: #000000"> | </span><span style="color: #267F99">Spectrum2D</span><span style="color: #000000">&gt;;</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>nmr-correlation</title><meta name="description" content="Documentation for nmr-correlation"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">nmr-correlation</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>nmr-correlation</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#nmr-correlation" id="nmr-correlation" style="color: inherit; text-decoration: none;">
+  <h1>nmr-correlation</h1>
+</a>
+<p><a href="https://www.npmjs.com/package/nmr-correlation"><img src="https://img.shields.io/npm/v/nmr-correlation.svg" alt="NPM version"></a>
+<a href="https://www.npmjs.com/package/nmr-correlation"><img src="https://img.shields.io/npm/dm/nmr-correlation.svg" alt="npm download"></a></p>
+<p>This package provides methods to build correlation data from NMR spectra. The NMR dataset has to be already processed and given in a certain format (see below).</p>
+<p>Mainly, this is done by a grouping of signals with same nuclei between 1D and 2D or 2D and 2D NMR spectra. Each group is then represented by one correlation.</p>
+<p>If a molecular formula is given, then missing correlations will be added as placeholder to complete the list.</p>
+<p>Another feature is to determine the number of attached protons by using information from DEPT 90/135 or multiplicity-edited HSQC.</p>
+
+<a href="#input" id="input" style="color: inherit; text-decoration: none;">
+  <h2>Input</h2>
+</a>
+
+<a href="#spectra" id="spectra" style="color: inherit; text-decoration: none;">
+  <h3>Spectra</h3>
+</a>
+<ul>
+<li>array of 1D, 2D, DEPT 90/135 spectra, e.g. obtained by <a href="https://github.com/cheminfo/nmr-parser">nmr-parser</a></li>
+<li>each spectrum has to be processed, e.g. via <a href="https://github.com/cheminfo/nmr-processing">nmr-processing</a></li>
+<li>declared type for spectra is</li>
+</ul>
+<pre><code class="language-ts"><span class="hl-0">type</span><span class="hl-1"> </span><span class="hl-2">Spectra</span><span class="hl-1"> = </span><span class="hl-2">Array</span><span class="hl-1">&lt;</span><span class="hl-2">Spectrum1D</span><span class="hl-1"> | </span><span class="hl-2">Spectrum2D</span><span class="hl-1">&gt;;</span>
 </code></pre>
-				<ul>
-					<li>further type definitions are available in <code>src/types</code></li>
-				</ul>
-				<a href="#options" id="options" style="color: inherit; text-decoration: none;">
-					<h3>Options</h3>
-				</a>
-				<ul>
-					<li>tolerances (must be given for each occurring atom type in spectra)</li>
-					<li>molecular formula (optional)</li>
-				</ul>
-				<a href="#values" id="values" style="color: inherit; text-decoration: none;">
-					<h3>Values</h3>
-				</a>
-				<ul>
-					<li>optional, previously built correlations</li>
-					<li>useful to not override the following information if it is set to <code>true</code> in <code>edited</code> property:<ul>
-							<li>hybridization, equivalence, protonsCount</li>
-						</ul>
-					</li>
-				</ul>
-				<a href="#output" id="output" style="color: inherit; text-decoration: none;">
-					<h2>Output</h2>
-				</a>
-				<a href="#state" id="state" style="color: inherit; text-decoration: none;">
-					<h3>State</h3>
-				</a>
-				<ul>
-					<li>for each atom type with at least one correlation</li>
-					<li>current number of correlations</li>
-					<li>some error information according to a given molecular formula</li>
-				</ul>
-				<a href="#values-1" id="values-1" style="color: inherit; text-decoration: none;">
-					<h3>Values</h3>
-				</a>
-				<p>An array of correlations with following content:</p>
-				<ul>
-					<li>link (array)<ul>
-							<li>signal, axis (1D/2D signal and current axis which links to signals in another spectra)</li>
-							<li>match (indices of correlations with signal shift matches)</li>
-							<li>pseudo (whether this link is artificial)</li>
-							<li>some further meta information</li>
-						</ul>
-					</li>
-					<li>attachment (contains indices of each attached correlation/atom)</li>
-					<li>protonsCount (array of possible numbers of attached protons)</li>
-					<li>equivalence (number of equivalences, default is 1)</li>
-					<li>hybridization (not set, except a CH3 group was detected)</li>
-					<li>pseudo (whether this is a placeholder, e.g. if molecular formula is given)</li>
-					<li>some further meta information, e.g. the group representing signal</li>
-				</ul>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p><code>$ npm i nmr-correlation</code></p>
-				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
-					<h2>Usage</h2>
-				</a>
-				<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">fromJCAMP</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;nmr-parser&#039;</span><span style="color: #000000">;</span>
-<span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">buildCorrelationData</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;nmr-correlation&#039;</span><span style="color: #000000">;</span>
+<ul>
+<li>further type definitions are available in <code>src/types</code></li>
+</ul>
 
-<span style="color: #008000">// parse spectra (symbolic example)</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">data1H</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;1h.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">data13C</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;13C.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dataHSQC</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;hsqc.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dataHMBC</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;hmbc.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dataCOSY</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;cosy.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dataDEPT90</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;dept90.dx&#039;</span><span style="color: #000000">);</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">dataDEPT135</span><span style="color: #000000"> = </span><span style="color: #795E26">fromJCAMP</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;dept135.dx&#039;</span><span style="color: #000000">);</span>
+<a href="#options" id="options" style="color: inherit; text-decoration: none;">
+  <h3>Options</h3>
+</a>
+<ul>
+<li>tolerances (must be given for each occurring atom type in spectra)</li>
+<li>molecular formula (optional)</li>
+</ul>
 
-<span style="color: #008000">// process data (ranges/zones picking)</span>
-<span style="color: #008000">// ...</span>
-<span style="color: #008000">// put all the information together into specified format</span>
-<span style="color: #008000">// ...</span>
+<a href="#values" id="values" style="color: inherit; text-decoration: none;">
+  <h3>Values</h3>
+</a>
+<ul>
+<li>optional, previously built correlations</li>
+<li>useful to not override the following information if it is set to <code>true</code> in <code>edited</code> property:<ul>
+<li>hybridization, equivalence, protonsCount</li>
+</ul>
+</li>
+</ul>
 
-<span style="color: #008000">// combine spectra into one array</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">spectra</span><span style="color: #000000"> = [</span>
-<span style="color: #000000">  </span><span style="color: #001080">data1H</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">data13C</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">dataHSQC</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">dataHMBC</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">dataCOSY</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">dataDEPT90</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">dataDEPT135</span><span style="color: #000000">,</span>
-<span style="color: #000000">];</span>
-<span style="color: #008000">// create options</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">options</span><span style="color: #000000"> = {</span>
-<span style="color: #000000">  </span><span style="color: #001080">tolerance:</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">C:</span><span style="color: #000000"> </span><span style="color: #098658">0.25</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">H:</span><span style="color: #000000"> </span><span style="color: #098658">0.02</span><span style="color: #000000">,</span>
-<span style="color: #000000">  },</span>
-<span style="color: #000000">  </span><span style="color: #001080">mf:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;C11H14N2O&#039;</span><span style="color: #000000">, </span><span style="color: #008000">// molecular formula</span>
-<span style="color: #000000">};</span>
-<span style="color: #008000">// build correlation data</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">correlationData</span><span style="color: #000000"> = </span><span style="color: #795E26">buildCorrelationData</span><span style="color: #000000">(</span><span style="color: #001080">spectra</span><span style="color: #000000">, </span><span style="color: #001080">options</span><span style="color: #000000">);</span>
+<a href="#output" id="output" style="color: inherit; text-decoration: none;">
+  <h2>Output</h2>
+</a>
+
+<a href="#state" id="state" style="color: inherit; text-decoration: none;">
+  <h3>State</h3>
+</a>
+<ul>
+<li>for each atom type with at least one correlation</li>
+<li>current number of correlations</li>
+<li>some error information according to a given molecular formula</li>
+</ul>
+
+<a href="#values-1" id="values-1" style="color: inherit; text-decoration: none;">
+  <h3>Values</h3>
+</a>
+<p>An array of correlations with following content:</p>
+<ul>
+<li>link (array)<ul>
+<li>signal, axis (1D/2D signal and current axis which links to signals in another spectra)</li>
+<li>match (indices of correlations with signal shift matches)</li>
+<li>pseudo (whether this link is artificial)</li>
+<li>some further meta information</li>
+</ul>
+</li>
+<li>attachment (contains indices of each attached correlation/atom)</li>
+<li>protonsCount (array of possible numbers of attached protons)</li>
+<li>equivalence (number of equivalences, default is 1)</li>
+<li>hybridization (not set, except a CH3 group was detected)</li>
+<li>pseudo (whether this is a placeholder, e.g. if molecular formula is given)</li>
+<li>some further meta information, e.g. the group representing signal</li>
+</ul>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p><code>$ npm i nmr-correlation</code></p>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<pre><code class="language-js"><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">fromJCAMP</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-5">&#39;nmr-parser&#39;</span><span class="hl-1">;</span><br/><span class="hl-3">import</span><span class="hl-1"> { </span><span class="hl-4">buildCorrelationData</span><span class="hl-1"> } </span><span class="hl-3">from</span><span class="hl-1"> </span><span class="hl-5">&#39;nmr-correlation&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-6">// parse spectra (symbolic example)</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">data1H</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;1h.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">data13C</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;13C.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">dataHSQC</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;hsqc.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">dataHMBC</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;hmbc.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">dataCOSY</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;cosy.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">dataDEPT90</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;dept90.dx&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">dataDEPT135</span><span class="hl-1"> = </span><span class="hl-8">fromJCAMP</span><span class="hl-1">(</span><span class="hl-5">&#39;dept135.dx&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-6">// process data (ranges/zones picking)</span><br/><span class="hl-6">// ...</span><br/><span class="hl-6">// put all the information together into specified format</span><br/><span class="hl-6">// ...</span><br/><br/><span class="hl-6">// combine spectra into one array</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">spectra</span><span class="hl-1"> = [</span><br/><span class="hl-1">  </span><span class="hl-4">data1H</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">data13C</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">dataHSQC</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">dataHMBC</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">dataCOSY</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">dataDEPT90</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-4">dataDEPT135</span><span class="hl-1">,</span><br/><span class="hl-1">];</span><br/><span class="hl-6">// create options</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">options</span><span class="hl-1"> = {</span><br/><span class="hl-1">  </span><span class="hl-4">tolerance:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">C:</span><span class="hl-1"> </span><span class="hl-9">0.25</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-4">H:</span><span class="hl-1"> </span><span class="hl-9">0.02</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  </span><span class="hl-4">mf:</span><span class="hl-1"> </span><span class="hl-5">&#39;C11H14N2O&#39;</span><span class="hl-1">, </span><span class="hl-6">// molecular formula</span><br/><span class="hl-1">};</span><br/><span class="hl-6">// build correlation data</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-7">correlationData</span><span class="hl-1"> = </span><span class="hl-8">buildCorrelationData</span><span class="hl-1">(</span><span class="hl-4">spectra</span><span class="hl-1">, </span><span class="hl-4">options</span><span class="hl-1">);</span>
 </code></pre>
-				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
-					<h2>License</h2>
-				</a>
-				<p><a href="./LICENSE">MIT</a></p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-namespace">
-						<a href="modules/Types.html">Types</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-					<li class=" tsd-kind-function">
-						<a href="modules.html#addLink" class="tsd-kind-icon">add<wbr>Link</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#buildCorrelation" class="tsd-kind-icon">build<wbr>Correlation</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#buildCorrelationData" class="tsd-kind-icon">build<wbr>Correlation<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#buildLink" class="tsd-kind-icon">build<wbr>Link</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#buildState" class="tsd-kind-icon">build<wbr>State</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#buildValues" class="tsd-kind-icon">build<wbr>Values</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#checkMatch" class="tsd-kind-icon">check<wbr>Match</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getAtomCounts" class="tsd-kind-icon">get<wbr>Atom<wbr>Counts</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getAtomTypeFromNucleus" class="tsd-kind-icon">get<wbr>Atom<wbr>Type<wbr>From<wbr>Nucleus</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getCorrelationIndex" class="tsd-kind-icon">get<wbr>Correlation<wbr>Index</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getCorrelationsByAtomType" class="tsd-kind-icon">get<wbr>Correlations<wbr>ByAtom<wbr>Type</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getLabel" class="tsd-kind-icon">get<wbr>Label</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#getLabels" class="tsd-kind-icon">get<wbr>Labels</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#isEditedHSQC" class="tsd-kind-icon">is<wbr>EditedHSQC</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#removeLink" class="tsd-kind-icon">remove<wbr>Link</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="modules.html#setCorrelation" class="tsd-kind-icon">set<wbr>Correlation</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer>
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-		</div>
-	</div>
-</footer>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p><a href="./LICENSE">MIT</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/Types.html">Types</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-function"><a href="modules.html#addLink" class="tsd-kind-icon">add<wbr/>Link</a></li><li class="tsd-kind-function"><a href="modules.html#buildCorrelation" class="tsd-kind-icon">build<wbr/>Correlation</a></li><li class="tsd-kind-function"><a href="modules.html#buildCorrelationData" class="tsd-kind-icon">build<wbr/>Correlation<wbr/>Data</a></li><li class="tsd-kind-function"><a href="modules.html#buildLink" class="tsd-kind-icon">build<wbr/>Link</a></li><li class="tsd-kind-function"><a href="modules.html#buildState" class="tsd-kind-icon">build<wbr/>State</a></li><li class="tsd-kind-function"><a href="modules.html#buildValues" class="tsd-kind-icon">build<wbr/>Values</a></li><li class="tsd-kind-function"><a href="modules.html#checkMatch" class="tsd-kind-icon">check<wbr/>Match</a></li><li class="tsd-kind-function"><a href="modules.html#getAtomCounts" class="tsd-kind-icon">get<wbr/>Atom<wbr/>Counts</a></li><li class="tsd-kind-function"><a href="modules.html#getAtomTypeFromNucleus" class="tsd-kind-icon">get<wbr/>Atom<wbr/>Type<wbr/>From<wbr/>Nucleus</a></li><li class="tsd-kind-function"><a href="modules.html#getCorrelationDelta" class="tsd-kind-icon">get<wbr/>Correlation<wbr/>Delta</a></li><li class="tsd-kind-function"><a href="modules.html#getCorrelationIndex" class="tsd-kind-icon">get<wbr/>Correlation<wbr/>Index</a></li><li class="tsd-kind-function"><a href="modules.html#getCorrelationsByAtomType" class="tsd-kind-icon">get<wbr/>Correlations<wbr/>By<wbr/>Atom<wbr/>Type</a></li><li class="tsd-kind-function"><a href="modules.html#getLabel" class="tsd-kind-icon">get<wbr/>Label</a></li><li class="tsd-kind-function"><a href="modules.html#getLabels" class="tsd-kind-icon">get<wbr/>Labels</a></li><li class="tsd-kind-function"><a href="modules.html#getLinkDelta" class="tsd-kind-icon">get<wbr/>Link<wbr/>Delta</a></li><li class="tsd-kind-function"><a href="modules.html#getLinkDim" class="tsd-kind-icon">get<wbr/>Link<wbr/>Dim</a></li><li class="tsd-kind-function"><a href="modules.html#isEditedHSQC" class="tsd-kind-icon">is<wbr/>EditedHSQC</a></li><li class="tsd-kind-function"><a href="modules.html#removeLink" class="tsd-kind-icon">remove<wbr/>Link</a></li><li class="tsd-kind-function"><a href="modules.html#setCorrelation" class="tsd-kind-icon">set<wbr/>Correlation</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>
