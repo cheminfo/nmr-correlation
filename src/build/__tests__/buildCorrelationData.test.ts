@@ -35,6 +35,26 @@ describe('buildCorrelationData', () => {
     const _expectedCorrelationC1: Correlation = {
       ...expectedCorrelationC1,
       id: result.values[0].id,
+      link: [
+        {
+          atomType: ['C'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum13C',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[0].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 16.4,
+            id: 'spectrum13C_range2_1',
+            kind: 'signal',
+            multiplicity: 'q',
+            peaks: [],
+          },
+        },
+      ],
     };
     const _expectedCorrelationC2: Correlation = {
       ...expectedCorrelationC2,
@@ -44,15 +64,75 @@ describe('buildCorrelationData', () => {
     const _expectedCorrelationC3: Correlation = {
       ...expectedCorrelationC3,
       id: result.values[2].id,
+      link: [
+        {
+          atomType: ['C'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum13C',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[2].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 110.9,
+            id: 'spectrum13C_range1_1',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+      ],
     };
     const _expectedCorrelationH1: Correlation = {
       ...expectedCorrelationH1,
       id: result.values[3].id,
+      link: [
+        {
+          atomType: ['H'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum1H',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[3].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 1.7,
+            id: 'spectrum1H_range1_1',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+        { ...expectedCorrelationH1.link[0], id: result.values[3].link[1].id },
+      ],
     };
-    _expectedCorrelationH1.link[0].id = result.values[3].link[0].id;
     const _expectedCorrelationH2: Correlation = {
       ...expectedCorrelationH2,
       id: result.values[4].id,
+      link: [
+        {
+          atomType: ['H'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum1H',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[4].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 1.8,
+            id: 'spectrum1H_range1_2',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+      ],
     };
 
     expect(result.options).toStrictEqual(options);
@@ -82,6 +162,26 @@ describe('buildCorrelationData', () => {
       ...expectedCorrelationC1,
       id: result.values[0].id,
       protonsCount: [1, 3], // there is no DEPT90 signal: we can not not distinguish between one or three
+      link: [
+        {
+          atomType: ['C'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum13C',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[0].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 16.4,
+            id: 'spectrum13C_range2_1',
+            kind: 'signal',
+            multiplicity: 'q',
+            peaks: [],
+          },
+        },
+      ],
     };
     const _expectedCorrelationC2: Correlation = {
       ...expectedCorrelationC2,
@@ -92,17 +192,99 @@ describe('buildCorrelationData', () => {
     const _expectedCorrelationC3: Correlation = {
       ...expectedCorrelationC3,
       id: result.values[2].id,
-      protonsCount: [0], // no signal in DEP90 or DEPT135
+      protonsCount: [0], // no signal in DEP90 or DEPT135,
+      link: [
+        {
+          atomType: ['C'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum13C',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[2].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 110.9,
+            id: 'spectrum13C_range1_1',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+      ],
     };
     const _expectedCorrelationH1: Correlation = {
       ...expectedCorrelationH1,
       id: result.values[3].id,
       equivalence: 2,
+      link: [
+        {
+          atomType: ['H'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum1H',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[3].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 1.7,
+            id: 'spectrum1H_range1_1',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+        {
+          atomType: ['H', 'C'],
+          axis: 'x',
+          edited: {},
+          experimentID: 'spectrumHSQC',
+          experimentLabel: '',
+          experimentType: 'hsqc',
+          id: result.values[3].link[1].id,
+          match: [1],
+          pseudo: false,
+          signal: {
+            id: 'spectrumHSQC_zone1_1',
+            kind: 'signal',
+            peaks: [],
+            sign: 0,
+            x: {
+              delta: 1.7,
+            },
+            y: {
+              delta: 51.3,
+            },
+          },
+        },
+      ],
     };
-    _expectedCorrelationH1.link[0].id = result.values[3].link[0].id;
     const _expectedCorrelationH2: Correlation = {
       ...expectedCorrelationH2,
       id: result.values[4].id,
+      link: [
+        {
+          atomType: ['H'],
+          axis: undefined,
+          edited: {},
+          experimentID: 'spectrum1H',
+          experimentLabel: '',
+          experimentType: '1d',
+          id: result.values[4].link[0].id,
+          match: [],
+          pseudo: false,
+          signal: {
+            delta: 1.8,
+            id: 'spectrum1H_range1_2',
+            kind: 'signal',
+            multiplicity: 'd',
+            peaks: [],
+          },
+        },
+      ],
     };
 
     expect(result.options).toStrictEqual(options);
@@ -117,23 +299,10 @@ describe('buildCorrelationData', () => {
 
   const expectedCorrelationC1: Correlation = buildCorrelation({
     atomType: 'C',
-    experimentType: '1d',
-    experimentID: 'spectrum13C',
-    signal: {
-      id: 'spectrum13C_range2_1',
-      delta: 16.4,
-    },
     label: { origin: 'C1' },
   });
   const expectedCorrelationC2: Correlation = buildCorrelation({
     atomType: 'C',
-    experimentType: 'hsqc',
-    experimentID: 'spectrumHSQC',
-    signal: {
-      id: 'spectrumHSQC_zone1_1',
-      delta: 51.3,
-      sign: 0,
-    },
     label: { origin: 'C2' },
     attachment: { H: [3] },
     link: [
@@ -157,28 +326,16 @@ describe('buildCorrelationData', () => {
             delta: 51.3,
           },
         },
+        edited: {},
       }),
     ],
   });
   const expectedCorrelationC3: Correlation = buildCorrelation({
     atomType: 'C',
-    experimentType: '1d',
-    experimentID: 'spectrum13C',
-    signal: {
-      id: 'spectrum13C_range1_1',
-      delta: 110.9,
-    },
     label: { origin: 'C3' },
   });
   const expectedCorrelationH1: Correlation = buildCorrelation({
     atomType: 'H',
-    experimentType: 'hsqc',
-    experimentID: 'spectrumHSQC',
-    signal: {
-      id: 'spectrumHSQC_zone1_1',
-      delta: 1.7,
-      sign: 0,
-    },
     label: { origin: 'H1' },
     attachment: { C: [1] },
     link: [
@@ -202,17 +359,12 @@ describe('buildCorrelationData', () => {
             delta: 51.3,
           },
         },
+        edited: {},
       }),
     ],
   });
   const expectedCorrelationH2: Correlation = buildCorrelation({
     atomType: 'H',
-    experimentType: '1d',
-    experimentID: 'spectrum1H',
-    signal: {
-      id: 'spectrum1H_range1_2',
-      delta: 1.8,
-    },
     label: { origin: 'H2' },
   });
 
@@ -272,67 +424,63 @@ describe('buildCorrelationData', () => {
     const _expectedCorrelationC1: Correlation = buildCorrelation({
       id: result.values[0].id,
       atomType: 'C',
-      experimentType: 'hsqc',
-      experimentID: 'spectrumEditedHSQC',
-      signal: {
-        id: 'spectrumEditedHSQC_zone1_1',
-        delta: 16.4,
-        sign: 1,
-      },
       label: { origin: 'C1' },
       attachment: { H: [2] },
       link: [
-        { ...link1, axis: 'y', match: [2], id: result.values[0].link[0].id },
+        {
+          ...link1,
+          axis: 'y',
+          match: [2],
+          id: result.values[0].link[0].id,
+          edited: {},
+        },
       ],
       protonsCount: [1, 3],
     });
     const _expectedCorrelationC2: Correlation = buildCorrelation({
       id: result.values[1].id,
       atomType: 'C',
-      experimentType: 'hsqc',
-      experimentID: 'spectrumEditedHSQC',
-      signal: {
-        id: 'spectrumEditedHSQC_zone2_1',
-        delta: 51.3,
-        sign: -1,
-      },
       label: { origin: 'C2' },
       attachment: { H: [3] },
       link: [
-        { ...link2, axis: 'y', match: [3], id: result.values[1].link[0].id },
+        {
+          ...link2,
+          axis: 'y',
+          match: [3],
+          id: result.values[1].link[0].id,
+          edited: {},
+        },
       ],
       protonsCount: [2],
     });
     const _expectedCorrelationH1: Correlation = buildCorrelation({
       id: result.values[2].id,
       atomType: 'H',
-      experimentType: 'hsqc',
-      experimentID: 'spectrumEditedHSQC',
-      signal: {
-        id: 'spectrumEditedHSQC_zone1_1',
-        delta: 1.7,
-        sign: 1,
-      },
       label: { origin: 'H1' },
       attachment: { C: [0] },
       link: [
-        { ...link1, axis: 'x', match: [0], id: result.values[2].link[0].id },
+        {
+          ...link1,
+          axis: 'x',
+          match: [0],
+          id: result.values[2].link[0].id,
+          edited: {},
+        },
       ],
     });
     const _expectedCorrelationH2: Correlation = buildCorrelation({
       id: result.values[3].id,
       atomType: 'H',
-      experimentType: 'hsqc',
-      experimentID: 'spectrumEditedHSQC',
-      signal: {
-        id: 'spectrumEditedHSQC_zone2_1',
-        delta: 1.8,
-        sign: -1,
-      },
       label: { origin: 'H2' },
       attachment: { C: [1] },
       link: [
-        { ...link2, axis: 'x', match: [1], id: result.values[3].link[0].id },
+        {
+          ...link2,
+          axis: 'x',
+          match: [1],
+          id: result.values[3].link[0].id,
+          edited: {},
+        },
       ],
       equivalence: 2,
     });
