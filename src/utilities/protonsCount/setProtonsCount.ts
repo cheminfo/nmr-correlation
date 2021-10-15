@@ -1,5 +1,6 @@
 import { Values } from '../../types/correlation/values';
 import { checkMatch } from '../general/checkMatch';
+import { getCorrelationDelta } from '../general/getCorrelationDelta';
 
 /**
  * Sets proton counts from DEPT90 signals and DEPT135/edited HSQC signals.
@@ -17,20 +18,19 @@ export function setProtonsCount(
 ): Values {
   // eslint-disable-next-line @typescript-eslint/prefer-for-of
   for (let i = 0; i < correlations.length; i++) {
-    if (correlations[i].edited.protonsCount) {
+    const correlation = correlations[i];
+    if (correlation.edited.protonsCount) {
       // do not overwrite a manually edited value
       continue;
     }
+    const correlationDelta = getCorrelationDelta(correlation);
 
     const match = [-1, -1];
     for (let k = 0; k < signals90.length; k++) {
       if (
         // signals90[k].sign === 1 &&
-        checkMatch(
-          correlations[i].signal.delta,
-          signals90[k].delta,
-          toleranceAtomType,
-        )
+        correlationDelta !== undefined &&
+        checkMatch(correlationDelta, signals90[k].delta, toleranceAtomType)
       ) {
         match[0] = k;
         break;
@@ -38,11 +38,8 @@ export function setProtonsCount(
     }
     for (let k = 0; k < signals135.length; k++) {
       if (
-        checkMatch(
-          correlations[i].signal.delta,
-          signals135[k].delta,
-          toleranceAtomType,
-        )
+        correlationDelta !== undefined &&
+        checkMatch(correlationDelta, signals135[k].delta, toleranceAtomType)
       ) {
         match[1] = k;
         break;
@@ -52,7 +49,7 @@ export function setProtonsCount(
     if (match[0] >= 0) {
       // signal match in DEPT90
       // CH
-      correlations[i].protonsCount = [1];
+      correlation.protonsCount = [1];
       continue;
     }
     // no signal match in DEPT90
@@ -63,25 +60,25 @@ export function setProtonsCount(
         if (signals90.length > 0) {
           // in case of both DEPT90 and DEPT135 are given
           // CH3
-          correlations[i].protonsCount = [3];
+          correlation.protonsCount = [3];
         } else {
           // in case of DEPT135 is given only
           // CH or CH3
-          correlations[i].protonsCount = [1, 3];
+          correlation.protonsCount = [1, 3];
         }
       } else {
         // negative signal
         // CH2
-        correlations[i].protonsCount = [2];
+        correlation.protonsCount = [2];
       }
     } else {
       if (signals135.length > 0) {
         // no signal match in both spectra
         // qC
-        correlations[i].protonsCount = [0];
+        correlation.protonsCount = [0];
       } else {
         // no information
-        correlations[i].protonsCount = [];
+        correlation.protonsCount = [];
       }
     }
   }

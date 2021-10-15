@@ -5,6 +5,8 @@ import { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
 
 export interface LinkOptions extends CorrelationAndLinkOptions {
   atomType?: Array<string>;
+  experimentType?: string;
+  experimentID?: string;
   signal?: Signal1D | Signal2D;
   axis?: string;
   match?: Array<number>;

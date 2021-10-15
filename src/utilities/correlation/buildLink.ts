@@ -18,5 +18,6 @@ export function buildLink(options: LinkOptions): Link {
     match: options.match || [],
     experimentLabel: options.experimentLabel || '',
     pseudo: options.pseudo || false,
+    edited: options.edited || {},
   } as Link;
 }

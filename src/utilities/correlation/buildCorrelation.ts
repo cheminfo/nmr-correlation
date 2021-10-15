@@ -10,10 +10,7 @@ import { generateID } from '../general/generateID';
 export function buildCorrelation(options: CorrelationOptions): Correlation {
   return {
     id: options.id || generateID(),
-    experimentType: options.experimentType,
-    experimentID: options.experimentID,
     atomType: options.atomType,
-    signal: options.signal,
     label: options.label || {},
     link: options.link || [],
     equivalence: options.equivalence || 1,

@@ -15,11 +15,15 @@ export function setCorrelation(
   id: string,
   correlation: Correlation,
 ): CorrelationData {
-  const correlationIndex = data.values.findIndex(
+  const _values = data.values.slice();
+  const correlationIndex = _values.findIndex(
     (_correlation) => _correlation.id === id,
   );
-  const _values = data.values.slice();
-  _values.splice(correlationIndex, 1, buildCorrelation({ ...correlation }));
+  if (correlationIndex >= 0) {
+    _values.splice(correlationIndex, 1, buildCorrelation({ ...correlation }));
+  } else {
+    _values.push(correlation);
+  }
 
   return {
     values: _values,

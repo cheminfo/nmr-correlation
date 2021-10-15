@@ -12,10 +12,13 @@ export * from './utilities/correlation/setCorrelation';
 export * from './utilities/general/checkMatch';
 export * from './utilities/general/getAtomCounts';
 export * from './utilities/general/getAtomTypeFromNucleus';
+export * from './utilities/general/getCorrelationDelta';
 export * from './utilities/general/getCorrelationIndex';
 export * from './utilities/general/getCorrelationsByAtomType';
 export * from './utilities/general/getLabel';
 export * from './utilities/general/getLabels';
+export * from './utilities/general/getLinkDelta';
+export * from './utilities/general/getLinkDim';
 export * from './utilities/general/isEditedHSQC';
 
 export * as Types from './types/index';
