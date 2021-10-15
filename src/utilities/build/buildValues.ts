@@ -26,13 +26,14 @@ export function buildValues(spectra: Spectra, options: Options): Values {
   const signals: ExperimentSignals = getSignals(spectra);
 
   let _correlations = prevValues ? prevValues.slice() : [];
-  // remove obsolete links/correlations
-  _correlations = removeObsoleteLinksAndNotLinkedCorrelations(
-    _correlations,
-    signals.signals1D,
-    signals.signals2D,
-  );
-  if (options.skipAddFromData !== true) {
+
+  if (options.skipDataUpdate !== true) {
+    // remove obsolete links/correlations
+    _correlations = removeObsoleteLinksAndNotLinkedCorrelations(
+      _correlations,
+      signals.signals1D,
+      signals.signals2D,
+    );
     // add signals from either 1D or 2D if not already existing as correlation
     // if a signal already exists then add a link within matched correlation
     _correlations = addFromData(

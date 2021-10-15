@@ -17,7 +17,7 @@ export function buildCorrelationData(
   const values = spectra ? buildValues(spectra, options) : [];
 
   delete options.values;
-  delete options.skipAddFromData;
+  delete options.skipDataUpdate;
 
   return {
     values,

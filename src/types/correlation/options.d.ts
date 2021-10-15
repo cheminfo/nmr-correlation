@@ -6,5 +6,5 @@ export interface Options {
   tolerance: Tolerance;
   mf?: string;
   values?: Values;
-  skipAddFromData?: boolean;
+  skipDataUpdate?: boolean;
 }
