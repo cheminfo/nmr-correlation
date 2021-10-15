@@ -42,6 +42,11 @@ export function buildValues(spectra: Spectra, options: Options): Values {
       signals.signals2D,
       tolerance,
     );
+  } else {
+    // in case an external movement has led to en empty link array within a correlation
+    _correlations = _correlations.filter(
+      (correlation) => correlation.link.length > 0,
+    );
   }
   // set the number of attached protons via DEPT or edited HSQC
   _correlations = setProtonsCountFromData(
