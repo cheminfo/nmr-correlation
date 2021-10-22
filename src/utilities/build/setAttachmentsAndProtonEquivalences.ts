@@ -29,6 +29,12 @@ export function setAttachmentsAndProtonEquivalences(
       }
     }
   }
+  // set previously set equivalences of protons to 0
+  for (const correlation of correlations) {
+    if (correlation.atomType === 'H') {
+      correlation.equivalence = 0;
+    }
+  }
   // reset previously set proton equivalences and set new ones
   // check heavy atoms with an unambiguous protons count
   for (const correlation of correlations) {
@@ -49,8 +55,14 @@ export function setAttachmentsAndProtonEquivalences(
         (equivalence * equivalences) / correlation.attachment.H.length;
 
       for (const attachedProtonIndex of correlation.attachment.H) {
-        correlations[attachedProtonIndex].equivalence = sharedEquivalences;
+        correlations[attachedProtonIndex].equivalence += sharedEquivalences;
       }
+    }
+  }
+  // set unchanged equivalence of protons back to 1
+  for (const correlation of correlations) {
+    if (correlation.atomType === 'H' && correlation.equivalence === 0) {
+      correlation.equivalence = 1;
     }
   }
 
