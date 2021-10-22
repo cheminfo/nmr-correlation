@@ -1,10 +1,8 @@
-import { signalSettings } from '../../types/correlation/signalSettings';
 import { Tolerance } from '../../types/correlation/tolerance';
 import { Values } from '../../types/correlation/values';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 import { buildLink } from '../correlation/buildLink';
-import { removeLink } from '../correlation/removeLink';
 import { checkMatch } from '../general/checkMatch';
 import { findCorrelationBySignalID } from '../general/findCorrelationBySignalID';
 import { getCorrelationDelta } from '../general/getCorrelationDelta';
@@ -25,28 +23,10 @@ export function addFromData(
   signals2D: Experiment2DSignals,
   tolerance: Tolerance,
 ): Values {
-  const previousSettingsPerSignal: signalSettings[] = [];
-  // remove previous set links from 2D, but not pseudo links or edited (moved) links;
-  // and store manual edited settings for each signal to restore it later, because it could be the first and
-  // thus representative link for a newly attached correlation
-  correlations.forEach((correlation) => {
-    const linksToRemove = correlation.link.filter((link) => {
-      previousSettingsPerSignal.push({
-        signalID: link.signal.id,
-        axis: link.axis,
-        equivalence: correlation.equivalence,
-        hybridization: correlation.hybridization,
-        protonsCount: correlation.protonsCount,
-        edited: correlation.edited,
-      });
-      return link.pseudo === false && link.edited?.moved !== true;
-    });
-    linksToRemove.forEach((link) => removeLink(correlation, link.id));
-  });
+  // remove non-pseudo correlation objects without links
   correlations = correlations.filter(
-    (correlation) => correlation.link.length > 0,
+    (correlation) => correlation.link.length > 0 || correlation.pseudo === true,
   );
-
   // add from 1D data
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
@@ -122,23 +102,6 @@ export function addFromData(
       }
     }),
   );
-
-  // restore previously and manually set properties
-  correlations.forEach((correlation) => {
-    const previousSettings = previousSettingsPerSignal.find((setting) => {
-      const link = correlation.link[0];
-      return setting.signalID === link.signal.id && setting.axis === link.axis;
-    });
-    if (previousSettings) {
-      correlation.equivalence = previousSettings.equivalence;
-      correlation.hybridization = previousSettings.hybridization;
-      correlation.protonsCount = previousSettings.protonsCount;
-      correlation.edited = {
-        ...correlation.edited,
-        ...previousSettings.edited,
-      };
-    }
-  });
 
   return correlations;
 }
