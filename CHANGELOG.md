@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.3](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.2...v2.1.3) (2021-10-22)
+
+
+### Bug Fixes
+
+* wrong proton equivalence count when it is multiple assigned ([c10fb31](https://www.github.com/cheminfo/nmr-correlation/commit/c10fb31374b805f5529a11dcbc1e0282f62f8373))
+
 ### [2.1.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.1...v2.1.2) (2021-10-15)
 
 
