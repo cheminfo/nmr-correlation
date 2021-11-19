@@ -16,7 +16,7 @@ export function buildCorrelation(options: CorrelationOptions): Correlation {
     equivalence: options.equivalence || 1,
     attachment: options.attachment || {},
     protonsCount: options.protonsCount || [],
-    hybridization: options.hybridization || '',
+    hybridization: options.hybridization || [],
     pseudo: options.pseudo || false,
     edited: options.edited || {},
   } as Correlation;
