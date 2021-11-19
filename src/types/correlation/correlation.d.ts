@@ -8,5 +8,5 @@ export interface Correlation extends CorrelationAndLinkFields {
   equivalence: number;
   attachment: { [atomType: string]: Array<number> };
   protonsCount: Array<number>;
-  hybridization: string;
+  hybridization: number[];
 }
