@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.1.4](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.3...v2.1.4) (2021-11-19)
+
+
+### Bug Fixes
+
+* set "no-unresolved" to off in eslint ([9b14c0d](https://www.github.com/cheminfo/nmr-correlation/commit/9b14c0dc8da2438c22bc926962cf696b7c1c2c44))
+
 ### [2.1.3](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.2...v2.1.3) (2021-10-22)
 
 
