@@ -4,7 +4,7 @@ import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals'
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 import { buildLink } from '../correlation/buildLink';
 import { checkMatch } from '../general/checkMatch';
-import { findCorrelationBySignalID } from '../general/findCorrelationBySignalID';
+import { findLinkedCorrelationsBySignalID } from '../general/findLinkedCorrelationsBySignalID';
 import { getCorrelationDelta } from '../general/getCorrelationDelta';
 
 import { addSignal } from './addSignal';
@@ -30,11 +30,11 @@ export function addFromData(
   // add from 1D data
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
-      const linkedCorrelation = findCorrelationBySignalID(
+      const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
         signal1D.signal.id,
       );
-      if (!linkedCorrelation) {
+      if (linkedCorrelations.length === 0) {
         const matchedCorrelationIndices = correlations
           .map((correlation, k) => {
             const correlationDelta = getCorrelationDelta(correlation);
@@ -66,11 +66,11 @@ export function addFromData(
   // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
   Object.keys(signals2D).forEach((experimentType) =>
     signals2D[experimentType].forEach((signal2D) => {
-      const linkedCorrelation = findCorrelationBySignalID(
+      const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
         signal2D.signal.id,
       );
-      if (!linkedCorrelation) {
+      if (linkedCorrelations.length === 0) {
         signal2D.atomType.forEach((atomType, dim) => {
           const axis = dim === 0 ? 'x' : 'y';
           const matchedCorrelationIndices = correlations
