@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.0](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.4...v2.2.0) (2021-11-23)
+
+
+### Features
+
+* introduction of pathLength in 2D signals ([33c7c46](https://www.github.com/cheminfo/nmr-correlation/commit/33c7c46d6561d9e54c29e57f410721bd0d32bbd2))
+
+
+### Bug Fixes
+
+* let pathLength.source be a flexible string ([1eff24a](https://www.github.com/cheminfo/nmr-correlation/commit/1eff24aedadc4e0c9565493182a9f03933276cd5))
+
 ### [2.1.4](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.3...v2.1.4) (2021-11-19)
 
 
