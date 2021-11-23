@@ -1,3 +1,4 @@
+import { PathLength } from './pathLength';
 import { Signal } from './signal';
 
 export interface Signal2D extends Signal {
@@ -10,4 +11,5 @@ export interface Signal2D extends Signal {
     delta: number;
     diaID?: Array<string>;
   };
+  pathLength?: PathLength;
 }
