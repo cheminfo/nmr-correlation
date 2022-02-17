@@ -34,7 +34,7 @@ export function getSignalsDEPT(
           const __signals = experimentDEPT.ranges.values
             .map((range) =>
               range.signals
-                .filter((signal) => allowedSignalKinds.includes(signal.kind))
+                .filter((signal) => signal.kind && allowedSignalKinds.includes(signal.kind))
                 .map((signal) => {
                   return { ...signal, sign: range.absolute > 0 ? 1 : -1 };
                 }),

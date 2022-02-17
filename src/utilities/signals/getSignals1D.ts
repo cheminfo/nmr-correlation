@@ -26,7 +26,7 @@ export function getSignals1D(
 
     for (const range of spectrum1D.ranges.values) {
       for (const signal of range.signals) {
-        if (!allowedSignalKinds.includes(signal.kind)) continue;
+        if (!signal.kind || !allowedSignalKinds.includes(signal.kind)) continue;
         if (!checkExistence(signal, signals)) {
           signals.push({
             experimentType: '1d',

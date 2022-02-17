@@ -25,9 +25,9 @@ describe('isEditedHSQC', () => {
     id: 'id1',
   };
   it('test 1, true', () => {
-    expect(isEditedHSQC(spectrum1)).toStrictEqual(true);
+    expect(isEditedHSQC(spectrum1)).toBe(true);
   });
   it('test 2, false', () => {
-    expect(isEditedHSQC(spectrum2)).toStrictEqual(false);
+    expect(isEditedHSQC(spectrum2)).toBe(false);
   });
 });

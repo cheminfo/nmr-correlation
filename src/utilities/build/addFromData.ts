@@ -32,7 +32,7 @@ export function addFromData(
     signals1D[atomType].forEach((signal1D) => {
       const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
-        signal1D.signal.id,
+        signal1D.signal.id || "",
       );
       if (linkedCorrelations.length === 0) {
         const matchedCorrelationIndices = correlations
@@ -68,7 +68,7 @@ export function addFromData(
     signals2D[experimentType].forEach((signal2D) => {
       const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
-        signal2D.signal.id,
+        signal2D.signal.id || '',
       );
       if (linkedCorrelations.length === 0) {
         signal2D.atomType.forEach((atomType, dim) => {
