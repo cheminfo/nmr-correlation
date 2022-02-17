@@ -1,4 +1,4 @@
-import { Signal2D } from './signal2D';
+import { Signal2D } from './Signal2D';
 
 export interface Zone {
   id: string;

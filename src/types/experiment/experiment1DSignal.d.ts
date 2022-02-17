@@ -1,4 +1,4 @@
-import { Signal1D } from '../spectrum/signal1D';
+import { Signal1D } from '../spectrum/Signal1D';
 
 import { ExperimentSignal } from './experimentSignal';
 

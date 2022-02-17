@@ -8,6 +8,6 @@ describe('getCorrelationIndex', () => {
   const values: Values = [correlation1, correlation2];
 
   it('getCorrelationIndex', () => {
-    expect(getCorrelationIndex(values, correlation2)).toStrictEqual(1);
+    expect(getCorrelationIndex(values, correlation2)).toBe(1);
   });
 });

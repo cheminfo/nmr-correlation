@@ -1,4 +1,4 @@
-import { Signal1D } from './signal1D';
+import { Signal1D } from './Signal1D';
 
 export interface Range {
   id: string;

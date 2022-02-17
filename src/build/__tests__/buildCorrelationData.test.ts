@@ -254,9 +254,11 @@ describe('buildCorrelationData', () => {
             sign: 0,
             x: {
               delta: 1.7,
+              originDelta: 1.7,
             },
             y: {
               delta: 51.3,
+              originDelta: 51.3,
             },
           },
         },
@@ -321,9 +323,11 @@ describe('buildCorrelationData', () => {
           sign: 0,
           x: {
             delta: 1.7,
+            originDelta: 1.7,
           },
           y: {
             delta: 51.3,
+            originDelta: 51.3,
           },
         },
         edited: {},
@@ -354,9 +358,11 @@ describe('buildCorrelationData', () => {
           sign: 0,
           x: {
             delta: 1.7,
+            originDelta: 1.7,
           },
           y: {
             delta: 51.3,
+            originDelta: 51.3,
           },
         },
         edited: {},
@@ -394,9 +400,11 @@ describe('buildCorrelationData', () => {
         sign: 1,
         x: {
           delta: 1.7,
+          originDelta: 1.7,
         },
         y: {
           delta: 16.4,
+          originDelta: 16.4,
         },
       },
     });
@@ -414,9 +422,11 @@ describe('buildCorrelationData', () => {
         sign: -1,
         x: {
           delta: 1.8,
+          originDelta: 1.8,
         },
         y: {
           delta: 51.3,
+          originDelta: 51.3,
         },
       },
     });

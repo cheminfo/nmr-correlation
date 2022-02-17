@@ -1,5 +1,5 @@
-import { Signal1D } from '../spectrum/signal1D';
-import { Signal2D } from '../spectrum/signal2D';
+import { Signal1D } from '../spectrum/Signal1D';
+import { Signal2D } from '../spectrum/Signal2D';
 
 import { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
 

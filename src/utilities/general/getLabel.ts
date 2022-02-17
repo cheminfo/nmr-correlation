@@ -8,8 +8,8 @@ export function getLabel(
   const label = Object.keys(correlation.attachment)
     .map((otherAtomType) =>
       correlation.attachment[otherAtomType]
-        .map((index) => correlation.label[correlations[index].label.origin])
-        .filter((_label) => _label),
+        .map((index) => correlations[index]?.label ? correlation.label[correlations[index].label.origin] : "")
+        .filter((_label) => _label && _label.length > 0),
     )
     .flat()
     .filter((_label, i, a) => a.indexOf(_label) === i)

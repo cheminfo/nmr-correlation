@@ -45,8 +45,8 @@ export function getSignals2D(
       );
       const __signals = spectrum2D.zones.values
         .map((zone) =>
-          zone.signals.filter((signal) =>
-            allowedSignalKinds.includes(signal.kind),
+          zone.signals.filter(
+            (signal) => signal.kind && allowedSignalKinds.includes(signal.kind),
           ),
         )
         .flat();
@@ -65,11 +65,12 @@ export function getSignals2D(
             // @TODO here we assume that only one peak exists for the signal and its intensity indicates the sign
             signal: {
               ...lodashCloneDeep(signal),
-              sign: isEditedHSQC(spectrum2D)
-                ? signal.peaks[0].z >= 0
-                  ? 1
-                  : -1
-                : 0,
+              sign:
+                isEditedHSQC(spectrum2D) && signal.peaks
+                  ? signal.peaks[0].z >= 0
+                    ? 1
+                    : -1
+                  : 0,
             },
           });
         }
