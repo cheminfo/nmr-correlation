@@ -1,4 +1,5 @@
-import { Correlation, State } from '../../../types';
+import { Correlation } from '../../../types/correlation/correlation';
+import { State } from '../../../types/correlation/state';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { buildState } from '../buildState';
 

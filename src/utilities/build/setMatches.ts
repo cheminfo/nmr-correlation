@@ -1,6 +1,6 @@
 import lodashIsEqual from 'lodash/isEqual';
 
-import { Values } from '../../types';
+import { Values } from '../../types/correlation/values';
 import { addMatch } from '../correlation/addMatch';
 import { removeLink } from '../correlation/removeLink';
 import { removeMatches } from '../correlation/removeMatches';

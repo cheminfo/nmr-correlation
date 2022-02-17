@@ -1,4 +1,5 @@
-import { Correlation, Values } from '../../../types/index';
+import { Correlation } from '../../../types/correlation/correlation';
+import { Values } from '../../../types/correlation/values';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { getCorrelationIndex } from '../getCorrelationIndex';
 

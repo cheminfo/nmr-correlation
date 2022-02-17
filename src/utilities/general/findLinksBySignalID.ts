@@ -1,4 +1,5 @@
-import { Link, Values } from '../../types';
+import { Link } from "../../types/correlation/link";
+import { Values } from "../../types/correlation/values";
 
 export function findLinksBySignalID(
   correlations: Values,

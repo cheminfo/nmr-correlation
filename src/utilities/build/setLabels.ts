@@ -1,6 +1,7 @@
 import lodashGet from 'lodash/get';
 
-import { Values } from '../../types';
+import { Values } from '../../types/correlation/values';
+
 
 /**
  * Sets the origin (default) label for each correlation, e.g. C1 or H2, depending on its order.

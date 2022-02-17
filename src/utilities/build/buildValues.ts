@@ -1,4 +1,4 @@
-import { Options } from '../../types';
+import { Options } from '../../types/correlation/options';
 import { Values } from '../../types/correlation/values';
 import { ExperimentSignals } from '../../types/experiment/experimentSignals';
 import { Spectra } from '../../types/spectrum/spectra';
