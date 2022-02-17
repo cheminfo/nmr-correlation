@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.2.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.2.1...v2.2.2) (2022-02-17)
+
+
+### Bug Fixes
+
+* imports in test files ([c92b11a](https://www.github.com/cheminfo/nmr-correlation/commit/c92b11a8dfc74f4ae953fa17bab25610b5993be0))
+
 ### [2.2.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.2.0...v2.2.1) (2022-02-17)
 
 
