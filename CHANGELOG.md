@@ -1,5 +1,13 @@
 # Changelog
 
+### [2.2.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.2.0...v2.2.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* added eslint-plugin-import package ([e5b134c](https://www.github.com/cheminfo/nmr-correlation/commit/e5b134ca98efa556349f0a7aabcbbe4aa2376b85))
+* use eslint-plugin-jest package ([c25730c](https://www.github.com/cheminfo/nmr-correlation/commit/c25730c5c253dece2da53029e619bfaf9e0a89a2))
+
 ## [2.2.0](https://www.github.com/cheminfo/nmr-correlation/compare/v2.1.4...v2.2.0) (2021-11-23)
 
 
