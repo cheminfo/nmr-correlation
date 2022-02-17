@@ -2,10 +2,10 @@ import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashIsEqual from 'lodash/isEqual';
 
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import { Spectrum2D } from '../../types';
 import { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
 import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
+import { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { isEditedHSQC } from '../general/isEditedHSQC';

@@ -1,10 +1,10 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import { Spectrum1D } from '../../types';
 import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
 import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { ExperimentsType } from '../../types/experiment/experimentsType';
+import { Spectrum1D } from '../../types/spectrum/spectrum1D';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 

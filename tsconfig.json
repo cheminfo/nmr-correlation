@@ -7,9 +7,12 @@
     "target": "es2019",
     "noImplicitAny": false,
     "forceConsistentCasingInFileNames": true,
+    "typeRoots": [
+      "./node_modules/@types"
+    ]
   },
   "include": [
-    "./src/**/*"
+    "src"
   ],
   "exclude": [
     "node_modules"

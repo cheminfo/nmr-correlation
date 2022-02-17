@@ -1,5 +1,8 @@
 import { spectraDataSet1 } from '../../../data/spectraDataSet1';
-import { Options, Spectra, Tolerance, Values } from '../../../types/index';
+import { Options } from '../../../types/correlation/options';
+import { Tolerance } from '../../../types/correlation/tolerance';
+import { Values } from '../../../types/correlation/values';
+import { Spectra } from '../../../types/spectrum/spectra';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { buildValues } from '../buildValues';
 
