@@ -59,6 +59,6 @@
   "dependencies": {
     "cheminfo-types": "^1.0.0",
     "lodash": "^4.17.21",
-    "nmr-processing": "^7.0.0"
+    "nmr-processing": "^7.0.1"
   }
 }
