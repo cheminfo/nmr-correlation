@@ -1,5 +1,5 @@
-import { Signal2DAxisData as NMRSignal2DAxisData } from 'nmr-processing/lib/xyz/NMRSignal2D';
+import { Signal2DProjection } from './nmr-processing';
 
-export interface Signal2DAxisData extends NMRSignal2DAxisData {
+export interface Signal2DAxisData extends Signal2DProjection {
   originDelta: number;
 }

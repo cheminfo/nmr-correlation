@@ -1,5 +1,5 @@
-import { Correlation } from "../../types/correlation/correlation";
-import { Values } from "../../types/correlation/values";
+import { Correlation } from '../../types/correlation/correlation';
+import { Values } from '../../types/correlation/values';
 
 export function findLinkedCorrelationsBySignalID(
   correlations: Values,

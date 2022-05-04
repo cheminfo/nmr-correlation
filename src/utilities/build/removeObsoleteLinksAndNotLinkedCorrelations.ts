@@ -18,7 +18,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
   signals2D: Experiment2DSignals,
 ): Values {
   const _correlations = correlations.filter(
-    (correlation) => correlation.pseudo === false,
+    (correlation) => !correlation.pseudo,
   );
   const removeList = _correlations.slice();
   _correlations.forEach((correlation) => {
@@ -34,29 +34,23 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
           if (index >= 0) {
             removeList.splice(index, 1);
           }
-        } else {
-          if (link.pseudo === false) {
-            // remove obsolete link to not anymore existing signal
-            removeLink(correlation, link.id);
-          }
+        } else if (!link.pseudo) {
+          // remove obsolete link to not anymore existing signal
+          removeLink(correlation, link.id);
         }
-      } else {
+      } else if (
+        lodashGet(signals2D, `${link.experimentType}`, []).some(
+          (signal2D) => signal2D.signal.id === link.signal.id,
+        )
+      ) {
         // search in 2D data
-        if (
-          lodashGet(signals2D, `${link.experimentType}`, []).some(
-            (signal2D) => signal2D.signal.id === link.signal.id,
-          )
-        ) {
-          const index = removeList.indexOf(correlation);
-          if (index >= 0) {
-            removeList.splice(index, 1);
-          }
-        } else {
-          if (link.pseudo === false) {
-            // remove obsolete link to not anymore existing signal
-            removeLink(correlation, link.id);
-          }
+        const index = removeList.indexOf(correlation);
+        if (index >= 0) {
+          removeList.splice(index, 1);
         }
+      } else if (!link.pseudo) {
+        // remove obsolete link to not anymore existing signal
+        removeLink(correlation, link.id);
       }
     }
   });

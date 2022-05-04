@@ -25,16 +25,14 @@ export function buildState(values: Values, mf: string): State {
   atomTypesInCorrelations.forEach((atomType) => {
     const correlationsAtomType = getCorrelationsByAtomType(values, atomType);
     // create state for specific atom type only if there is at least one real correlation
-    if (
-      correlationsAtomType.some((correlation) => correlation.pseudo === false)
-    ) {
+    if (correlationsAtomType.some((correlation) => !correlation.pseudo)) {
       // create state error
       const stateAtomTypeError: StateAtomTypeError = {};
 
       const atomCount = atoms[atomType];
       let atomCountAtomType = correlationsAtomType.reduce(
         (sum, correlation) =>
-          correlation.pseudo === false ? sum + correlation.equivalence : sum,
+          !correlation.pseudo ? sum + correlation.equivalence : sum,
         0,
       );
 
@@ -42,7 +40,7 @@ export function buildState(values: Values, mf: string): State {
         // add protons count from pseudo correlations without any pseudo HSQC correlation
         values.forEach((correlation) => {
           if (
-            correlation.pseudo === true &&
+            correlation.pseudo &&
             correlation.atomType !== 'H' &&
             correlation.protonsCount.length === 1 &&
             !correlation.link.some((link) => link.experimentType === 'hsqc')
@@ -52,7 +50,7 @@ export function buildState(values: Values, mf: string): State {
         });
         // determine the number of pseudo correlations
         const pseudoCorrelationCount = correlationsAtomType.reduce(
-          (sum, correlation) => (correlation.pseudo === true ? sum + 1 : sum),
+          (sum, correlation) => (correlation.pseudo ? sum + 1 : sum),
           0,
         );
         // determine the not attached protons
@@ -91,7 +89,7 @@ export function buildState(values: Values, mf: string): State {
       if (atomCount !== undefined) {
         const outOfLimit = correlationsAtomType.some(
           (correlation, k) =>
-            correlation.pseudo === false &&
+            !correlation.pseudo &&
             correlation.atomType === atomType &&
             k >= atomCount,
         );
@@ -101,11 +99,7 @@ export function buildState(values: Values, mf: string): State {
       }
 
       const complete =
-        atomCount === undefined
-          ? undefined
-          : atomCountAtomType === atomCount
-          ? true
-          : false;
+        atomCount === undefined ? undefined : atomCountAtomType === atomCount;
 
       if (complete === false) {
         stateAtomTypeError.incomplete = true;

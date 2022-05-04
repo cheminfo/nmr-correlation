@@ -23,7 +23,7 @@ export function setProtonsCountFromData(
   const heavyAtomTypes: Array<string> = [];
   correlations.forEach((correlation) => {
     if (
-      correlation.pseudo === false &&
+      !correlation.pseudo &&
       correlation.atomType !== 'H' &&
       !heavyAtomTypes.includes(correlation.atomType)
     ) {

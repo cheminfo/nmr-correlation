@@ -24,7 +24,7 @@ export function setProtonsCountFromDEPT(
   const correlationsAtomType = getCorrelationsByAtomType(
     correlations,
     atomType,
-  ).filter((correlation) => correlation.pseudo === false);
+  ).filter((correlation) => !correlation.pseudo);
   const signalsDEPT90 = lodashGet(signalsDEPT, '90', [])
     .filter((signalDEPT90) => signalDEPT90.atomType === atomType)
     .map((signalDEPT90) => signalDEPT90.signal);

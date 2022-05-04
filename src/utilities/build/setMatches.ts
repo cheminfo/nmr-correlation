@@ -51,7 +51,7 @@ export function setMatches(correlations: Values): Values {
       (link) =>
         link.match.length === 0 &&
         link.experimentType !== '1d' &&
-        link.edited?.moved !== true,
+        !link.edited?.moved,
     );
     linksToRemove.forEach((link) => removeLink(correlation, link.id));
   });

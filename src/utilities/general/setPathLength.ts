@@ -3,7 +3,6 @@ import { FromTo } from 'cheminfo-types';
 import { Values } from '../../types/correlation/values';
 import { Signal2D } from '../../types/spectrum/Signal2D';
 
-
 import { findLinksBySignalID } from './findLinksBySignalID';
 
 export function setPathLength(

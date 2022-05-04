@@ -22,7 +22,7 @@ export function setProtonsCountFromEditedHSQC(
 ): Values {
   const correlationsAtomTypeHSQC = correlations.filter(
     (correlation) =>
-      correlation.pseudo === false && correlation.atomType === heavyAtomType,
+      !correlation.pseudo && correlation.atomType === heavyAtomType,
   );
   const signalsEditedHSQC = lodashGet(signals2D, 'hsqc', [])
     .filter(

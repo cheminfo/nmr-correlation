@@ -15,7 +15,7 @@ export function replacePseudoCorrelationsByEquivalences(
     );
     const validCorrelationsAtomType = correlationsAtomType.filter(
       (correlation) =>
-        correlation.pseudo === false ||
+        !correlation.pseudo ||
         correlation.equivalence > 1 ||
         hasLinks(correlation),
     );
@@ -26,7 +26,7 @@ export function replacePseudoCorrelationsByEquivalences(
 
     const pseudoCorrelationsAtomType: Values = correlationsAtomType.filter(
       (correlation) =>
-        correlation.pseudo === true &&
+        correlation.pseudo &&
         !validCorrelationsAtomType.some(
           (validCorrelation) => validCorrelation.id === correlation.id,
         ),

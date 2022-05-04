@@ -24,15 +24,14 @@ export * from './utilities/general/getLinkDim';
 export * from './utilities/general/isEditedHSQC';
 export * from './utilities/general/setPathLength';
 
-export type { Correlation } from "./types/correlation/correlation"
-export type { Link } from "./types/correlation/link"
-export type { Options } from "./types/correlation/options"
-export type { State } from "./types/correlation/state"
-export type { Values } from "./types/correlation/values"
-export type { CorrelationData } from "./types/spectrum/correlationData"
-export type { Tolerance } from "./types/correlation/tolerance"
-export type { Signal1D } from "./types/spectrum/Signal1D"
-export type { Signal2D } from "./types/spectrum/Signal2D"
-export type { Spectra } from "./types/spectrum/spectra"
-export type { Spectrum } from "./types/spectrum/spectrum"
-
+export type { Correlation } from './types/correlation/correlation';
+export type { Link } from './types/correlation/link';
+export type { Options } from './types/correlation/options';
+export type { State } from './types/correlation/state';
+export type { Values } from './types/correlation/values';
+export type { CorrelationData } from './types/spectrum/correlationData';
+export type { Tolerance } from './types/correlation/tolerance';
+export type { Signal1D } from './types/spectrum/Signal1D';
+export type { Signal2D } from './types/spectrum/Signal2D';
+export type { Spectra } from './types/spectrum/spectra';
+export type { Spectrum } from './types/spectrum/spectrum';
