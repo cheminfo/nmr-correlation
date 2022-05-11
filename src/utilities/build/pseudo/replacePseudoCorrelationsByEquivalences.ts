@@ -1,5 +1,7 @@
 import { Correlation } from '../../../types/correlation/correlation';
 import { Values } from '../../../types/correlation/values';
+import { hasLinks } from '../../correlation/hasLinks';
+import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
 
 export function replacePseudoCorrelationsByEquivalences(
   correlations: Values,
@@ -7,25 +9,41 @@ export function replacePseudoCorrelationsByEquivalences(
 ): Values {
   for (const atomType in atoms) {
     // remove pseudo correlations to be replaced by equivalences, starting at the end
-    const atomTypeEquivalencesCount = correlations.reduce(
-      (sum, correlation) =>
-        correlation.atomType === atomType && correlation.pseudo === false
-          ? sum + (correlation.equivalence - 1)
-          : sum,
+    const correlationsAtomType = getCorrelationsByAtomType(
+      correlations,
+      atomType,
+    );
+    const validCorrelationsAtomType = correlationsAtomType.filter(
+      (correlation) =>
+        correlation.pseudo === false ||
+        correlation.equivalence > 1 ||
+        hasLinks(correlation),
+    );
+    const atomTypeEquivalencesCount = validCorrelationsAtomType.reduce(
+      (sum, correlation) => sum + (correlation.equivalence - 1),
       0,
     );
-    const pseudoCorrelationsAtomType: Values = correlations.filter(
+
+    const pseudoCorrelationsAtomType: Values = correlationsAtomType.filter(
       (correlation) =>
-        correlation.atomType === atomType && correlation.pseudo === true,
+        correlation.pseudo === true &&
+        !validCorrelationsAtomType.some(
+          (validCorrelation) => validCorrelation.id === correlation.id,
+        ),
     );
 
-    for (let i = atomTypeEquivalencesCount - 1; i >= 0; i--) {
+    for (
+      let i = 0;
+      i <
+      correlationsAtomType.length -
+        (atoms[atomType] - atomTypeEquivalencesCount);
+      i++
+    ) {
       if (pseudoCorrelationsAtomType.length === 0) {
         break;
       }
-      const pseudoCorrelationToRemove:
-        | Correlation
-        | undefined = pseudoCorrelationsAtomType.pop();
+      const pseudoCorrelationToRemove: Correlation | undefined =
+        pseudoCorrelationsAtomType.pop();
 
       if (pseudoCorrelationToRemove) {
         correlations.splice(correlations.indexOf(pseudoCorrelationToRemove), 1);
