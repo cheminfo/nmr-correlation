@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://www.github.com/cheminfo/nmr-correlation/compare/v2.2.5...v2.3.0) (2022-05-11)
+
+
+### Features
+
+* allow setting of hetero atom equivalence ([#37](https://www.github.com/cheminfo/nmr-correlation/issues/37)) ([5f9cae2](https://www.github.com/cheminfo/nmr-correlation/commit/5f9cae2c6464901603450ec3eb35544bc0446579))
+
 ### [2.2.5](https://www.github.com/cheminfo/nmr-correlation/compare/v2.2.4...v2.2.5) (2022-02-25)
 
 
