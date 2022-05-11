@@ -84,5 +84,10 @@ export function checkPseudoCorrelations(
     }
   }
 
-  return correlations;
+  // filter out correlations with unknown atom types from previous molecular formula
+  return Object.keys(atoms).length > 0
+    ? correlations.filter((correlation) =>
+        Object.keys(atoms).includes(correlation.atomType),
+      )
+    : correlations;
 }
