@@ -20,15 +20,17 @@ export function checkPseudoCorrelations(
     if (correlationsAtomType.length > atoms[atomType]) {
       // remove pseudo correlations which are out of limit and not linked
       const pseudoCorrelationsAtomType = correlationsAtomType.filter(
-        (correlation) => correlation.pseudo === true && !hasLinks(correlation),
+        (correlation) =>
+          correlation.pseudo === true &&
+          correlation.equivalence === 1 &&
+          !hasLinks(correlation),
       );
       for (let i = correlationsAtomType.length - 1; i >= atoms[atomType]; i--) {
         if (pseudoCorrelationsAtomType.length === 0) {
           break;
         }
-        const pseudoCorrelationToRemove:
-          | Correlation
-          | undefined = pseudoCorrelationsAtomType.pop();
+        const pseudoCorrelationToRemove: Correlation | undefined =
+          pseudoCorrelationsAtomType.pop();
         if (pseudoCorrelationToRemove) {
           correlations.splice(
             correlations.indexOf(pseudoCorrelationToRemove),
@@ -40,7 +42,13 @@ export function checkPseudoCorrelations(
   }
   // check for deleted links and correct proton counts if no HSQC link exists
   for (const pseudoCorrelation of correlations) {
-    if (pseudoCorrelation.pseudo === false) continue;
+    if (
+      pseudoCorrelation.pseudo === false ||
+      pseudoCorrelation.equivalence > 1 ||
+      hasLinks(pseudoCorrelation)
+    ) {
+      continue;
+    }
     // remove wrong (old) match indices and empty links
     const linksToRemove: Array<Link> = [];
     const pseudoCorrelationIndex = getCorrelationIndex(
