@@ -14,12 +14,9 @@ import { setMatches } from './setMatches';
 import { sortCorrelations } from './sortCorrelations';
 
 /**
- * Builds the correlation data values from given input spectra.
- *
+ * Builds the correlation data values from given input spectra and options.
  * @param {Spectra} spectra
- * @param {string} mf
- * @param {Tolerance} tolerance
- * @param {Values} values
+ * @param {Options} options
  */
 export function buildValues(spectra: Spectra, options: Options): Values {
   const { tolerance = {}, mf = '', values: prevValues = [] } = options;
