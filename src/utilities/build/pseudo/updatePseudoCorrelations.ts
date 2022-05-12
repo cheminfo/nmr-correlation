@@ -5,6 +5,12 @@ import { addPseudoCorrelations } from './addPseudoCorrelations';
 import { checkPseudoCorrelations } from './checkPseudoCorrelations';
 import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences';
 
+/**
+ * Adds pseudo correlations if needed, checks for replacement
+ * by equivalent atoms and cleanup.
+ * @param {Values} correlations
+ * @param {string} mf
+ */
 export function updatePseudoCorrelations(
   correlations: Values,
   mf: string,
