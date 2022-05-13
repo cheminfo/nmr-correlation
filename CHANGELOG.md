@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.3.2](https://www.github.com/cheminfo/nmr-correlation/compare/v2.3.1...v2.3.2) (2022-05-13)
+
+
+### Bug Fixes
+
+* update tsconfig.json ([#42](https://www.github.com/cheminfo/nmr-correlation/issues/42)) ([46669e0](https://www.github.com/cheminfo/nmr-correlation/commit/46669e0620447bc900f5bb2203a707393e795da2))
+
 ### [2.3.1](https://www.github.com/cheminfo/nmr-correlation/compare/v2.3.0...v2.3.1) (2022-05-12)
 
 
