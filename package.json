@@ -12,12 +12,15 @@
   ],
   "scripts": {
     "build": "npm run tsc",
+    "check-types": "tsc --noEmit",
     "clean": "rimraf lib lib-esm",
-    "eslint": "eslint src --ext js,ts --cache",
+    "eslint": "eslint src",
     "eslint-fix": "npm run eslint -- --fix",
     "prepack": "npm run build",
-    "test": "npm run test-coverage && npm run eslint",
-    "test-coverage": "jest --coverage",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-only && npm run check-types && npm run eslint && npm run prettier",
+    "test-only": "jest --coverage",
     "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
     "tsc-cjs": "tsc --project tsconfig.cjs.json",
     "tsc-esm": "tsc --project tsconfig.esm.json"
@@ -33,19 +36,20 @@
   },
   "homepage": "https://github.com/cheminfo/nmr-correlation#readme",
   "devDependencies": {
-    "@types/jest": "^27.4.1",
-    "@types/lodash": "^4.14.178",
-    "eslint": "^8.9.0",
-    "eslint-config-cheminfo-typescript": "^10.3.0",
-    "jest": "^27.5.1",
-    "prettier": "^2.5.1",
+    "@types/jest": "^28.1.6",
+    "@types/lodash": "^4.14.182",
+    "eslint": "^8.21.0",
+    "eslint-config-cheminfo-typescript": "^11.0.1",
+    "jest": "^28.1.3",
+    "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "ts-jest": "^27.1.3",
-    "typescript": "^4.5.5"
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
   },
   "dependencies": {
-    "cheminfo-types": "^1.0.0",
+    "cheminfo-types": "^1.4.0",
     "lodash": "^4.17.21",
-    "nmr-processing": "^7.0.1"
+    "ml-matrix-peaks-finder": "^1.0.0",
+    "ml-peak-shape-generator": "^4.1.1"
   }
 }

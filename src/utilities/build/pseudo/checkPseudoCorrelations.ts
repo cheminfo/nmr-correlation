@@ -21,7 +21,7 @@ export function checkPseudoCorrelations(
       // remove pseudo correlations which are out of limit and not linked
       const pseudoCorrelationsAtomType = correlationsAtomType.filter(
         (correlation) =>
-          correlation.pseudo === true &&
+          correlation.pseudo &&
           correlation.equivalence === 1 &&
           !hasLinks(correlation),
       );
@@ -43,7 +43,7 @@ export function checkPseudoCorrelations(
   // check for deleted links and correct proton counts if no HSQC link exists
   for (const pseudoCorrelation of correlations) {
     if (
-      pseudoCorrelation.pseudo === false ||
+      !pseudoCorrelation.pseudo ||
       pseudoCorrelation.equivalence > 1 ||
       hasLinks(pseudoCorrelation)
     ) {

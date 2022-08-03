@@ -1,4 +1,3 @@
-
 import { Spectra } from '../types/spectrum/spectra';
 
 import { spectrum13C } from './spectrum13C';

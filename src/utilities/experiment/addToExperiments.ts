@@ -22,9 +22,9 @@ export function addToExperiments(
   checkAtomType: boolean,
   experimentKey: string,
 ): void {
-  const _experiments = (lodashGet(experiments, `${type}`, []) as Array<
-    Spectrum1D | Spectrum2D
-  >) // don't consider DEPT etc. here
+  const _experiments = (
+    lodashGet(experiments, `${type}`, []) as Array<Spectrum1D | Spectrum2D>
+  ) // don't consider DEPT etc. here
     .filter((_experiment) => {
       const hasValues =
         lodashGet(
@@ -32,7 +32,7 @@ export function addToExperiments(
           type.includes('1D') ? 'ranges.values' : 'zones.values',
           [],
         ).length > 0;
-      return checkAtomType === true
+      return checkAtomType
         ? getAtomTypeFromNucleus((_experiment as Spectrum1D).info.nucleus) ===
             experimentKey && hasValues
         : hasValues;

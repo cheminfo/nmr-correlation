@@ -71,15 +71,13 @@ export function setProtonsCount(
         // CH2
         correlation.protonsCount = [2];
       }
+    } else if (signals135.length > 0) {
+      // no signal match in both spectra
+      // qC
+      correlation.protonsCount = [0];
     } else {
-      if (signals135.length > 0) {
-        // no signal match in both spectra
-        // qC
-        correlation.protonsCount = [0];
-      } else {
-        // no information
-        correlation.protonsCount = [];
-      }
+      // no information
+      correlation.protonsCount = [];
     }
   }
 

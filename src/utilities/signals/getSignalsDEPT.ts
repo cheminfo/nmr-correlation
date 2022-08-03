@@ -25,16 +25,18 @@ export function getSignalsDEPT(
       experiments1DExtra[experimentType].forEach((_experimentDEPT) => {
         const experimentDEPT: Spectrum1D = _experimentDEPT as Spectrum1D;
         const _signals: Array<Experiment1DSignal> = [];
-        const match: Array<string> | null = experimentDEPT.info.pulseSequence.match(
-          /\d/g,
-        );
+        const match: Array<string> | null =
+          experimentDEPT.info.pulseSequence.match(/\d/g);
         if (match) {
           const mode = match.reduce((_mode, digit) => _mode + digit);
           const atomType = getAtomTypeFromNucleus(experimentDEPT.info.nucleus);
           const __signals = experimentDEPT.ranges.values
             .map((range) =>
               range.signals
-                .filter((signal) => signal.kind && allowedSignalKinds.includes(signal.kind))
+                .filter(
+                  (signal) =>
+                    signal.kind && allowedSignalKinds.includes(signal.kind),
+                )
                 .map((signal) => {
                   return { ...signal, sign: range.absolute > 0 ? 1 : -1 };
                 }),

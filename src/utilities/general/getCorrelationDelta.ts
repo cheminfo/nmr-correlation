@@ -1,4 +1,3 @@
-
 import { Correlation } from '../../types/correlation/correlation';
 
 import { getLinkDelta } from './getLinkDelta';

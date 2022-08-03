@@ -10,8 +10,8 @@ export function addSignal(
   link: Link,
   correlations: Values,
 ) {
-  // in case of no signal match -> add new signal from 2D
   if (matchedCorrelationIndices.length === 0) {
+    // in case of no signal match -> add new signal from 2D
     const newCorrelation = buildCorrelation({
       atomType,
     });
@@ -20,7 +20,7 @@ export function addSignal(
     const pseudoIndex = correlations.findIndex(
       (correlation) =>
         correlation.atomType === atomType &&
-        correlation.pseudo === true &&
+        correlation.pseudo &&
         !hasLinks(correlation),
     );
     if (pseudoIndex >= 0) {
@@ -28,10 +28,8 @@ export function addSignal(
     } else {
       correlations.push(newCorrelation);
     }
-  } else {
+  } else if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
     // if allowed then add links from 2D data in first match only
-    if (!containsLink(correlations[matchedCorrelationIndices[0]], link)) {
-      addLink(correlations[matchedCorrelationIndices[0]], link);
-    }
+    addLink(correlations[matchedCorrelationIndices[0]], link);
   }
 }

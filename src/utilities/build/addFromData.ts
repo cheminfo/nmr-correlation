@@ -25,20 +25,20 @@ export function addFromData(
 ): Values {
   // remove non-pseudo correlation objects without links
   correlations = correlations.filter(
-    (correlation) => correlation.link.length > 0 || correlation.pseudo === true,
+    (correlation) => correlation.link.length > 0 || correlation.pseudo,
   );
   // add from 1D data
   Object.keys(signals1D).forEach((atomType) => {
     signals1D[atomType].forEach((signal1D) => {
       const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
-        signal1D.signal.id || "",
+        signal1D.signal.id || '',
       );
       if (linkedCorrelations.length === 0) {
         const matchedCorrelationIndices = correlations
           .map((correlation, k) => {
             const correlationDelta = getCorrelationDelta(correlation);
-            return correlation.pseudo === false &&
+            return !correlation.pseudo &&
               correlation.atomType === atomType &&
               correlationDelta !== undefined &&
               checkMatch(
@@ -76,7 +76,7 @@ export function addFromData(
           const matchedCorrelationIndices = correlations
             .map((correlation, k) => {
               const correlationDelta = getCorrelationDelta(correlation);
-              return correlation.pseudo === false &&
+              return !correlation.pseudo &&
                 correlation.atomType === atomType &&
                 correlationDelta !== undefined &&
                 checkMatch(

@@ -17,9 +17,7 @@ export function updatePseudoCorrelations(
 ): Values {
   const atoms = getAtomCounts(mf);
   if (Object.keys(atoms).length === 0) {
-    correlations = correlations.filter(
-      (correlation) => correlation.pseudo === false,
-    );
+    correlations = correlations.filter((correlation) => !correlation.pseudo);
   }
   // add pseudo correlations
   correlations = addPseudoCorrelations(correlations, atoms);

@@ -10,8 +10,8 @@ export function hasAttachmentAtomType(
   correlation: Correlation,
   atomType: string,
 ): boolean {
-  return correlation.attachment[atomType] &&
-    correlation.attachment[atomType].length > 0
-    ? true
-    : false;
+  return Boolean(
+    correlation.attachment[atomType] &&
+      correlation.attachment[atomType].length > 0,
+  );
 }

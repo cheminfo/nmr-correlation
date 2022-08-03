@@ -36,8 +36,8 @@ export function sortCorrelations(correlations: Values): Values {
 
   const compareCorrelations = (corr1: Correlation, corr2: Correlation) => {
     if (
-      corr1.pseudo === false &&
-      corr2.pseudo === false &&
+      !corr1.pseudo &&
+      !corr2.pseudo &&
       corr1.link.length > 0 &&
       corr2.link.length > 0
     ) {
@@ -51,10 +51,10 @@ export function sortCorrelations(correlations: Values): Values {
         }
       }
     }
-    if (corr1.pseudo === false && corr2.pseudo === true) {
+    if (!corr1.pseudo && corr2.pseudo) {
       return -1;
     }
-    if (corr1.pseudo === true && corr2.pseudo === false) {
+    if (corr1.pseudo && !corr2.pseudo) {
       return 1;
     }
     if (corr1.label.origin < corr2.label.origin) {
