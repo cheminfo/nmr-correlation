@@ -15,7 +15,7 @@ Another feature is to determine the number of attached protons by using informat
 
 ### Spectra
 
-- array of 1D, 2D, DEPT 90/135 spectra, e.g. obtained by [nmr-parser](https://github.com/cheminfo/nmr-parser)
+- array of 1D, 2D, DEPT 90/135 spectra, e.g. obtained by [nmr-load-save](https://github.com/cheminfo/nmr-load-save)
 - each spectrum has to be processed, e.g. via [nmr-processing](https://github.com/cheminfo/nmr-processing)
 - declared type for spectra is
 
