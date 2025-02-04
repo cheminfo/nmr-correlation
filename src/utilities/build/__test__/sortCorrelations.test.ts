@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { sortCorrelations } from '../sortCorrelations';
 

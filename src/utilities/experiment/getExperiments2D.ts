@@ -1,5 +1,3 @@
-import lodashGet from 'lodash/get';
-
 import type { Experiments } from '../../types/experiment/experiments';
 import type { ExperimentsType } from '../../types/experiment/experimentsType';
 
@@ -12,11 +10,12 @@ import { addToExperiments } from './addToExperiments';
  */
 export function getExperiments2D(experiments: Experiments): ExperimentsType {
   const _experiments2D: ExperimentsType = {};
-  for (const experimentType of Object.keys(lodashGet(experiments, '2D', {}))) {
+  for (const experimentType of Object.keys(experiments['2D'] ?? {})) {
     addToExperiments(
       experiments,
       _experiments2D,
-      `2D.${experimentType}`,
+      '2D',
+      experimentType,
       false,
       experimentType,
     );

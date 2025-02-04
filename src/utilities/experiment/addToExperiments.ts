@@ -1,9 +1,6 @@
-import lodashGet from 'lodash/get';
-
 import type { Experiments } from '../../types/experiment/experiments';
 import type { ExperimentsType } from '../../types/experiment/experimentsType';
 import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
-import type { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 /**
@@ -11,27 +8,24 @@ import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
  *
  * @param {Experiments} experiments
  * @param {ExperimentsType} experimentsType
- * @param {string} type
+ * @param {string} type1
+ * @param {string} type2
  * @param {boolean} checkAtomType
  * @param {string} experimentKey
  */
 export function addToExperiments(
   experiments: Experiments,
   experimentsType: ExperimentsType,
-  type: string,
+  type1: string,
+  type2: string,
   checkAtomType: boolean,
   experimentKey: string,
 ): void {
-  const _experiments = (
-    lodashGet(experiments, type, []) as Array<Spectrum1D | Spectrum2D>
-  ) // don't consider DEPT etc. here
+  const _experiments = (experiments[type1]?.[type2] ?? [])
+    // don't consider DEPT etc. here
     .filter((_experiment) => {
-      const hasValues =
-        lodashGet(
-          _experiment,
-          type.includes('1D') ? 'ranges.values' : 'zones.values',
-          [],
-        ).length > 0;
+      const rangesOrZones = _experiment[type1 === '1D' ? 'ranges' : 'zones'];
+      const hasValues = (rangesOrZones?.values ?? []).length > 0;
       return checkAtomType
         ? getAtomTypeFromNucleus((_experiment as Spectrum1D).info.nucleus) ===
             experimentKey && hasValues

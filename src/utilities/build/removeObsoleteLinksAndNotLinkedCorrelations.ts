@@ -1,5 +1,3 @@
-import lodashGet from 'lodash/get';
-
 import { removeLink } from '../..';
 import type { Values } from '../../types/correlation/values';
 import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
@@ -26,7 +24,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
       if (link.experimentType === '1d') {
         // search in 1D data
         if (
-          lodashGet(signals1D, link.atomType[0], []).some(
+          (signals1D[link.atomType[0]] ?? []).some(
             (signal1D) => signal1D.signal.id === link.signal.id,
           )
         ) {
@@ -39,7 +37,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
           removeLink(correlation, link.id);
         }
       } else if (
-        lodashGet(signals2D, link.experimentType, []).some(
+        (signals2D[link.experimentType] ?? []).some(
           (signal2D) => signal2D.signal.id === link.signal.id,
         )
       ) {

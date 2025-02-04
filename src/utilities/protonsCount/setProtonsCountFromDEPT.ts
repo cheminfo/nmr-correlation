@@ -1,5 +1,3 @@
-import lodashGet from 'lodash/get';
-
 import type { Tolerance } from '../../types/correlation/tolerance';
 import type { Values } from '../../types/correlation/values';
 import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
@@ -25,10 +23,10 @@ export function setProtonsCountFromDEPT(
     correlations,
     atomType,
   ).filter((correlation) => !correlation.pseudo);
-  const signalsDEPT90 = lodashGet(signalsDEPT, '90', [])
+  const signalsDEPT90 = (signalsDEPT['90'] ?? [])
     .filter((signalDEPT90) => signalDEPT90.atomType === atomType)
     .map((signalDEPT90) => signalDEPT90.signal);
-  const signalsDEPT135 = lodashGet(signalsDEPT, '135', [])
+  const signalsDEPT135 = (signalsDEPT['135'] ?? [])
     .filter((signalDEPT135) => signalDEPT135.atomType === atomType)
     .map((signalDEPT135) => signalDEPT135.signal);
 

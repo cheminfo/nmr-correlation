@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { getAtomCounts } from '../getAtomCounts';
 
 describe('getAtomCounts', () => {
