@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Correlation, State } from '../../../types/correlation';
-import { buildCorrelation } from '../../correlation/buildCorrelation';
-import { buildState } from '../buildState';
+import type { Correlation, State } from '../../types/correlation';
+import { buildCorrelation } from '../correlation/buildCorrelation';
+
+import { buildState } from './buildState';
 
 describe('buildState', () => {
   it('test 1: no values, no mf', () => {
