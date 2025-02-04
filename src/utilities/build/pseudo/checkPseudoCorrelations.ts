@@ -58,8 +58,7 @@ export function checkPseudoCorrelations(
     for (const pseudoLink of pseudoCorrelation.link) {
       for (const matchIndex of pseudoLink.match) {
         if (
-          !correlations[matchIndex] ||
-          !correlations[matchIndex].link.some((_link) =>
+          !correlations[matchIndex]?.link.some((_link) =>
             _link.match.includes(pseudoCorrelationIndex),
           )
         ) {
