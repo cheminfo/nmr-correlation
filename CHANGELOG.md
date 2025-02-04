@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.3.4](https://github.com/cheminfo/nmr-correlation/compare/v2.3.3...v2.3.4) (2025-02-04)
+
+
+### Bug Fixes
+
+* do not publish tests ([bddfc42](https://github.com/cheminfo/nmr-correlation/commit/bddfc42f0a201c3cd41f7e23d217d908bf68737b))
+* remove lodash ([5e423a0](https://github.com/cheminfo/nmr-correlation/commit/5e423a006df5bfcab8f7bb07a9d5e3c12cdca44c))
+* types ([7bbd500](https://github.com/cheminfo/nmr-correlation/commit/7bbd5009a4ecddcd43e487c3260d63c965c66cf2))
+
 ## [2.3.3](https://github.com/cheminfo/nmr-correlation/compare/v2.3.2...v2.3.3) (2022-08-03)
 
 

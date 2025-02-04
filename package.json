@@ -1,6 +1,6 @@
 {
   "name": "nmr-correlation",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Build and manipulation of correlations from 1D and 2D NMR data",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
