@@ -6,11 +6,11 @@ export function findLinksBySignalID(
   signalID: string,
 ): Link[] {
   let links: Link[] = [];
-  correlations.forEach((_correlation) => {
+  for (const _correlation of correlations) {
     links = links.concat(
       _correlation.link.filter((_link) => _link.signal.id === signalID),
     );
-  });
+  }
 
   return links;
 }

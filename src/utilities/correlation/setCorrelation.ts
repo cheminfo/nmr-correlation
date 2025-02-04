@@ -19,7 +19,7 @@ export function setCorrelation(
   const correlationIndex = _values.findIndex(
     (_correlation) => _correlation.id === id,
   );
-  if (correlationIndex >= 0) {
+  if (correlationIndex !== -1) {
     _values.splice(correlationIndex, 1, buildCorrelation({ ...correlation }));
   } else {
     _values.push(correlation);

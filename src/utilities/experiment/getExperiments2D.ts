@@ -8,11 +8,11 @@ import { addToExperiments } from './addToExperiments';
 /**
  * Get 2D experiments containing zones.
  *
- * @param {Spectra} spectraData
+ * @param {Spectra} experiments
  */
 export function getExperiments2D(experiments: Experiments): ExperimentsType {
   const _experiments2D: ExperimentsType = {};
-  Object.keys(lodashGet(experiments, '2D', {})).forEach((experimentType) => {
+  for (const experimentType of Object.keys(lodashGet(experiments, '2D', {}))) {
     addToExperiments(
       experiments,
       _experiments2D,
@@ -20,7 +20,7 @@ export function getExperiments2D(experiments: Experiments): ExperimentsType {
       false,
       experimentType,
     );
-  });
+  }
 
   return _experiments2D;
 }

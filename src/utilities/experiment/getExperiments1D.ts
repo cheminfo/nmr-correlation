@@ -14,11 +14,11 @@ import { addToExperiments } from './addToExperiments';
  */
 export function getExperiments1D(experiments: Experiments): ExperimentsType {
   const _experiments1D: ExperimentsType = {};
-  (lodashGet(experiments, '1D.1d', []) as Spectrum1D[])
-    .map((experiment) => getAtomTypeFromNucleus(experiment.info.nucleus))
-    .forEach((atomType) => {
-      addToExperiments(experiments, _experiments1D, '1D.1d', true, atomType);
-    });
+  for (const atomType of (
+    lodashGet(experiments, '1D.1d', []) as Spectrum1D[]
+  ).map((experiment) => getAtomTypeFromNucleus(experiment.info.nucleus))) {
+    addToExperiments(experiments, _experiments1D, '1D.1d', true, atomType);
+  }
 
   return _experiments1D;
 }

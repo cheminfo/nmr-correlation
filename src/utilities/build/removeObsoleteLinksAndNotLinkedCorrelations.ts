@@ -21,7 +21,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
     (correlation) => !correlation.pseudo,
   );
   const removeList = _correlations.slice();
-  _correlations.forEach((correlation) => {
+  for (const correlation of _correlations) {
     for (const link of correlation.link) {
       if (link.experimentType === '1d') {
         // search in 1D data
@@ -31,7 +31,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
           )
         ) {
           const index = removeList.indexOf(correlation);
-          if (index >= 0) {
+          if (index !== -1) {
             removeList.splice(index, 1);
           }
         } else if (!link.pseudo) {
@@ -45,7 +45,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
       ) {
         // search in 2D data
         const index = removeList.indexOf(correlation);
-        if (index >= 0) {
+        if (index !== -1) {
           removeList.splice(index, 1);
         }
       } else if (!link.pseudo) {
@@ -53,14 +53,14 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
         removeLink(correlation, link.id);
       }
     }
-  });
+  }
 
-  removeList.forEach((correlation) => {
+  for (const correlation of removeList) {
     const index = correlations.indexOf(correlation); // in case we already removed previously
-    if (index >= 0) {
+    if (index !== -1) {
       correlations.splice(index, 1);
     }
-  });
+  }
 
   return correlations;
 }

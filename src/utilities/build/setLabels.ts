@@ -9,7 +9,7 @@ import type { Values } from '../../types/correlation/values';
  */
 export function setLabels(correlations: Values): Values {
   const atomTypeCounts: Record<string, number> = {};
-  correlations.forEach((correlation) => {
+  for (const correlation of correlations) {
     if (!lodashGet(atomTypeCounts, correlation.atomType, false)) {
       atomTypeCounts[correlation.atomType] = 0;
     }
@@ -17,7 +17,7 @@ export function setLabels(correlations: Values): Values {
     correlation.label.origin = `${correlation.atomType}${
       atomTypeCounts[correlation.atomType]
     }`;
-  });
+  }
 
   return correlations;
 }

@@ -2,11 +2,11 @@ import { checkMatch } from '../checkMatch';
 
 describe('checkSignalMatch', () => {
   it('no tolerance, same values', () => {
-    expect(checkMatch(1.2, 1.2, 0.0)).toBe(true);
+    expect(checkMatch(1.2, 1.2, 0)).toBe(true);
   });
 
   it('no tolerance, different values', () => {
-    expect(checkMatch(1.21, 1.2, 0.0)).toBe(false);
+    expect(checkMatch(1.21, 1.2, 0)).toBe(false);
   });
 
   it('allow tolerance, same values', () => {

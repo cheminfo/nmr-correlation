@@ -20,12 +20,12 @@ export function getSignals2D(
 ): Experiment2DSignals {
   // store valid signals from 2D experiments
   const _signals2D: Experiment2DSignals = {};
-  Object.keys(experiments2D).forEach((experimentType) => {
+  for (const experimentType of Object.keys(experiments2D)) {
     const _signals: Experiment2DSignal[] = [];
     // for now we use the first occurring spectrum only, for each experiment type (current loop) and nuclei combination
     const indices: number[] = [];
     const nuclei: string[][] = [];
-    experiments2D[experimentType].forEach((_experiment, i) => {
+    for (const [i, _experiment] of experiments2D[experimentType].entries()) {
       const experiment: Spectrum2D = _experiment as Spectrum2D;
       if (
         !nuclei.some((_nuclei) =>
@@ -35,27 +35,25 @@ export function getSignals2D(
         nuclei.push(experiment.info.nucleus);
         indices.push(i);
       }
-    });
-    indices.forEach((index) => {
+    }
+    for (const index of indices) {
       const spectrum2D: Spectrum2D = experiments2D[experimentType][
         index
       ] as Spectrum2D;
       const atomType = spectrum2D.info.nucleus.map((nucleus) =>
         getAtomTypeFromNucleus(nucleus),
       );
-      const __signals = spectrum2D.zones.values
-        .map((zone) =>
-          zone.signals.filter(
-            (signal) => signal.kind && allowedSignalKinds.includes(signal.kind),
-          ),
-        )
-        .flat();
-      __signals.forEach((signal) => {
+      const __signals = spectrum2D.zones.values.flatMap((zone) =>
+        zone.signals.filter(
+          (signal) => signal.kind && allowedSignalKinds.includes(signal.kind),
+        ),
+      );
+      for (const signal of __signals) {
         if (
           !_signals.some(
             (_signal) =>
-              checkMatch(_signal.signal.x.delta, signal.x.delta, 0.0) &&
-              checkMatch(_signal.signal.y.delta, signal.y.delta, 0.0),
+              checkMatch(_signal.signal.x.delta, signal.x.delta, 0) &&
+              checkMatch(_signal.signal.y.delta, signal.y.delta, 0),
           )
         ) {
           _signals.push({
@@ -74,11 +72,11 @@ export function getSignals2D(
             },
           });
         }
-      });
-    });
+      }
+    }
 
     _signals2D[experimentType] = _signals;
-  });
+  }
 
   return _signals2D;
 }

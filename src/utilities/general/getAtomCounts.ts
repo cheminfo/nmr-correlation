@@ -8,7 +8,7 @@ export function getAtomCounts(mf: string): Record<string, number> {
   const counts: Record<string, number> = {};
 
   if (elements) {
-    elements.forEach((elem) => {
+    for (const elem of elements) {
       const regex = new RegExp(`(${elem}\\d+)`, 'g');
       const match = regex.exec(mf);
       let count = 1;
@@ -16,7 +16,7 @@ export function getAtomCounts(mf: string): Record<string, number> {
         count = Number(match[0].split(elem)[1]);
       }
       counts[elem] = count;
-    });
+    }
   }
 
   return counts;

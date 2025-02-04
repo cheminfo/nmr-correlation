@@ -23,7 +23,7 @@ export function addSignal(
         correlation.pseudo &&
         !hasLinks(correlation),
     );
-    if (pseudoIndex >= 0) {
+    if (pseudoIndex !== -1) {
       correlations[pseudoIndex] = newCorrelation;
     } else {
       correlations.push(newCorrelation);
