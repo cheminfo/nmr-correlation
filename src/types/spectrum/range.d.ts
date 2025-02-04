@@ -1,9 +1,9 @@
-import { Signal1D } from './Signal1D';
+import type { Signal1D } from './Signal1D';
 
 export interface Range {
   id: string;
   absolute: number;
   integration: number;
   kind: string;
-  signals: Array<Signal1D>;
+  signals: Signal1D[];
 }

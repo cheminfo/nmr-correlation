@@ -1,3 +1,1 @@
-export interface Tolerance {
-  [atomType: string]: number;
-}
+export type Tolerance = Record<string, number>;

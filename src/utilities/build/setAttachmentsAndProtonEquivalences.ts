@@ -1,4 +1,4 @@
-import { Values } from '../../types/correlation/values';
+import type { Values } from '../../types/correlation/values';
 import { addAttachment } from '../correlation/addAttachment';
 import { hasAttachmentAtomType } from '../correlation/hasAttachmentAtomType';
 import { removeAttachments } from '../correlation/removeAttachments';
@@ -24,7 +24,7 @@ export function setAttachmentsAndProtonEquivalences(
 
     for (const link of linksFiltered) {
       const otherAtomType = link.atomType[link.axis === 'x' ? 1 : 0];
-      for (let matchIndex of link.match) {
+      for (const matchIndex of link.match) {
         addAttachment(correlation, otherAtomType, matchIndex);
       }
     }

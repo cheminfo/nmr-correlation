@@ -1,6 +1,6 @@
-import { Signal1D } from '../spectrum/Signal1D';
+import type { Signal1D } from '../spectrum/Signal1D';
 
-import { ExperimentSignal } from './experimentSignal';
+import type { ExperimentSignal } from './experimentSignal';
 
 export interface Experiment1DSignal extends ExperimentSignal {
   atomType: string;

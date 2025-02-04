@@ -1,10 +1,10 @@
-import { Values } from '../../../types/correlation/values';
+import type { Values } from '../../../types/correlation/values';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
 
 export function addPseudoCorrelations(
   correlations: Values,
-  atoms: { [atomType: string]: number },
+  atoms: Record<string, number>,
 ): Values {
   for (const atomType in atoms) {
     const atomTypeCount = getCorrelationsByAtomType(

@@ -1,3 +1,1 @@
-export interface StateAtomTypeError {
-  [errorKey: string]: boolean | Array<number>;
-}
+export type StateAtomTypeError = Record<string, boolean | number[]>;

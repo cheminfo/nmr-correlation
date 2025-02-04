@@ -1,14 +1,14 @@
-import { Signal1D } from '../spectrum/Signal1D';
-import { Signal2D } from '../spectrum/Signal2D';
+import type { Signal1D } from '../spectrum/Signal1D';
+import type { Signal2D } from '../spectrum/Signal2D';
 
-import { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
+import type { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
 
 export interface LinkOptions extends CorrelationAndLinkOptions {
-  atomType?: Array<string>;
+  atomType?: string[];
   experimentType?: string;
   experimentID?: string;
   signal?: Signal1D | Signal2D;
   axis?: string;
-  match?: Array<number>;
+  match?: number[];
   experimentLabel?: string;
 }

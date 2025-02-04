@@ -1,4 +1,4 @@
-import { Correlation } from '../../types/correlation/correlation';
+import type { Correlation } from '../../types/correlation/correlation';
 
 import { addAttachmentAtomType } from './addAttachmentAtomType';
 
@@ -12,7 +12,7 @@ import { addAttachmentAtomType } from './addAttachmentAtomType';
 export function setAttachments(
   correlation: Correlation,
   atomType: string,
-  attachments: Array<number>,
+  attachments: number[],
 ): Correlation {
   addAttachmentAtomType(correlation, atomType);
   correlation.attachment[atomType] = attachments;

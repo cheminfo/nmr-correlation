@@ -1,5 +1,5 @@
-import { Info } from './info';
+import type { Info } from './info';
 
 export interface Info2D extends Info {
-  nucleus: Array<string>;
+  nucleus: string[];
 }

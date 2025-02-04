@@ -1,4 +1,4 @@
-import { StateAtomTypeError } from './stateAtomTypeError';
+import type { StateAtomTypeError } from './stateAtomTypeError';
 
 export interface StateAtomType {
   current: number;

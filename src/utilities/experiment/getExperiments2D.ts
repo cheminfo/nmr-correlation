@@ -1,7 +1,7 @@
 import lodashGet from 'lodash/get';
 
-import { Experiments } from '../../types/experiment/experiments';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Experiments } from '../../types/experiment/experiments';
+import type { ExperimentsType } from '../../types/experiment/experimentsType';
 
 import { addToExperiments } from './addToExperiments';
 

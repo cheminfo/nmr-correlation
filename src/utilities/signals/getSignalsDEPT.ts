@@ -1,10 +1,10 @@
 import lodashCloneDeep from 'lodash/cloneDeep';
 
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import type { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
+import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import type { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
@@ -24,8 +24,8 @@ export function getSignalsDEPT(
     .forEach((experimentType) =>
       experiments1DExtra[experimentType].forEach((_experimentDEPT) => {
         const experimentDEPT: Spectrum1D = _experimentDEPT as Spectrum1D;
-        const _signals: Array<Experiment1DSignal> = [];
-        const match: Array<string> | null =
+        const _signals: Experiment1DSignal[] = [];
+        const match: string[] | null =
           experimentDEPT.info.pulseSequence.match(/\d/g);
         if (match) {
           const mode = match.reduce((_mode, digit) => _mode + digit);

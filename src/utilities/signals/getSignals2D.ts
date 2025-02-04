@@ -2,10 +2,10 @@ import lodashCloneDeep from 'lodash/cloneDeep';
 import lodashIsEqual from 'lodash/isEqual';
 
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
-import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Spectrum2D } from '../../types/spectrum/spectrum2D';
+import type { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
+import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import type { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { isEditedHSQC } from '../general/isEditedHSQC';
@@ -21,10 +21,10 @@ export function getSignals2D(
   // store valid signals from 2D experiments
   const _signals2D: Experiment2DSignals = {};
   Object.keys(experiments2D).forEach((experimentType) => {
-    const _signals: Array<Experiment2DSignal> = [];
+    const _signals: Experiment2DSignal[] = [];
     // for now we use the first occurring spectrum only, for each experiment type (current loop) and nuclei combination
-    const indices: Array<number> = [];
-    const nuclei: Array<Array<string>> = [];
+    const indices: number[] = [];
+    const nuclei: string[][] = [];
     experiments2D[experimentType].forEach((_experiment, i) => {
       const experiment: Spectrum2D = _experiment as Spectrum2D;
       if (

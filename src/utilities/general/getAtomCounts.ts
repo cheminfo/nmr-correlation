@@ -3,9 +3,9 @@
  *
  * @param {string} mf
  */
-export function getAtomCounts(mf: string): { [atomType: string]: number } {
-  const elements: Array<string> | null = mf ? mf.match(/[A-Z][a-z]{0,1}/g) : [];
-  const counts: { [atomType: string]: number } = {};
+export function getAtomCounts(mf: string): Record<string, number> {
+  const elements: string[] | null = mf ? mf.match(/[A-Z][a-z]{0,1}/g) : [];
+  const counts: Record<string, number> = {};
 
   if (elements) {
     elements.forEach((elem) => {

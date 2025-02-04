@@ -1,5 +1,5 @@
-import { Correlation } from '../../types/correlation/correlation';
-import { Values } from '../../types/correlation/values';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { Values } from '../../types/correlation/values';
 
 import { getLabel } from './getLabel';
 import { sortLabels } from './sortLabels';
@@ -8,7 +8,7 @@ export function getLabels(
   correlations: Values,
   correlation: Correlation,
   experimentType: string,
-): Array<string> {
+): string[] {
   const labels = correlation.link
     .filter((link) => link.experimentType === experimentType)
     .map((link) =>

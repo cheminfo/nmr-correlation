@@ -1,5 +1,5 @@
-import { Correlation } from '../../types/correlation/correlation';
-import { CorrelationData } from '../../types/correlation/correlationData';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { CorrelationData } from '../../types/correlation/correlationData';
 
 import { buildCorrelation } from './buildCorrelation';
 

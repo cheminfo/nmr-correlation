@@ -1,13 +1,13 @@
-import { Signal1D } from '../spectrum/Signal1D';
-import { Signal2D } from '../spectrum/Signal2D';
+import type { Signal1D } from '../spectrum/Signal1D';
+import type { Signal2D } from '../spectrum/Signal2D';
 
-import { CorrelationAndLinkFields } from './correlationAndLinkFields';
+import type { CorrelationAndLinkFields } from './correlationAndLinkFields';
 
 export interface Link extends CorrelationAndLinkFields {
-  atomType: Array<string>;
+  atomType: string[];
   signal: Signal1D | Signal2D;
   axis: string | undefined;
-  match: Array<number>;
+  match: number[];
   experimentLabel: string;
   experimentType: string;
   experimentID: string;

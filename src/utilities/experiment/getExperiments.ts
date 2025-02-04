@@ -1,5 +1,5 @@
-import { Experiments } from '../../types/experiment/experiments';
-import { Spectra } from '../../types/spectrum/spectra';
+import type { Experiments } from '../../types/experiment/experiments';
+import type { Spectra } from '../../types/spectrum/spectra';
 
 /**
  * Get all different experiments from spectra data.
@@ -16,10 +16,10 @@ export function getExperiments(spectraData: Spectra): Experiments {
       experiments[`${spectrum.info.dimension}D`] = {};
     }
     const experiment = spectrum.info.experiment;
-    if (!experiments[`${spectrum.info.dimension}D`][`${experiment}`]) {
-      experiments[`${spectrum.info.dimension}D`][`${experiment}`] = [];
+    if (!experiments[`${spectrum.info.dimension}D`][experiment]) {
+      experiments[`${spectrum.info.dimension}D`][experiment] = [];
     }
-    experiments[`${spectrum.info.dimension}D`][`${experiment}`].push(spectrum);
+    experiments[`${spectrum.info.dimension}D`][experiment].push(spectrum);
   }
 
   return experiments;

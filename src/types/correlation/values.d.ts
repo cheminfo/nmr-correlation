@@ -1,3 +1,3 @@
-import { Correlation } from './correlation';
+import type { Correlation } from './correlation';
 
-export type Values = Array<Correlation>;
+export type Values = Correlation[];

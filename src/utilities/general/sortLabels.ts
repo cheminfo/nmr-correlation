@@ -1,4 +1,4 @@
-export function sortLabels(labels: Array<string>): Array<string> {
+export function sortLabels(labels: string[]): string[] {
   return labels.sort((a, b) =>
     Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) < 0
       ? -1

@@ -1,8 +1,8 @@
 import lodashGet from 'lodash/get';
 
-import { Tolerance } from '../../types/correlation/tolerance';
-import { Values } from '../../types/correlation/values';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import type { Tolerance } from '../../types/correlation/tolerance';
+import type { Values } from '../../types/correlation/values';
+import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 
 import { setProtonsCount } from './setProtonsCount';

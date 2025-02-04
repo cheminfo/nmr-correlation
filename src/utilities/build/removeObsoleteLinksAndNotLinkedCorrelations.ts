@@ -1,9 +1,9 @@
 import lodashGet from 'lodash/get';
 
 import { removeLink } from '../..';
-import { Values } from '../../types/correlation/values';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import type { Values } from '../../types/correlation/values';
+import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
 
 /**
  * Removes non-pseudo correlations which signal id can not be found or have no links anymore.
@@ -39,7 +39,7 @@ export function removeObsoleteLinksAndNotLinkedCorrelations(
           removeLink(correlation, link.id);
         }
       } else if (
-        lodashGet(signals2D, `${link.experimentType}`, []).some(
+        lodashGet(signals2D, link.experimentType, []).some(
           (signal2D) => signal2D.signal.id === link.signal.id,
         )
       ) {

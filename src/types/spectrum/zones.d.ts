@@ -1,6 +1,6 @@
-import { Zone } from './zone';
+import type { Zone } from './zone';
 
 export interface Zones {
-  values: Array<Zone>;
+  values: Zone[];
   options?: any;
 }

@@ -1,4 +1,4 @@
-import { Values } from '../../../types/correlation/values';
+import type { Values } from '../../../types/correlation/values';
 import { getAtomCounts } from '../../general/getAtomCounts';
 
 import { addPseudoCorrelations } from './addPseudoCorrelations';
