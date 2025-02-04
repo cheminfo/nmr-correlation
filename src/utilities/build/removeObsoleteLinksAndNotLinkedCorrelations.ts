@@ -1,9 +1,9 @@
-import { removeLink } from '../..';
 import type { Values } from '../../types/correlation';
 import type {
   Experiment1DSignals,
   Experiment2DSignals,
 } from '../../types/experiment';
+import { removeLink } from '../correlation/removeLink';
 
 /**
  * Removes non-pseudo correlations which signal id can not be found or have no links anymore.

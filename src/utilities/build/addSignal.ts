@@ -1,5 +1,6 @@
-import { addLink, buildCorrelation } from '../..';
 import type { Link, Values } from '../../types/correlation';
+import { addLink } from '../correlation/addLink';
+import { buildCorrelation } from '../correlation/buildCorrelation';
 import { containsLink } from '../correlation/containsLink';
 import { hasLinks } from '../correlation/hasLinks';
 
