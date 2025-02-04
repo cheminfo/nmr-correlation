@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.5](https://github.com/cheminfo/nmr-correlation/compare/v2.3.4...v2.3.5) (2025-02-04)
+
+
+### Bug Fixes
+
+* remove circular dependencies ([#48](https://github.com/cheminfo/nmr-correlation/issues/48)) ([738c8a7](https://github.com/cheminfo/nmr-correlation/commit/738c8a765ad7ee1bbeac3c610f965441d866049b))
+
 ## [2.3.4](https://github.com/cheminfo/nmr-correlation/compare/v2.3.3...v2.3.4) (2025-02-04)
 
 
