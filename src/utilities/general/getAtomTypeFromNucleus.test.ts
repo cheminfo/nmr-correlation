@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { getAtomTypeFromNucleus } from '../getAtomTypeFromNucleus';
+import { getAtomTypeFromNucleus } from './getAtomTypeFromNucleus';
 
 describe('getAtomTypeFromNucleus', () => {
   it('empty', () => {

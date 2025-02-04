@@ -1,18 +1,19 @@
 import { describe, expect, it } from 'vitest';
 
-import { spectraDataSet1 } from '../../data/spectraDataSet1';
-import { spectraDataSet2 } from '../../data/spectraDataSet2';
-import { spectrumEditedHSQC } from '../../data/spectrumEditedHSQC';
+import { spectraDataSet1 } from '../data/spectraDataSet1';
+import { spectraDataSet2 } from '../data/spectraDataSet2';
+import { spectrumEditedHSQC } from '../data/spectrumEditedHSQC';
 import type {
   Correlation,
   CorrelationData,
   Link,
   Options,
   State,
-} from '../../types/correlation';
-import { buildCorrelation } from '../../utilities/correlation/buildCorrelation';
-import { buildLink } from '../../utilities/correlation/buildLink';
-import { buildCorrelationData } from '../buildCorrelationData';
+} from '../types/correlation';
+import { buildCorrelation } from '../utilities/correlation/buildCorrelation';
+import { buildLink } from '../utilities/correlation/buildLink';
+
+import { buildCorrelationData } from './buildCorrelationData';
 
 describe('buildCorrelationData', () => {
   const options: Options = { tolerance: { C: 0.25, H: 0.05 } };

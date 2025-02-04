@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Spectrum2D } from '../../../types/spectrum';
-import { isEditedHSQC } from '../isEditedHSQC';
+import type { Spectrum2D } from '../../types/spectrum';
+
+import { isEditedHSQC } from './isEditedHSQC';
 
 describe('isEditedHSQC', () => {
   const spectrum1: Spectrum2D = {

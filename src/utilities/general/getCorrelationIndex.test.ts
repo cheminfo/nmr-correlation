@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Correlation, Values } from '../../../types/correlation';
-import { buildCorrelation } from '../../correlation/buildCorrelation';
-import { getCorrelationIndex } from '../getCorrelationIndex';
+import type { Correlation, Values } from '../../types/correlation';
+import { buildCorrelation } from '../correlation/buildCorrelation';
+
+import { getCorrelationIndex } from './getCorrelationIndex';
 
 describe('getCorrelationIndex', () => {
   const correlation1: Correlation = buildCorrelation({ id: 'id1' });

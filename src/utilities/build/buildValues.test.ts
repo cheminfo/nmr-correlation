@@ -1,10 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { spectraDataSet1 } from '../../../data/spectraDataSet1';
-import type { Options, Tolerance, Values } from '../../../types/correlation';
-import type { Spectra } from '../../../types/spectrum';
-import { buildCorrelation } from '../../correlation/buildCorrelation';
-import { buildValues } from '../buildValues';
+import { spectraDataSet1 } from '../../data/spectraDataSet1';
+import type { Options, Tolerance, Values } from '../../types/correlation';
+import type { Spectra } from '../../types/spectrum';
+import { buildCorrelation } from '../correlation/buildCorrelation';
+
+import { buildValues } from './buildValues';
 
 describe('buildValues', () => {
   it('test 1, no values', () => {
