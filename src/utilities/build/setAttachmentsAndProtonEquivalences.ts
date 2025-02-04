@@ -1,4 +1,4 @@
-import type { Values } from '../../types/correlation/values';
+import type { Values } from '../../types/correlation';
 import { addAttachment } from '../correlation/addAttachment';
 import { hasAttachmentAtomType } from '../correlation/hasAttachmentAtomType';
 import { removeAttachments } from '../correlation/removeAttachments';
@@ -7,7 +7,7 @@ import { removeAttachments } from '../correlation/removeAttachments';
  * Sets the attachment information (indices of attached atoms).
  * And from that, the equivalence value for protons can be set too.
  *
- * @param {Values} values
+ * @param correlations
  */
 export function setAttachmentsAndProtonEquivalences(
   correlations: Values,

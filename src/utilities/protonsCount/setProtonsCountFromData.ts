@@ -1,7 +1,8 @@
-import type { Tolerance } from '../../types/correlation/tolerance';
-import type { Values } from '../../types/correlation/values';
-import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import type { Tolerance, Values } from '../../types/correlation';
+import type {
+  Experiment1DSignals,
+  Experiment2DSignals,
+} from '../../types/experiment';
 
 import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT';
 import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC';

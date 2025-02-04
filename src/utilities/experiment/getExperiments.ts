@@ -1,5 +1,5 @@
-import type { Experiments } from '../../types/experiment/experiments';
-import type { Spectra } from '../../types/spectrum/spectra';
+import type { Experiments } from '../../types/experiment';
+import type { Spectra } from '../../types/spectrum';
 
 /**
  * Get all different experiments from spectra data.

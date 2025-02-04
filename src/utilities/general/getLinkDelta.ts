@@ -1,6 +1,5 @@
-import type { Link } from '../../types/correlation/link';
-import type { Signal1D } from '../../types/spectrum/Signal1D';
-import type { Signal2D } from '../../types/spectrum/Signal2D';
+import type { Link } from '../../types/correlation';
+import type { Signal1D, Signal2D } from '../../types/spectrum';
 
 import { getLinkDim } from './getLinkDim';
 

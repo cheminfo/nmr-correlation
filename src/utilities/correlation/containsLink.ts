@@ -1,5 +1,4 @@
-import type { Correlation } from '../../types/correlation/correlation';
-import type { Link } from '../../types/correlation/link';
+import type { Correlation, Link } from '../../types/correlation';
 import { isArrayEqual } from '../general/isArrayEqual';
 
 /**

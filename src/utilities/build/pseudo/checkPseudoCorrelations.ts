@@ -1,6 +1,4 @@
-import type { Correlation } from '../../../types/correlation/correlation';
-import type { Link } from '../../../types/correlation/link';
-import type { Values } from '../../../types/correlation/values';
+import type { Correlation, Link, Values } from '../../../types/correlation';
 import { hasLinks } from '../../correlation/hasLinks';
 import { removeLink } from '../../correlation/removeLink';
 import { removeMatch } from '../../correlation/removeMatch';

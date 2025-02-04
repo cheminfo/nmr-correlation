@@ -3,11 +3,13 @@ import { describe, expect, it } from 'vitest';
 import { spectraDataSet1 } from '../../data/spectraDataSet1';
 import { spectraDataSet2 } from '../../data/spectraDataSet2';
 import { spectrumEditedHSQC } from '../../data/spectrumEditedHSQC';
-import type { Correlation } from '../../types/correlation/correlation';
-import type { CorrelationData } from '../../types/correlation/correlationData';
-import type { Link } from '../../types/correlation/link';
-import type { Options } from '../../types/correlation/options';
-import type { State } from '../../types/correlation/state';
+import type {
+  Correlation,
+  CorrelationData,
+  Link,
+  Options,
+  State,
+} from '../../types/correlation';
 import { buildCorrelation } from '../../utilities/correlation/buildCorrelation';
 import { buildLink } from '../../utilities/correlation/buildLink';
 import { buildCorrelationData } from '../buildCorrelationData';

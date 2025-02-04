@@ -1,10 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
 import { spectraDataSet1 } from '../../../data/spectraDataSet1';
-import type { Options } from '../../../types/correlation/options';
-import type { Tolerance } from '../../../types/correlation/tolerance';
-import type { Values } from '../../../types/correlation/values';
-import type { Spectra } from '../../../types/spectrum/spectra';
+import type { Options, Tolerance, Values } from '../../../types/correlation';
+import type { Spectra } from '../../../types/spectrum';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { buildValues } from '../buildValues';
 

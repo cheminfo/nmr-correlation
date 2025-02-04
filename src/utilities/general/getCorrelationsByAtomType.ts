@@ -1,4 +1,4 @@
-import type { Values } from '../../types/correlation/values';
+import type { Values } from '../../types/correlation';
 
 /**
  * Returns all correlations of a certain atom type.
