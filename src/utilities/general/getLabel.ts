@@ -6,7 +6,7 @@ export function getLabel(
   correlation: Correlation,
 ): string {
   const label = Object.keys(correlation.attachment)
-    .map((otherAtomType) =>
+    .flatMap((otherAtomType) =>
       correlation.attachment[otherAtomType]
         .map((index) =>
           correlations[index]?.label
@@ -15,7 +15,6 @@ export function getLabel(
         )
         .filter((_label) => _label && _label.length > 0),
     )
-    .flat()
     .filter((_label, i, a) => a.indexOf(_label) === i)
     .sort((a, b) =>
       Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) < 0

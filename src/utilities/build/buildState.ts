@@ -14,15 +14,11 @@ import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType'
 export function buildState(values: Values, mf: string): State {
   const state: State = {};
   const atoms = getAtomCounts(mf);
-  const atomTypesInCorrelations: string[] = values.reduce(
-    (array: string[], correlation) =>
-      array.includes(correlation.atomType)
-        ? array
-        : array.concat(correlation.atomType),
-    [],
+  const atomTypesInCorrelations = new Set(
+    values.map((correlation) => correlation.atomType),
   );
 
-  atomTypesInCorrelations.forEach((atomType) => {
+  for (const atomType of atomTypesInCorrelations) {
     const correlationsAtomType = getCorrelationsByAtomType(values, atomType);
     // create state for specific atom type only if there is at least one real correlation
     if (correlationsAtomType.some((correlation) => !correlation.pseudo)) {
@@ -30,6 +26,7 @@ export function buildState(values: Values, mf: string): State {
       const stateAtomTypeError: StateAtomTypeError = {};
 
       const atomCount = atoms[atomType];
+      // eslint-disable-next-line unicorn/no-array-reduce
       let atomCountAtomType = correlationsAtomType.reduce(
         (sum, correlation) =>
           !correlation.pseudo ? sum + correlation.equivalence : sum,
@@ -38,7 +35,7 @@ export function buildState(values: Values, mf: string): State {
 
       if (atomType === 'H') {
         // add protons count from pseudo correlations without any pseudo HSQC correlation
-        values.forEach((correlation) => {
+        for (const correlation of values) {
           if (
             correlation.pseudo &&
             correlation.atomType !== 'H' &&
@@ -47,19 +44,18 @@ export function buildState(values: Values, mf: string): State {
           ) {
             atomCountAtomType += correlation.protonsCount[0];
           }
-        });
+        }
         // determine the number of pseudo correlations
+        // eslint-disable-next-line unicorn/no-array-reduce
         const pseudoCorrelationCount = correlationsAtomType.reduce(
           (sum, correlation) => (correlation.pseudo ? sum + 1 : sum),
           0,
         );
         // determine the not attached protons
-        const notAttached = correlationsAtomType.reduce(
-          (array: number[], correlation) =>
-            Object.keys(correlation.attachment).length === 0
-              ? array.concat(getCorrelationIndex(values, correlation))
-              : array,
-          [],
+        const notAttached = correlationsAtomType.flatMap((correlation) =>
+          Object.keys(correlation.attachment).length === 0
+            ? getCorrelationIndex(values, correlation)
+            : [],
         );
         if (notAttached.length > 0) {
           stateAtomTypeError.notAttached = notAttached;
@@ -70,16 +66,15 @@ export function buildState(values: Values, mf: string): State {
         }
 
         // determine the ambiguous attached protons
-        const ambiguousAttachment = correlationsAtomType.reduce(
-          (array: number[], correlation) =>
+        const ambiguousAttachment = correlationsAtomType.flatMap(
+          (correlation) =>
             Object.keys(correlation.attachment).length > 1 ||
             Object.keys(correlation.attachment).some(
               (otherAtomType) =>
                 correlation.attachment[otherAtomType].length > 1,
             )
-              ? array.concat(getCorrelationIndex(values, correlation))
-              : array,
-          [],
+              ? getCorrelationIndex(values, correlation)
+              : [],
         );
         if (ambiguousAttachment.length > 0) {
           stateAtomTypeError.ambiguousAttachment = ambiguousAttachment;
@@ -112,7 +107,7 @@ export function buildState(values: Values, mf: string): State {
         error: stateAtomTypeError,
       };
     }
-  });
+  }
 
   return state;
 }

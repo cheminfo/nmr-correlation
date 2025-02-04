@@ -11,7 +11,7 @@ export function setPathLength(
   pathLength: FromTo | undefined,
 ): Values {
   const links = findLinksBySignalID(correlations, signalID);
-  links.forEach((link) => {
+  for (const link of links) {
     const signal = link.signal as Signal2D;
     if (pathLength) {
       if (!signal.j) {
@@ -22,7 +22,7 @@ export function setPathLength(
     } else {
       delete signal.j?.pathLength;
     }
-  });
+  }
 
   return correlations;
 }

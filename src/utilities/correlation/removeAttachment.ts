@@ -16,7 +16,7 @@ export function removeAttachment(
 ): Correlation {
   if (hasAttachmentAtomType(correlation, atomType)) {
     const indexOf = correlation.attachment[atomType].indexOf(attachment);
-    if (indexOf >= 0) {
+    if (indexOf !== -1) {
       correlation.attachment[atomType].splice(indexOf, 1);
     }
   }

@@ -28,8 +28,8 @@ export function addFromData(
     (correlation) => correlation.link.length > 0 || correlation.pseudo,
   );
   // add from 1D data
-  Object.keys(signals1D).forEach((atomType) => {
-    signals1D[atomType].forEach((signal1D) => {
+  for (const atomType of Object.keys(signals1D)) {
+    for (const signal1D of signals1D[atomType]) {
       const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
         signal1D.signal.id || '',
@@ -60,18 +60,18 @@ export function addFromData(
         });
         addSignal(matchedCorrelationIndices, atomType, link, correlations);
       }
-    });
-  });
+    }
+  }
   // add from 2D
   // add potential new correlations and push new links via shift matches between 1D vs. 2D and 2D vs. 2D
-  Object.keys(signals2D).forEach((experimentType) =>
-    signals2D[experimentType].forEach((signal2D) => {
+  for (const experimentType of Object.keys(signals2D)) {
+    for (const signal2D of signals2D[experimentType]) {
       const linkedCorrelations = findLinkedCorrelationsBySignalID(
         correlations,
         signal2D.signal.id || '',
       );
       if (linkedCorrelations.length === 0) {
-        signal2D.atomType.forEach((atomType, dim) => {
+        for (const [dim, atomType] of signal2D.atomType.entries()) {
           const axis = dim === 0 ? 'x' : 'y';
           const matchedCorrelationIndices = correlations
             .map((correlation, k) => {
@@ -98,10 +98,10 @@ export function addFromData(
             atomType: signal2D.atomType,
           });
           addSignal(matchedCorrelationIndices, atomType, link, correlations);
-        });
+        }
       }
-    }),
-  );
+    }
+  }
 
   return correlations;
 }

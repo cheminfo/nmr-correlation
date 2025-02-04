@@ -21,7 +21,7 @@ export function setProtonsCountFromData(
   tolerance: Tolerance,
 ): Values {
   const heavyAtomTypes: string[] = [];
-  correlations.forEach((correlation) => {
+  for (const correlation of correlations) {
     if (
       !correlation.pseudo &&
       correlation.atomType !== 'H' &&
@@ -44,7 +44,7 @@ export function setProtonsCountFromData(
         );
       }
     }
-  });
+  }
 
   return correlations;
 }

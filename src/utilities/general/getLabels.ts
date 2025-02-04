@@ -11,15 +11,12 @@ export function getLabels(
 ): string[] {
   const labels = correlation.link
     .filter((link) => link.experimentType === experimentType)
-    .map((link) =>
-      link.match
-        .map((match) => {
-          const matchingCorrelation = correlations[match];
-          return getLabel(correlations, matchingCorrelation);
-        })
-        .flat(),
+    .flatMap((link) =>
+      link.match.flatMap((match) => {
+        const matchingCorrelation = correlations[match];
+        return getLabel(correlations, matchingCorrelation);
+      }),
     )
-    .flat()
     .filter((label, i, a) => label.length > 0 && a.indexOf(label) === i);
 
   return sortLabels(labels);

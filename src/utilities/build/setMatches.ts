@@ -13,48 +13,49 @@ import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType'
  * @param {Values} values
  */
 export function setMatches(correlations: Values): Values {
-  correlations.forEach((correlation) => {
-    correlation.link.forEach((link) => {
+  for (const correlation of correlations) {
+    for (const link of correlation.link) {
       // remove previously added matches
       removeMatches(link);
       // add matches
       const otherAtomType =
         link.axis === 'x' ? link.atomType[1] : link.atomType[0];
-      getCorrelationsByAtomType(correlations, otherAtomType).forEach(
-        (correlationOtherAtomType) => {
-          if (correlation.id !== correlationOtherAtomType.id) {
-            const correlationIndexOtherAtomType = getCorrelationIndex(
-              correlations,
-              correlationOtherAtomType,
-            );
-            correlationOtherAtomType.link.forEach((linkOtherAtomType) => {
-              // check for correlation match and avoid possible duplicates
-              if (
-                linkOtherAtomType.experimentType === link.experimentType &&
-                linkOtherAtomType.experimentID === link.experimentID &&
-                lodashIsEqual(linkOtherAtomType.atomType, link.atomType) &&
-                linkOtherAtomType.signal.id === link.signal.id &&
-                linkOtherAtomType.axis !== link.axis
-              ) {
-                addMatch(link, correlationIndexOtherAtomType);
-              }
-            });
+      for (const correlationOtherAtomType of getCorrelationsByAtomType(
+        correlations,
+        otherAtomType,
+      )) {
+        if (correlation.id !== correlationOtherAtomType.id) {
+          const correlationIndexOtherAtomType = getCorrelationIndex(
+            correlations,
+            correlationOtherAtomType,
+          );
+          for (const linkOtherAtomType of correlationOtherAtomType.link) {
+            // check for correlation match and avoid possible duplicates
+            if (
+              linkOtherAtomType.experimentType === link.experimentType &&
+              linkOtherAtomType.experimentID === link.experimentID &&
+              lodashIsEqual(linkOtherAtomType.atomType, link.atomType) &&
+              linkOtherAtomType.signal.id === link.signal.id &&
+              linkOtherAtomType.axis !== link.axis
+            ) {
+              addMatch(link, correlationIndexOtherAtomType);
+            }
           }
-        },
-      );
-    });
-  });
+        }
+      }
+    }
+  }
 
   // remove links without any matches
-  correlations.forEach((correlation) => {
+  for (const correlation of correlations) {
     const linksToRemove = correlation.link.filter(
       (link) =>
         link.match.length === 0 &&
         link.experimentType !== '1d' &&
         !link.edited?.moved,
     );
-    linksToRemove.forEach((link) => removeLink(correlation, link.id));
-  });
+    for (const link of linksToRemove) removeLink(correlation, link.id);
+  }
 
   return correlations;
 }
