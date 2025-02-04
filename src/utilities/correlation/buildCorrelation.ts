@@ -1,5 +1,5 @@
-import { Correlation } from '../../types/correlation/correlation';
-import { CorrelationOptions } from '../../types/correlation/correlationOptions';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { CorrelationOptions } from '../../types/correlation/correlationOptions';
 import { generateID } from '../general/generateID';
 
 /**

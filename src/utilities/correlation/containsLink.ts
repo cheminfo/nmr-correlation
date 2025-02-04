@@ -1,7 +1,7 @@
 import lodashIsEqual from 'lodash/isEqual';
 
-import { Correlation } from '../../types/correlation/correlation';
-import { Link } from '../../types/correlation/link';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { Link } from '../../types/correlation/link';
 
 /**
  * Checks whether a correlation contains a link by id search.

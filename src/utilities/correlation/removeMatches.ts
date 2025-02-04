@@ -1,4 +1,4 @@
-import { Link } from '../../types/correlation/link';
+import type { Link } from '../../types/correlation/link';
 
 /**
  * Removes all match indices in a link.

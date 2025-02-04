@@ -1,4 +1,4 @@
-import { Spectrum2D } from '../types/spectrum/spectrum2D';
+import type { Spectrum2D } from '../types/spectrum/spectrum2D';
 
 export const spectrumHSQC: Spectrum2D = {
   id: 'spectrumHSQC',

@@ -1,5 +1,5 @@
-import { Correlation } from '../../types/correlation/correlation';
-import { Values } from '../../types/correlation/values';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { Values } from '../../types/correlation/values';
 import { getCorrelationDelta } from '../general/getCorrelationDelta';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
 

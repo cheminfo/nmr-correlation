@@ -1,5 +1,5 @@
-import { Tolerance } from './tolerance';
-import { Values } from './values';
+import type { Tolerance } from './tolerance';
+import type { Values } from './values';
 
 export interface Options {
   tolerance: Tolerance;

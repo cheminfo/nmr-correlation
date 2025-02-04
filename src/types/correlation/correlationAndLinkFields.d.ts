@@ -1,5 +1,5 @@
 export interface CorrelationAndLinkFields {
   id: string;
   pseudo: boolean;
-  edited: { [key: string]: boolean };
+  edited: Record<string, boolean>;
 }

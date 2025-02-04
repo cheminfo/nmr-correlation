@@ -1,5 +1,5 @@
-import { Correlation } from '../../types/correlation/correlation';
-import { Link } from '../../types/correlation/link';
+import type { Correlation } from '../../types/correlation/correlation';
+import type { Link } from '../../types/correlation/link';
 
 /**
  * Adds a link to a correlation.

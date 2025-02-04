@@ -1,6 +1,6 @@
-import { Options } from '../correlation/options';
-import { State } from '../correlation/state';
-import { Values } from '../correlation/values';
+import type { Options } from '../correlation/options';
+import type { State } from '../correlation/state';
+import type { Values } from '../correlation/values';
 
 export interface CorrelationData {
   values: Values;

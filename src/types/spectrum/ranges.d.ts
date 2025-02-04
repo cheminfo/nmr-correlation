@@ -1,6 +1,6 @@
-import { Range } from './range';
+import type { Range } from './range';
 
 export interface Ranges {
-  values: Array<Range>;
+  values: Range[];
   options?: any;
 }

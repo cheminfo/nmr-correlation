@@ -1,8 +1,8 @@
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
-import { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import type { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
+import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
+import type { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
 import { checkMatch } from '../general/checkMatch';
 
 /**
@@ -16,8 +16,8 @@ export function getSignals1D(
   // store valid signals from 1D experiments
   const signals1DByAtomType: Experiment1DSignals = {};
   for (const atomType in experiments1D) {
-    const signals: Array<Experiment1DSignal> = [];
-    const experiment = experiments1D[`${atomType}`] || [];
+    const signals: Experiment1DSignal[] = [];
+    const experiment = experiments1D[atomType] || [];
 
     if (experiment.length === 0) continue;
 
@@ -46,7 +46,7 @@ export function getSignals1D(
   return signals1DByAtomType;
 }
 
-function checkExistence(current: any, group: Array<Experiment1DSignal>) {
+function checkExistence(current: any, group: Experiment1DSignal[]) {
   for (const element of group) {
     if (checkMatch(element.signal.delta, current.delta, 0.0)) {
       return true;

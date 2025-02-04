@@ -1,9 +1,9 @@
 import lodashGet from 'lodash/get';
 
-import { Experiments } from '../../types/experiment/experiments';
-import { ExperimentsType } from '../../types/experiment/experimentsType';
-import { Spectrum1D } from '../../types/spectrum/spectrum1D';
-import { Spectrum2D } from '../../types/spectrum/spectrum2D';
+import type { Experiments } from '../../types/experiment/experiments';
+import type { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import type { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 /**
@@ -23,7 +23,7 @@ export function addToExperiments(
   experimentKey: string,
 ): void {
   const _experiments = (
-    lodashGet(experiments, `${type}`, []) as Array<Spectrum1D | Spectrum2D>
+    lodashGet(experiments, type, []) as Array<Spectrum1D | Spectrum2D>
   ) // don't consider DEPT etc. here
     .filter((_experiment) => {
       const hasValues =

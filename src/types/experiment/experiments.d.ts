@@ -1,5 +1,3 @@
-import { ExperimentsType } from './experimentsType';
+import type { ExperimentsType } from './experimentsType';
 
-export interface Experiments {
-  [key: string]: ExperimentsType;
-}
+export type Experiments = Record<string, ExperimentsType>;

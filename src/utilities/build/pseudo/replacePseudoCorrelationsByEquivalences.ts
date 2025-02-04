@@ -1,11 +1,11 @@
-import { Correlation } from '../../../types/correlation/correlation';
-import { Values } from '../../../types/correlation/values';
+import type { Correlation } from '../../../types/correlation/correlation';
+import type { Values } from '../../../types/correlation/values';
 import { hasLinks } from '../../correlation/hasLinks';
 import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
 
 export function replacePseudoCorrelationsByEquivalences(
   correlations: Values,
-  atoms: { [atomType: string]: number },
+  atoms: Record<string, number>,
 ): Values {
   for (const atomType in atoms) {
     // remove pseudo correlations to be replaced by equivalences, starting at the end

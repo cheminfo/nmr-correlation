@@ -1,4 +1,4 @@
-import { Correlation } from '../../types/correlation/correlation';
+import type { Correlation } from '../../types/correlation/correlation';
 
 /**
  * Checks whether a correlation has links.

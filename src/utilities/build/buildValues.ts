@@ -1,7 +1,7 @@
-import { Options } from '../../types/correlation/options';
-import { Values } from '../../types/correlation/values';
-import { ExperimentSignals } from '../../types/experiment/experimentSignals';
-import { Spectra } from '../../types/spectrum/spectra';
+import type { Options } from '../../types/correlation/options';
+import type { Values } from '../../types/correlation/values';
+import type { ExperimentSignals } from '../../types/experiment/experimentSignals';
+import type { Spectra } from '../../types/spectrum/spectra';
 import { setProtonsCountFromData } from '../protonsCount/setProtonsCountFromData';
 import { getSignals } from '../signals/getSignals';
 

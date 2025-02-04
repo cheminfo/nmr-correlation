@@ -1,5 +1,3 @@
-import { Experiment2DSignal } from './experiment2DSignal';
+import type { Experiment2DSignal } from './experiment2DSignal';
 
-export interface Experiment2DSignals {
-  [atomType: string]: Array<Experiment2DSignal>;
-}
+export type Experiment2DSignals = Record<string, Experiment2DSignal[]>;

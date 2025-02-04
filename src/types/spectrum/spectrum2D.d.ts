@@ -1,6 +1,6 @@
-import { Info2D } from './info2D';
-import { Spectrum } from './spectrum';
-import { Zones } from './zones';
+import type { Info2D } from './info2D';
+import type { Spectrum } from './spectrum';
+import type { Zones } from './zones';
 
 export interface Spectrum2D extends Spectrum {
   zones: Zones;

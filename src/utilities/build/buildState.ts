@@ -1,6 +1,6 @@
-import { State } from '../../types/correlation/state';
-import { StateAtomTypeError } from '../../types/correlation/stateAtomTypeError';
-import { Values } from '../../types/correlation/values';
+import type { State } from '../../types/correlation/state';
+import type { StateAtomTypeError } from '../../types/correlation/stateAtomTypeError';
+import type { Values } from '../../types/correlation/values';
 import { getAtomCounts } from '../general/getAtomCounts';
 import { getCorrelationIndex } from '../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
@@ -14,8 +14,8 @@ import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType'
 export function buildState(values: Values, mf: string): State {
   const state: State = {};
   const atoms = getAtomCounts(mf);
-  const atomTypesInCorrelations: Array<string> = values.reduce(
-    (array: Array<string>, correlation) =>
+  const atomTypesInCorrelations: string[] = values.reduce(
+    (array: string[], correlation) =>
       array.includes(correlation.atomType)
         ? array
         : array.concat(correlation.atomType),
@@ -55,7 +55,7 @@ export function buildState(values: Values, mf: string): State {
         );
         // determine the not attached protons
         const notAttached = correlationsAtomType.reduce(
-          (array: Array<number>, correlation) =>
+          (array: number[], correlation) =>
             Object.keys(correlation.attachment).length === 0
               ? array.concat(getCorrelationIndex(values, correlation))
               : array,
@@ -71,7 +71,7 @@ export function buildState(values: Values, mf: string): State {
 
         // determine the ambiguous attached protons
         const ambiguousAttachment = correlationsAtomType.reduce(
-          (array: Array<number>, correlation) =>
+          (array: number[], correlation) =>
             Object.keys(correlation.attachment).length > 1 ||
             Object.keys(correlation.attachment).some(
               (otherAtomType) =>

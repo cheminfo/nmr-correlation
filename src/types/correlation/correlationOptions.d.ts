@@ -1,12 +1,12 @@
-import { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
-import { Link } from './link';
+import type { CorrelationAndLinkOptions } from './correlationAndLinkOptions';
+import type { Link } from './link';
 
 export interface CorrelationOptions extends CorrelationAndLinkOptions {
   atomType?: string;
-  label?: { [key: string]: string };
-  link?: Array<Link>;
+  label?: Record<string, string>;
+  link?: Link[];
   equivalence?: number;
-  attachment?: { [atomType: string]: Array<number> };
-  protonsCount?: Array<number>;
+  attachment?: Record<string, number[]>;
+  protonsCount?: number[];
   hybridization?: number[];
 }

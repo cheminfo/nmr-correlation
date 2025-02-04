@@ -1,4 +1,4 @@
-import { Values } from '../../types/correlation/values';
+import type { Values } from '../../types/correlation/values';
 import { checkMatch } from '../general/checkMatch';
 import { getCorrelationDelta } from '../general/getCorrelationDelta';
 

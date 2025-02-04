@@ -1,8 +1,8 @@
-import { Signal2D } from '../spectrum/Signal2D';
+import type { Signal2D } from '../spectrum/Signal2D';
 
-import { ExperimentSignal } from './experimentSignal';
+import type { ExperimentSignal } from './experimentSignal';
 
 export interface Experiment2DSignal extends ExperimentSignal {
-  atomType: Array<string>;
+  atomType: string[];
   signal: Signal2D;
 }

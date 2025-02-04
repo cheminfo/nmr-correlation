@@ -1,6 +1,6 @@
-import { Correlation } from '../../../types/correlation/correlation';
-import { Link } from '../../../types/correlation/link';
-import { Values } from '../../../types/correlation/values';
+import type { Correlation } from '../../../types/correlation/correlation';
+import type { Link } from '../../../types/correlation/link';
+import type { Values } from '../../../types/correlation/values';
 import { hasLinks } from '../../correlation/hasLinks';
 import { removeLink } from '../../correlation/removeLink';
 import { removeMatch } from '../../correlation/removeMatch';
@@ -9,7 +9,7 @@ import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomTy
 
 export function checkPseudoCorrelations(
   correlations: Values,
-  atoms: { [atomType: string]: number },
+  atoms: Record<string, number>,
 ): Values {
   for (const atomType in atoms) {
     // consider also pseudo correlations
@@ -50,7 +50,7 @@ export function checkPseudoCorrelations(
       continue;
     }
     // remove wrong (old) match indices and empty links
-    const linksToRemove: Array<Link> = [];
+    const linksToRemove: Link[] = [];
     const pseudoCorrelationIndex = getCorrelationIndex(
       correlations,
       pseudoCorrelation,

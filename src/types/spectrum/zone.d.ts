@@ -1,7 +1,7 @@
-import { Signal2D } from './Signal2D';
+import type { Signal2D } from './Signal2D';
 
 export interface Zone {
   id: string;
-  signals: Array<Signal2D>;
+  signals: Signal2D[];
   kind: string;
 }

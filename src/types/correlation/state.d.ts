@@ -1,5 +1,3 @@
-import { StateAtomType } from './stateAtomType';
+import type { StateAtomType } from './stateAtomType';
 
-export interface State {
-  [atomType: string]: StateAtomType;
-}
+export type State = Record<string, StateAtomType>;
