@@ -1,5 +1,3 @@
-import lodashGet from 'lodash/get';
-
 import type { Experiments } from '../../types/experiment/experiments';
 import type { ExperimentsType } from '../../types/experiment/experimentsType';
 
@@ -14,13 +12,14 @@ export function getExperiments1DExtra(
   experiments: Experiments,
 ): ExperimentsType {
   const _experiments1DExtra: ExperimentsType = {};
-  for (const experimentType of Object.keys(
-    lodashGet(experiments, `1D`, {}),
-  ).filter((experimentType) => experimentType !== '1d')) {
+  for (const experimentType of Object.keys(experiments['1D'] ?? {}).filter(
+    (experimentType) => experimentType !== '1d',
+  )) {
     addToExperiments(
       experiments,
       _experiments1DExtra,
-      `1D.${experimentType}`,
+      '1D',
+      experimentType,
       false,
       experimentType,
     );

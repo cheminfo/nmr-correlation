@@ -1,16 +1,15 @@
-import lodashIsEqual from 'lodash/isEqual';
-
 import type { Values } from '../../types/correlation/values';
 import { addMatch } from '../correlation/addMatch';
 import { removeLink } from '../correlation/removeLink';
 import { removeMatches } from '../correlation/removeMatches';
 import { getCorrelationIndex } from '../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+import { isArrayEqual } from '../general/isArrayEqual';
 
 /**
  * Sets the match indices for each link within a correlation.
  *
- * @param {Values} values
+ * @param {Values} correlations
  */
 export function setMatches(correlations: Values): Values {
   for (const correlation of correlations) {
@@ -34,7 +33,7 @@ export function setMatches(correlations: Values): Values {
             if (
               linkOtherAtomType.experimentType === link.experimentType &&
               linkOtherAtomType.experimentID === link.experimentID &&
-              lodashIsEqual(linkOtherAtomType.atomType, link.atomType) &&
+              isArrayEqual(linkOtherAtomType.atomType, link.atomType) &&
               linkOtherAtomType.signal.id === link.signal.id &&
               linkOtherAtomType.axis !== link.axis
             ) {

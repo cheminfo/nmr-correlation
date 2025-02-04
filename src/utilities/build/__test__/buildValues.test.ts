@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { spectraDataSet1 } from '../../../data/spectraDataSet1';
 import type { Options } from '../../../types/correlation/options';
 import type { Tolerance } from '../../../types/correlation/tolerance';

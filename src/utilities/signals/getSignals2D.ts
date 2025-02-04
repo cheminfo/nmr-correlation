@@ -1,6 +1,3 @@
-import lodashCloneDeep from 'lodash/cloneDeep';
-import lodashIsEqual from 'lodash/isEqual';
-
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import type { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
 import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
@@ -8,12 +5,13 @@ import type { ExperimentsType } from '../../types/experiment/experimentsType';
 import type { Spectrum2D } from '../../types/spectrum/spectrum2D';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+import { isArrayEqual } from '../general/isArrayEqual';
 import { isEditedHSQC } from '../general/isEditedHSQC';
 
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "signalKindsToInclude".
  *
- * @param {ExperimentsType} experiments1D
+ * @param {ExperimentsType} experiments2D
  */
 export function getSignals2D(
   experiments2D: ExperimentsType,
@@ -29,7 +27,7 @@ export function getSignals2D(
       const experiment: Spectrum2D = _experiment as Spectrum2D;
       if (
         !nuclei.some((_nuclei) =>
-          lodashIsEqual(_nuclei, experiment.info.nucleus),
+          isArrayEqual(_nuclei, experiment.info.nucleus),
         )
       ) {
         nuclei.push(experiment.info.nucleus);
@@ -62,7 +60,7 @@ export function getSignals2D(
             atomType,
             // @TODO here we assume that only one peak exists for the signal and its intensity indicates the sign
             signal: {
-              ...lodashCloneDeep(signal),
+              ...structuredClone(signal),
               sign:
                 isEditedHSQC(spectrum2D) && signal.peaks
                   ? signal.peaks[0].z >= 0

@@ -1,5 +1,3 @@
-import lodashCloneDeep from 'lodash/cloneDeep';
-
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
 import type { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
 import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
@@ -51,7 +49,7 @@ export function getSignalsDEPT(
               experimentID: experimentDEPT.id,
               mode,
               atomType,
-              signal: lodashCloneDeep(signal),
+              signal: structuredClone(signal),
             });
           }
         }

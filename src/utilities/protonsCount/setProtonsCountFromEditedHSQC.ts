@@ -1,5 +1,3 @@
-import lodashGet from 'lodash/get';
-
 import type { Tolerance } from '../../types/correlation/tolerance';
 import type { Values } from '../../types/correlation/values';
 import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
@@ -24,7 +22,7 @@ export function setProtonsCountFromEditedHSQC(
     (correlation) =>
       !correlation.pseudo && correlation.atomType === heavyAtomType,
   );
-  const signalsEditedHSQC = lodashGet(signals2D, 'hsqc', [])
+  const signalsEditedHSQC = (signals2D.hsqc ?? [])
     .filter(
       (signal2D) =>
         signal2D.atomType[1] === heavyAtomType && signal2D.signal.sign !== 0,

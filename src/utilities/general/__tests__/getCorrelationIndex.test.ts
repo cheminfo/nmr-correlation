@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import type { Correlation } from '../../../types/correlation/correlation';
 import type { Values } from '../../../types/correlation/values';
 import { buildCorrelation } from '../../correlation/buildCorrelation';

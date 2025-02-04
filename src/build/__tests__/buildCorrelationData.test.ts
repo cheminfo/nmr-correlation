@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest';
+
 import { spectraDataSet1 } from '../../data/spectraDataSet1';
 import { spectraDataSet2 } from '../../data/spectraDataSet2';
 import { spectrumEditedHSQC } from '../../data/spectrumEditedHSQC';
