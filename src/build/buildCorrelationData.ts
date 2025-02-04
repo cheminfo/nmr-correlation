@@ -1,6 +1,5 @@
-import type { CorrelationData } from '../types/correlation/correlationData';
-import type { Options } from '../types/correlation/options';
-import type { Spectra } from '../types/spectrum/spectra';
+import type { CorrelationData, Options } from '../types/correlation';
+import type { Spectra } from '../types/spectrum';
 import { buildState } from '../utilities/build/buildState';
 import { buildValues } from '../utilities/build/buildValues';
 

@@ -1,8 +1,10 @@
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import type { Experiment2DSignal } from '../../types/experiment/experiment2DSignal';
-import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
-import type { ExperimentsType } from '../../types/experiment/experimentsType';
-import type { Spectrum2D } from '../../types/spectrum/spectrum2D';
+import type {
+  Experiment2DSignal,
+  Experiment2DSignals,
+  ExperimentsType,
+} from '../../types/experiment';
+import type { Spectrum2D } from '../../types/spectrum';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 import { isArrayEqual } from '../general/isArrayEqual';

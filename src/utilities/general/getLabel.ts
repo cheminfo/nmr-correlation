@@ -1,5 +1,4 @@
-import type { Correlation } from '../../types/correlation/correlation';
-import type { Values } from '../../types/correlation/values';
+import type { Correlation, Values } from '../../types/correlation';
 
 export function getLabel(
   correlations: Values,

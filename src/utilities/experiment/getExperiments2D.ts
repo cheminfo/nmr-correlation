@@ -1,5 +1,4 @@
-import type { Experiments } from '../../types/experiment/experiments';
-import type { ExperimentsType } from '../../types/experiment/experimentsType';
+import type { Experiments, ExperimentsType } from '../../types/experiment';
 
 import { addToExperiments } from './addToExperiments';
 

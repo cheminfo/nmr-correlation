@@ -1,6 +1,5 @@
-import type { Tolerance } from '../../types/correlation/tolerance';
-import type { Values } from '../../types/correlation/values';
-import type { Experiment2DSignals } from '../../types/experiment/experiment2DSignals';
+import type { Tolerance, Values } from '../../types/correlation';
+import type { Experiment2DSignals } from '../../types/experiment';
 
 import { setProtonsCount } from './setProtonsCount';
 

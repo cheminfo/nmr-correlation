@@ -1,4 +1,4 @@
-import type { Values } from '../../../types/correlation/values';
+import type { Values } from '../../../types/correlation';
 import { buildCorrelation } from '../../correlation/buildCorrelation';
 import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
 

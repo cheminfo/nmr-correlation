@@ -1,6 +1,5 @@
-import type { Experiments } from '../../types/experiment/experiments';
-import type { ExperimentsType } from '../../types/experiment/experimentsType';
-import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import type { Experiments, ExperimentsType } from '../../types/experiment';
+import type { Spectrum1D } from '../../types/spectrum';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 
 import { addToExperiments } from './addToExperiments';

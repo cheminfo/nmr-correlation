@@ -1,8 +1,10 @@
 import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
-import type { Experiment1DSignal } from '../../types/experiment/experiment1DSignal';
-import type { Experiment1DSignals } from '../../types/experiment/experiment1DSignals';
-import type { ExperimentsType } from '../../types/experiment/experimentsType';
-import type { Spectrum1D } from '../../types/spectrum/spectrum1D';
+import type {
+  Experiment1DSignal,
+  Experiment1DSignals,
+  ExperimentsType,
+} from '../../types/experiment';
+import type { Spectrum1D } from '../../types/spectrum';
 import { checkMatch } from '../general/checkMatch';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
 

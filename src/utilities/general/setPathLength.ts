@@ -1,7 +1,7 @@
 import type { FromTo } from 'cheminfo-types';
 
-import type { Values } from '../../types/correlation/values';
-import type { Signal2D } from '../../types/spectrum/Signal2D';
+import type { Values } from '../../types/correlation';
+import type { Signal2D } from '../../types/spectrum';
 
 import { findLinksBySignalID } from './findLinksBySignalID';
 

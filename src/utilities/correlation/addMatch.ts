@@ -1,4 +1,4 @@
-import type { Link } from '../../types/correlation/link';
+import type { Link } from '../../types/correlation';
 
 /**
  * Adds an index to the match array of a link.

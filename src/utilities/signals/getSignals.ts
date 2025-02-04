@@ -1,5 +1,5 @@
-import type { ExperimentSignals } from '../../types/experiment/experimentSignals';
-import type { Spectra } from '../../types/spectrum/spectra';
+import type { ExperimentSignals } from '../../types/experiment';
+import type { Spectra } from '../../types/spectrum';
 import { getExperiments } from '../experiment/getExperiments';
 import { getExperiments1D } from '../experiment/getExperiments1D';
 import { getExperiments1DExtra } from '../experiment/getExperiments1DExtra';

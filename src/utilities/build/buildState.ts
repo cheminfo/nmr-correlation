@@ -1,6 +1,8 @@
-import type { State } from '../../types/correlation/state';
-import type { StateAtomTypeError } from '../../types/correlation/stateAtomTypeError';
-import type { Values } from '../../types/correlation/values';
+import type {
+  State,
+  StateAtomTypeError,
+  Values,
+} from '../../types/correlation';
 import { getAtomCounts } from '../general/getAtomCounts';
 import { getCorrelationIndex } from '../general/getCorrelationIndex';
 import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';

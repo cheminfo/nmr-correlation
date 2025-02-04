@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import type { Spectrum2D } from '../../../types/spectrum/spectrum2D';
+import type { Spectrum2D } from '../../../types/spectrum';
 import { isEditedHSQC } from '../isEditedHSQC';
 
 describe('isEditedHSQC', () => {

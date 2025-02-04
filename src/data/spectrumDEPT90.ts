@@ -1,4 +1,4 @@
-import type { Spectrum1D } from '../types/spectrum/spectrum1D';
+import type { Spectrum1D } from '../types/spectrum';
 
 export const spectrumDEPT90: Spectrum1D = {
   id: 'spectrumDEPT90',

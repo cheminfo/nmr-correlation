@@ -1,4 +1,4 @@
-import type { Correlation } from '../../types/correlation/correlation';
+import type { Correlation } from '../../types/correlation';
 
 /**
  * Removes a link by id search.
