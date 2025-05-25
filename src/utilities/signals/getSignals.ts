@@ -1,13 +1,13 @@
-import type { ExperimentSignals } from '../../types/experiment';
-import type { Spectra } from '../../types/spectrum';
-import { getExperiments } from '../experiment/getExperiments';
-import { getExperiments1D } from '../experiment/getExperiments1D';
-import { getExperiments1DExtra } from '../experiment/getExperiments1DExtra';
-import { getExperiments2D } from '../experiment/getExperiments2D';
+import type { ExperimentSignals } from '../../types/experiment.js';
+import type { Spectra } from '../../types/spectrum.js';
+import { getExperiments } from '../experiment/getExperiments.js';
+import { getExperiments1D } from '../experiment/getExperiments1D.js';
+import { getExperiments1DExtra } from '../experiment/getExperiments1DExtra.js';
+import { getExperiments2D } from '../experiment/getExperiments2D.js';
 
-import { getSignals1D } from './getSignals1D';
-import { getSignals2D } from './getSignals2D';
-import { getSignalsDEPT } from './getSignalsDEPT';
+import { getSignals1D } from './getSignals1D.js';
+import { getSignals2D } from './getSignals2D.js';
+import { getSignalsDEPT } from './getSignalsDEPT.js';
 
 // general remark for all experiment types:
 // build an array of experiments, because one could have more than

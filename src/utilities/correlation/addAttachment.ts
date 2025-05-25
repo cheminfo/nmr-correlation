@@ -1,6 +1,6 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
-import { addAttachmentAtomType } from './addAttachmentAtomType';
+import { addAttachmentAtomType } from './addAttachmentAtomType.js';
 
 /**
  * Adds an attachment for a certain atom type to a correlation.

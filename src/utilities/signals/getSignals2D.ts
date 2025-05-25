@@ -1,14 +1,14 @@
-import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
+import { allowedSignalKinds } from '../../constants/allowedSignalKinds.js';
 import type {
   Experiment2DSignal,
   Experiment2DSignals,
   ExperimentsType,
-} from '../../types/experiment';
-import type { Spectrum2D } from '../../types/spectrum';
-import { checkMatch } from '../general/checkMatch';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
-import { isArrayEqual } from '../general/isArrayEqual';
-import { isEditedHSQC } from '../general/isEditedHSQC';
+} from '../../types/experiment.js';
+import type { Spectrum2D } from '../../types/spectrum.js';
+import { checkMatch } from '../general/checkMatch.js';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus.js';
+import { isArrayEqual } from '../general/isArrayEqual.js';
+import { isEditedHSQC } from '../general/isEditedHSQC.js';
 
 /**
  * Get all different 2D signals from experiments with allowed signal kinds in "signalKindsToInclude".

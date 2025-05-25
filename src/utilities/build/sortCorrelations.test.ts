@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { buildCorrelation } from '../correlation/buildCorrelation';
+import { buildCorrelation } from '../correlation/buildCorrelation.js';
 
-import { sortCorrelations } from './sortCorrelations';
+import { sortCorrelations } from './sortCorrelations.js';
 
 describe('sortCorrelations', () => {
   const correlation1 = buildCorrelation({

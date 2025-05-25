@@ -1,7 +1,7 @@
-import type { Values } from '../../types/correlation';
-import { addAttachment } from '../correlation/addAttachment';
-import { hasAttachmentAtomType } from '../correlation/hasAttachmentAtomType';
-import { removeAttachments } from '../correlation/removeAttachments';
+import type { Values } from '../../types/correlation.js';
+import { addAttachment } from '../correlation/addAttachment.js';
+import { hasAttachmentAtomType } from '../correlation/hasAttachmentAtomType.js';
+import { removeAttachments } from '../correlation/removeAttachments.js';
 
 /**
  * Sets the attachment information (indices of attached atoms).

@@ -1,5 +1,5 @@
-import type { Link, LinkOptions } from '../../types/correlation';
-import { generateID } from '../general/generateID';
+import type { Link, LinkOptions } from '../../types/correlation.js';
+import { generateID } from '../general/generateID.js';
 
 /**
  * Builds a link object with some existing default values.

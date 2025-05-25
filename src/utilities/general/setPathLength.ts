@@ -1,9 +1,9 @@
 import type { FromTo } from 'cheminfo-types';
 
-import type { Values } from '../../types/correlation';
-import type { Signal2D } from '../../types/spectrum';
+import type { Values } from '../../types/correlation.js';
+import type { Signal2D } from '../../types/spectrum.js';
 
-import { findLinksBySignalID } from './findLinksBySignalID';
+import { findLinksBySignalID } from './findLinksBySignalID.js';
 
 export function setPathLength(
   correlations: Values,

@@ -1,5 +1,8 @@
-import type { Correlation, CorrelationOptions } from '../../types/correlation';
-import { generateID } from '../general/generateID';
+import type {
+  Correlation,
+  CorrelationOptions,
+} from '../../types/correlation.js';
+import { generateID } from '../general/generateID.js';
 
 /**
  * Builds a correlation object with some existing default values.

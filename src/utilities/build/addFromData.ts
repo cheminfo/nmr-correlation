@@ -1,14 +1,14 @@
-import type { Tolerance, Values } from '../../types/correlation';
+import type { Tolerance, Values } from '../../types/correlation.js';
 import type {
   Experiment1DSignals,
   Experiment2DSignals,
-} from '../../types/experiment';
-import { buildLink } from '../correlation/buildLink';
-import { checkMatch } from '../general/checkMatch';
-import { findLinkedCorrelationsBySignalID } from '../general/findLinkedCorrelationsBySignalID';
-import { getCorrelationDelta } from '../general/getCorrelationDelta';
+} from '../../types/experiment.js';
+import { buildLink } from '../correlation/buildLink.js';
+import { checkMatch } from '../general/checkMatch.js';
+import { findLinkedCorrelationsBySignalID } from '../general/findLinkedCorrelationsBySignalID.js';
+import { getCorrelationDelta } from '../general/getCorrelationDelta.js';
 
-import { addSignal } from './addSignal';
+import { addSignal } from './addSignal.js';
 
 /**
  * Adds new correlations from 1D and 2D data or adds links to already existing ones.

@@ -1,9 +1,9 @@
-import type { Options, State, Values } from './correlation';
+import type { Options, State, Values } from './correlation.js';
 import type {
   NMRSignal1D,
   NMRSignal2D,
   Signal2DProjection,
-} from './nmr-processing';
+} from './nmr-processing.js';
 
 export interface Signal1D extends Omit<NMRSignal1D, 'id'> {
   id: string;

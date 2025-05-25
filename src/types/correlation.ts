@@ -1,4 +1,4 @@
-import type { Signal1D, Signal2D } from './spectrum';
+import type { Signal1D, Signal2D } from './spectrum.js';
 
 export interface CorrelationAndLinkFields {
   id: string;

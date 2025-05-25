@@ -1,16 +1,16 @@
-import type { Options, Values } from '../../types/correlation';
-import type { ExperimentSignals } from '../../types/experiment';
-import type { Spectra } from '../../types/spectrum';
-import { setProtonsCountFromData } from '../protonsCount/setProtonsCountFromData';
-import { getSignals } from '../signals/getSignals';
+import type { Options, Values } from '../../types/correlation.js';
+import type { ExperimentSignals } from '../../types/experiment.js';
+import type { Spectra } from '../../types/spectrum.js';
+import { setProtonsCountFromData } from '../protonsCount/setProtonsCountFromData.js';
+import { getSignals } from '../signals/getSignals.js';
 
-import { addFromData } from './addFromData';
-import { updatePseudoCorrelations } from './pseudo/updatePseudoCorrelations';
-import { removeObsoleteLinksAndNotLinkedCorrelations } from './removeObsoleteLinksAndNotLinkedCorrelations';
-import { setAttachmentsAndProtonEquivalences } from './setAttachmentsAndProtonEquivalences';
-import { setLabels } from './setLabels';
-import { setMatches } from './setMatches';
-import { sortCorrelations } from './sortCorrelations';
+import { addFromData } from './addFromData.js';
+import { updatePseudoCorrelations } from './pseudo/updatePseudoCorrelations.js';
+import { removeObsoleteLinksAndNotLinkedCorrelations } from './removeObsoleteLinksAndNotLinkedCorrelations.js';
+import { setAttachmentsAndProtonEquivalences } from './setAttachmentsAndProtonEquivalences.js';
+import { setLabels } from './setLabels.js';
+import { setMatches } from './setMatches.js';
+import { sortCorrelations } from './sortCorrelations.js';
 
 /**
  * Builds the correlation data values from given input spectra and options.

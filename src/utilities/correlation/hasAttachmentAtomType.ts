@@ -1,4 +1,4 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
 /**
  * Checks whether an atom type key in attachments already exists.

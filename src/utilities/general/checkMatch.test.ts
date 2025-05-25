@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { checkMatch } from './checkMatch';
+import { checkMatch } from './checkMatch.js';
 
 describe('checkSignalMatch', () => {
   it('no tolerance, same values', () => {

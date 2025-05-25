@@ -1,6 +1,6 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
-import { hasAttachmentAtomType } from './hasAttachmentAtomType';
+import { hasAttachmentAtomType } from './hasAttachmentAtomType.js';
 
 /**
  * Creates an attachment array for a certain atom type in a correlation.

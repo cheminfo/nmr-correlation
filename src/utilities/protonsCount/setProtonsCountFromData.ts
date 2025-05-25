@@ -1,11 +1,11 @@
-import type { Tolerance, Values } from '../../types/correlation';
+import type { Tolerance, Values } from '../../types/correlation.js';
 import type {
   Experiment1DSignals,
   Experiment2DSignals,
-} from '../../types/experiment';
+} from '../../types/experiment.js';
 
-import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT';
-import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC';
+import { setProtonsCountFromDEPT } from './setProtonsCountFromDEPT.js';
+import { setProtonsCountFromEditedHSQC } from './setProtonsCountFromEditedHSQC.js';
 
 /**
  * Sets proton counts from DEPT90 and/or DEPT135/edited HSQC signals, depending on what spectra data is given.

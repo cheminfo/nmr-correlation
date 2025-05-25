@@ -1,7 +1,7 @@
-import type { Correlation, Values } from '../../types/correlation';
+import type { Correlation, Values } from '../../types/correlation.js';
 
-import { getLabel } from './getLabel';
-import { sortLabels } from './sortLabels';
+import { getLabel } from './getLabel.js';
+import { sortLabels } from './sortLabels.js';
 
 export function getLabels(
   correlations: Values,

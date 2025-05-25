@@ -1,6 +1,6 @@
-import type { Correlation, Values } from '../../types/correlation';
-import { getCorrelationDelta } from '../general/getCorrelationDelta';
-import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+import type { Correlation, Values } from '../../types/correlation.js';
+import { getCorrelationDelta } from '../general/getCorrelationDelta.js';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType.js';
 
 /**
  * Sorts the correlations according to its atom type value and signal delta.

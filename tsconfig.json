@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "sourceMap": true,
+    "lib": ["ES2022", "WebWorker"],
+    "types": [],
+    "target": "ES2022",
+    "outDir": "lib",
+    "module": "NodeNext",
     "strict": true,
-    "target": "es2022",
-    "noImplicitAny": false,
-    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
     "resolveJsonModule": false,
-    "skipLibCheck": true
+    "forceConsistentCasingInFileNames": true,
+    "allowJs": false,
+    "noImplicitAny": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src"]
 }

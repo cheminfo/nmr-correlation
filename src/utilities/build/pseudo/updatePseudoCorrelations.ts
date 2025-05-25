@@ -1,9 +1,9 @@
-import type { Values } from '../../../types/correlation';
-import { getAtomCounts } from '../../general/getAtomCounts';
+import type { Values } from '../../../types/correlation.js';
+import { getAtomCounts } from '../../general/getAtomCounts.js';
 
-import { addPseudoCorrelations } from './addPseudoCorrelations';
-import { checkPseudoCorrelations } from './checkPseudoCorrelations';
-import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences';
+import { addPseudoCorrelations } from './addPseudoCorrelations.js';
+import { checkPseudoCorrelations } from './checkPseudoCorrelations.js';
+import { replacePseudoCorrelationsByEquivalences } from './replacePseudoCorrelationsByEquivalences.js';
 
 /**
  * Adds pseudo correlations if needed, checks for replacement

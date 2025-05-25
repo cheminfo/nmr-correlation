@@ -1,4 +1,4 @@
-import type { Link } from '../../types/correlation';
+import type { Link } from '../../types/correlation.js';
 
 /**
  * Removes a match index from a link.

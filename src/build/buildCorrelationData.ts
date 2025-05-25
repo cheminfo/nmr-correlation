@@ -1,7 +1,7 @@
-import type { CorrelationData, Options } from '../types/correlation';
-import type { Spectra } from '../types/spectrum';
-import { buildState } from '../utilities/build/buildState';
-import { buildValues } from '../utilities/build/buildValues';
+import type { CorrelationData, Options } from '../types/correlation.js';
+import type { Spectra } from '../types/spectrum.js';
+import { buildState } from '../utilities/build/buildState.js';
+import { buildValues } from '../utilities/build/buildValues.js';
 
 /**
  * Builds the correlation data from spectra data and some options.

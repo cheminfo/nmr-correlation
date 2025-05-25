@@ -1,4 +1,4 @@
-import type { Correlation, Link } from '../../types/correlation';
+import type { Correlation, Link } from '../../types/correlation.js';
 
 /**
  * Adds a link to a correlation.

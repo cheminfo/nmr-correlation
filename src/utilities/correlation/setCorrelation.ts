@@ -1,6 +1,6 @@
-import type { Correlation, CorrelationData } from '../../types/correlation';
+import type { Correlation, CorrelationData } from '../../types/correlation.js';
 
-import { buildCorrelation } from './buildCorrelation';
+import { buildCorrelation } from './buildCorrelation.js';
 
 /**
  * Searches for a correlation index by id in correlation data and replaces it with a given correlation.

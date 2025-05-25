@@ -1,6 +1,6 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
-import { hasAttachmentAtomType } from './hasAttachmentAtomType';
+import { hasAttachmentAtomType } from './hasAttachmentAtomType.js';
 
 /**
  * Removes an attachment index.

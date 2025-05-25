@@ -1,4 +1,4 @@
-import type { Correlation, Values } from '../../types/correlation';
+import type { Correlation, Values } from '../../types/correlation.js';
 
 /**
  * Returns the array index of a correlation.
