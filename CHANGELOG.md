@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/cheminfo/nmr-correlation/compare/v2.3.5...v3.0.0) (2025-05-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* migrate to ESM ([#50](https://github.com/cheminfo/nmr-correlation/issues/50))
+
+### Code Refactoring
+
+* migrate to ESM ([#50](https://github.com/cheminfo/nmr-correlation/issues/50)) ([0ae1c78](https://github.com/cheminfo/nmr-correlation/commit/0ae1c7810b0428dbc1f5c8d404b9b6c6b73407fc))
+
 ## [2.3.5](https://github.com/cheminfo/nmr-correlation/compare/v2.3.4...v2.3.5) (2025-02-04)
 
 
