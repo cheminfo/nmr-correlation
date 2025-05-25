@@ -1,6 +1,6 @@
-import type { Correlation, Values } from '../../../types/correlation';
-import { hasLinks } from '../../correlation/hasLinks';
-import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
+import type { Correlation, Values } from '../../../types/correlation.js';
+import { hasLinks } from '../../correlation/hasLinks.js';
+import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType.js';
 
 export function replacePseudoCorrelationsByEquivalences(
   correlations: Values,

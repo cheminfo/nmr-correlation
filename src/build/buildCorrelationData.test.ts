@@ -1,19 +1,19 @@
 import { describe, expect, it } from 'vitest';
 
-import { spectraDataSet1 } from '../data/spectraDataSet1';
-import { spectraDataSet2 } from '../data/spectraDataSet2';
-import { spectrumEditedHSQC } from '../data/spectrumEditedHSQC';
+import { spectraDataSet1 } from '../data/spectraDataSet1.js';
+import { spectraDataSet2 } from '../data/spectraDataSet2.js';
+import { spectrumEditedHSQC } from '../data/spectrumEditedHSQC.js';
 import type {
   Correlation,
   CorrelationData,
   Link,
   Options,
   State,
-} from '../types/correlation';
-import { buildCorrelation } from '../utilities/correlation/buildCorrelation';
-import { buildLink } from '../utilities/correlation/buildLink';
+} from '../types/correlation.js';
+import { buildCorrelation } from '../utilities/correlation/buildCorrelation.js';
+import { buildLink } from '../utilities/correlation/buildLink.js';
 
-import { buildCorrelationData } from './buildCorrelationData';
+import { buildCorrelationData } from './buildCorrelationData.js';
 
 describe('buildCorrelationData', () => {
   const options: Options = { tolerance: { C: 0.25, H: 0.05 } };
@@ -399,6 +399,7 @@ describe('buildCorrelationData', () => {
       signal: {
         id: 'spectrumEditedHSQC_zone1_1',
         kind: 'signal',
+        // @ts-expect-error Used for tests
         peaks: [{ z: 1000 }],
         sign: 1,
         x: {
@@ -421,6 +422,7 @@ describe('buildCorrelationData', () => {
       signal: {
         id: 'spectrumEditedHSQC_zone2_1',
         kind: 'signal',
+        // @ts-expect-error Used for tests
         peaks: [{ z: -1000 }],
         sign: -1,
         x: {

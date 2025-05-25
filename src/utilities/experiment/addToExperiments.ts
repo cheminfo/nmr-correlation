@@ -1,6 +1,6 @@
-import type { Experiments, ExperimentsType } from '../../types/experiment';
-import type { Spectrum1D } from '../../types/spectrum';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+import type { Experiments, ExperimentsType } from '../../types/experiment.js';
+import type { Spectrum1D } from '../../types/spectrum.js';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus.js';
 
 /**
  * Add experiment of certain type to experiments.

@@ -1,11 +1,11 @@
-import { allowedSignalKinds } from '../../constants/allowedSignalKinds';
+import { allowedSignalKinds } from '../../constants/allowedSignalKinds.js';
 import type {
   Experiment1DSignal,
   Experiment1DSignals,
   ExperimentsType,
-} from '../../types/experiment';
-import type { Spectrum1D } from '../../types/spectrum';
-import { checkMatch } from '../general/checkMatch';
+} from '../../types/experiment.js';
+import type { Spectrum1D } from '../../types/spectrum.js';
+import { checkMatch } from '../general/checkMatch.js';
 
 /**
  * Get all different 1D signals from experiments with allowed signal kinds in "signalKindsToInclude".

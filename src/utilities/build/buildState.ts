@@ -2,10 +2,10 @@ import type {
   State,
   StateAtomTypeError,
   Values,
-} from '../../types/correlation';
-import { getAtomCounts } from '../general/getAtomCounts';
-import { getCorrelationIndex } from '../general/getCorrelationIndex';
-import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+} from '../../types/correlation.js';
+import { getAtomCounts } from '../general/getAtomCounts.js';
+import { getCorrelationIndex } from '../general/getCorrelationIndex.js';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType.js';
 
 /**
  * Builds a state from current values and an optional molecular formula.

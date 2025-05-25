@@ -1,5 +1,5 @@
-import type { Experiments } from '../../types/experiment';
-import type { Spectra } from '../../types/spectrum';
+import type { Experiments } from '../../types/experiment.js';
+import type { Spectra } from '../../types/spectrum.js';
 
 /**
  * Get all different experiments from spectra data.

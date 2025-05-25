@@ -1,4 +1,4 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
 /**
  * Removes all attachments of a correlation.

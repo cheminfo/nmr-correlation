@@ -1,7 +1,7 @@
-import type { Tolerance, Values } from '../../types/correlation';
-import type { Experiment2DSignals } from '../../types/experiment';
+import type { Tolerance, Values } from '../../types/correlation.js';
+import type { Experiment2DSignals } from '../../types/experiment.js';
 
-import { setProtonsCount } from './setProtonsCount';
+import { setProtonsCount } from './setProtonsCount.js';
 
 /**
  * Sets proton counts from edited HSQC signals.

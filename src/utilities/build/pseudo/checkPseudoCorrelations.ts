@@ -1,9 +1,9 @@
-import type { Correlation, Link, Values } from '../../../types/correlation';
-import { hasLinks } from '../../correlation/hasLinks';
-import { removeLink } from '../../correlation/removeLink';
-import { removeMatch } from '../../correlation/removeMatch';
-import { getCorrelationIndex } from '../../general/getCorrelationIndex';
-import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
+import type { Correlation, Link, Values } from '../../../types/correlation.js';
+import { hasLinks } from '../../correlation/hasLinks.js';
+import { removeLink } from '../../correlation/removeLink.js';
+import { removeMatch } from '../../correlation/removeMatch.js';
+import { getCorrelationIndex } from '../../general/getCorrelationIndex.js';
+import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType.js';
 
 export function checkPseudoCorrelations(
   correlations: Values,

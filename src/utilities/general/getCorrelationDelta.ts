@@ -1,6 +1,6 @@
-import type { Correlation } from '../../types/correlation';
+import type { Correlation } from '../../types/correlation.js';
 
-import { getLinkDelta } from './getLinkDelta';
+import { getLinkDelta } from './getLinkDelta.js';
 
 export function getCorrelationDelta(
   correlation: Correlation,

@@ -1,6 +1,6 @@
-import type { Values } from '../../types/correlation';
-import { checkMatch } from '../general/checkMatch';
-import { getCorrelationDelta } from '../general/getCorrelationDelta';
+import type { Values } from '../../types/correlation.js';
+import { checkMatch } from '../general/checkMatch.js';
+import { getCorrelationDelta } from '../general/getCorrelationDelta.js';
 
 /**
  * Sets proton counts from DEPT90 signals and DEPT135/edited HSQC signals.

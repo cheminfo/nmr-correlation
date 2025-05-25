@@ -1,5 +1,5 @@
-import type { Correlation, Link } from '../../types/correlation';
-import { isArrayEqual } from '../general/isArrayEqual';
+import type { Correlation, Link } from '../../types/correlation.js';
+import { isArrayEqual } from '../general/isArrayEqual.js';
 
 /**
  * Checks whether a correlation contains a link by id search.

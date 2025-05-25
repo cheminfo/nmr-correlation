@@ -1,8 +1,8 @@
-import type { Experiments, ExperimentsType } from '../../types/experiment';
-import type { Spectrum1D } from '../../types/spectrum';
-import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus';
+import type { Experiments, ExperimentsType } from '../../types/experiment.js';
+import type { Spectrum1D } from '../../types/spectrum.js';
+import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus.js';
 
-import { addToExperiments } from './addToExperiments';
+import { addToExperiments } from './addToExperiments.js';
 
 /**
  * Get "plain" 1D experiments containing ranges, i.e. without DEPT etc..

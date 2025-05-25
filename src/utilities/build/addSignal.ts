@@ -1,8 +1,8 @@
-import type { Link, Values } from '../../types/correlation';
-import { addLink } from '../correlation/addLink';
-import { buildCorrelation } from '../correlation/buildCorrelation';
-import { containsLink } from '../correlation/containsLink';
-import { hasLinks } from '../correlation/hasLinks';
+import type { Link, Values } from '../../types/correlation.js';
+import { addLink } from '../correlation/addLink.js';
+import { buildCorrelation } from '../correlation/buildCorrelation.js';
+import { containsLink } from '../correlation/containsLink.js';
+import { hasLinks } from '../correlation/hasLinks.js';
 
 export function addSignal(
   matchedCorrelationIndices: number[],

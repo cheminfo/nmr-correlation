@@ -1,4 +1,4 @@
-import type { Signal1D, Signal2D, Spectrum1D, Spectrum2D } from './spectrum';
+import type { Signal1D, Signal2D, Spectrum1D, Spectrum2D } from './spectrum.js';
 
 export interface Experiment1DSignal extends ExperimentSignal {
   atomType: string;

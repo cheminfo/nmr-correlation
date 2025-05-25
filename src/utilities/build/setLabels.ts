@@ -1,4 +1,4 @@
-import type { Values } from '../../types/correlation';
+import type { Values } from '../../types/correlation.js';
 
 /**
  * Sets the origin (default) label for each correlation, e.g. C1 or H2, depending on its order.

@@ -1,28 +1,28 @@
-export * from './build/buildCorrelationData';
+export * from './build/buildCorrelationData.js';
 
-export * from './utilities/build/buildValues';
-export * from './utilities/build/buildState';
+export * from './utilities/build/buildValues.js';
+export * from './utilities/build/buildState.js';
 
-export * from './utilities/correlation/addLink';
-export * from './utilities/correlation/buildCorrelation';
-export * from './utilities/correlation/buildLink';
-export * from './utilities/correlation/removeLink';
-export * from './utilities/correlation/setCorrelation';
+export * from './utilities/correlation/addLink.js';
+export * from './utilities/correlation/buildCorrelation.js';
+export * from './utilities/correlation/buildLink.js';
+export * from './utilities/correlation/removeLink.js';
+export * from './utilities/correlation/setCorrelation.js';
 
-export * from './utilities/general/checkMatch';
-export * from './utilities/general/findLinkedCorrelationsBySignalID';
-export * from './utilities/general/findLinksBySignalID';
-export * from './utilities/general/getAtomCounts';
-export * from './utilities/general/getAtomTypeFromNucleus';
-export * from './utilities/general/getCorrelationDelta';
-export * from './utilities/general/getCorrelationIndex';
-export * from './utilities/general/getCorrelationsByAtomType';
-export * from './utilities/general/getLabel';
-export * from './utilities/general/getLabels';
-export * from './utilities/general/getLinkDelta';
-export * from './utilities/general/getLinkDim';
-export * from './utilities/general/isEditedHSQC';
-export * from './utilities/general/setPathLength';
+export * from './utilities/general/checkMatch.js';
+export * from './utilities/general/findLinkedCorrelationsBySignalID.js';
+export * from './utilities/general/findLinksBySignalID.js';
+export * from './utilities/general/getAtomCounts.js';
+export * from './utilities/general/getAtomTypeFromNucleus.js';
+export * from './utilities/general/getCorrelationDelta.js';
+export * from './utilities/general/getCorrelationIndex.js';
+export * from './utilities/general/getCorrelationsByAtomType.js';
+export * from './utilities/general/getLabel.js';
+export * from './utilities/general/getLabels.js';
+export * from './utilities/general/getLinkDelta.js';
+export * from './utilities/general/getLinkDim.js';
+export * from './utilities/general/isEditedHSQC.js';
+export * from './utilities/general/setPathLength.js';
 
 export type {
   Correlation,
@@ -31,11 +31,11 @@ export type {
   State,
   Values,
   Tolerance,
-} from './types/correlation';
+} from './types/correlation.js';
 export type {
   CorrelationData,
   Signal1D,
   Signal2D,
   Spectra,
   Spectrum,
-} from './types/spectrum';
+} from './types/spectrum.js';

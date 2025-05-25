@@ -1,10 +1,10 @@
-import type { Values } from '../../types/correlation';
-import { addMatch } from '../correlation/addMatch';
-import { removeLink } from '../correlation/removeLink';
-import { removeMatches } from '../correlation/removeMatches';
-import { getCorrelationIndex } from '../general/getCorrelationIndex';
-import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
-import { isArrayEqual } from '../general/isArrayEqual';
+import type { Values } from '../../types/correlation.js';
+import { addMatch } from '../correlation/addMatch.js';
+import { removeLink } from '../correlation/removeLink.js';
+import { removeMatches } from '../correlation/removeMatches.js';
+import { getCorrelationIndex } from '../general/getCorrelationIndex.js';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType.js';
+import { isArrayEqual } from '../general/isArrayEqual.js';
 
 /**
  * Sets the match indices for each link within a correlation.

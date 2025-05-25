@@ -1,10 +1,10 @@
-import type { Spectra } from '../types/spectrum';
+import type { Spectra } from '../types/spectrum.js';
 
-import { spectrum13C } from './spectrum13C';
-import { spectrum1H } from './spectrum1H';
-import { spectrumDEPT135 } from './spectrumDEPT135';
-import { spectrumDEPT90 } from './spectrumDEPT90';
-import { spectrumHSQC } from './spectrumHSQC';
+import { spectrum13C } from './spectrum13C.js';
+import { spectrum1H } from './spectrum1H.js';
+import { spectrumDEPT135 } from './spectrumDEPT135.js';
+import { spectrumDEPT90 } from './spectrumDEPT90.js';
+import { spectrumHSQC } from './spectrumHSQC.js';
 
 export const spectraDataSet2: Spectra = [
   spectrum1H,

@@ -1,8 +1,8 @@
-import type { Tolerance, Values } from '../../types/correlation';
-import type { Experiment1DSignals } from '../../types/experiment';
-import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType';
+import type { Tolerance, Values } from '../../types/correlation.js';
+import type { Experiment1DSignals } from '../../types/experiment.js';
+import { getCorrelationsByAtomType } from '../general/getCorrelationsByAtomType.js';
 
-import { setProtonsCount } from './setProtonsCount';
+import { setProtonsCount } from './setProtonsCount.js';
 
 /**
  * Sets proton counts from DEPT90 signals and DEPT135 signals.

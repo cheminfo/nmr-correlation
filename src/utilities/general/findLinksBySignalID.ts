@@ -1,4 +1,4 @@
-import type { Link, Values } from '../../types/correlation';
+import type { Link, Values } from '../../types/correlation.js';
 
 export function findLinksBySignalID(
   correlations: Values,

@@ -1,7 +1,7 @@
-import type { Link } from '../../types/correlation';
-import type { Signal1D, Signal2D } from '../../types/spectrum';
+import type { Link } from '../../types/correlation.js';
+import type { Signal1D, Signal2D } from '../../types/spectrum.js';
 
-import { getLinkDim } from './getLinkDim';
+import { getLinkDim } from './getLinkDim.js';
 
 export function getLinkDelta(link: Link): number | undefined {
   if (!link.pseudo) {

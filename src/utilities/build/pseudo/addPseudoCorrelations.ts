@@ -1,6 +1,6 @@
-import type { Values } from '../../../types/correlation';
-import { buildCorrelation } from '../../correlation/buildCorrelation';
-import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType';
+import type { Values } from '../../../types/correlation.js';
+import { buildCorrelation } from '../../correlation/buildCorrelation.js';
+import { getCorrelationsByAtomType } from '../../general/getCorrelationsByAtomType.js';
 
 export function addPseudoCorrelations(
   correlations: Values,

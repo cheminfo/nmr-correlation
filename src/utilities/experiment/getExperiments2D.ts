@@ -1,6 +1,6 @@
-import type { Experiments, ExperimentsType } from '../../types/experiment';
+import type { Experiments, ExperimentsType } from '../../types/experiment.js';
 
-import { addToExperiments } from './addToExperiments';
+import { addToExperiments } from './addToExperiments.js';
 
 /**
  * Get 2D experiments containing zones.
