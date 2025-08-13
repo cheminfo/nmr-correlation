@@ -10,5 +10,7 @@ export function getLinkDelta(link: Link): number | undefined {
       : link.axis === 'x'
         ? (link.signal as Signal2D).x.delta
         : (link.signal as Signal2D).y.delta;
+  } else {
+    return undefined;
   }
 }
