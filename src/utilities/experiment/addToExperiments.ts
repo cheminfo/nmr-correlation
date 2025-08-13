@@ -1,5 +1,5 @@
 import type { Experiments, ExperimentsType } from '../../types/experiment.js';
-import type { Spectrum1D } from '../../types/spectrum.js';
+import type { Spectrum1D, Spectrum2D } from '../../types/spectrum.js';
 import { getAtomTypeFromNucleus } from '../general/getAtomTypeFromNucleus.js';
 
 /**
@@ -23,7 +23,10 @@ export function addToExperiments(
   const _experiments = (experiments[type1]?.[type2] ?? [])
     // don't consider DEPT etc. here
     .filter((_experiment) => {
-      const rangesOrZones = _experiment[type1 === '1D' ? 'ranges' : 'zones'];
+      const rangesOrZones =
+        type1 === '1D'
+          ? (_experiment as Spectrum1D).ranges
+          : (_experiment as Spectrum2D).zones;
       const hasValues = (rangesOrZones?.values ?? []).length > 0;
       return checkAtomType
         ? getAtomTypeFromNucleus((_experiment as Spectrum1D).info.nucleus) ===

@@ -22,7 +22,7 @@ export function getSignals2D(
   const _signals2D: Experiment2DSignals = {};
   for (const experimentType of Object.keys(experiments2D)) {
     const _signals: Experiment2DSignal[] = [];
-    // for now we use the first occurring spectrum only, for each experiment type (current loop) and nuclei combination
+    // for now, we use the first occurring spectrum only, for each experiment type (current loop) and nuclei combination
     const indices: number[] = [];
     const nuclei: string[][] = [];
     for (const [i, _experiment] of experiments2D[experimentType].entries()) {

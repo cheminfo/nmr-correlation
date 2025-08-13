@@ -1,16 +1,20 @@
 {
   "name": "nmr-correlation",
   "version": "3.0.0",
+  "license": "MIT",
   "description": "Build and manipulation of correlations from 1D and 2D NMR data",
+  "author": "Michael Wenk",
   "type": "module",
-  "exports": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "files": [
     "lib",
     "src"
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
-    "clean": "rimraf lib",
+    "clean": "rimraf coverage lib",
     "eslint": "eslint .",
     "eslint-fix": "npm run eslint -- --fix",
     "prepack": "npm run tsc",
@@ -21,29 +25,28 @@
     "tsc": "npm run clean && npm run tsc-build",
     "tsc-build": "tsc --project tsconfig.build.json"
   },
+  "dependencies": {
+    "cheminfo-types": "^1.8.1",
+    "ml-matrix-peaks-finder": "^2.0.0",
+    "ml-peak-shape-generator": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@zakodium/tsconfig": "^1.0.2",
+    "eslint": "^9.33.0",
+    "eslint-config-cheminfo-typescript": "^19.0.0",
+    "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cheminfo/nmr-correlation.git"
   },
-  "author": "Michael Wenk",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cheminfo/nmr-correlation/issues"
   },
-  "homepage": "https://github.com/cheminfo/nmr-correlation#readme",
-  "devDependencies": {
-    "@types/node": "^22.15.21",
-    "@vitest/coverage-v8": "^3.1.4",
-    "eslint": "^9.27.0",
-    "eslint-config-cheminfo-typescript": "^18.0.1",
-    "prettier": "^3.5.3",
-    "rimraf": "^6.0.1",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.4"
-  },
-  "dependencies": {
-    "cheminfo-types": "^1.8.1",
-    "ml-matrix-peaks-finder": "^2.0.0",
-    "ml-peak-shape-generator": "^4.1.4"
-  }
+  "homepage": "https://github.com/cheminfo/nmr-correlation#readme"
 }

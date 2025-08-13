@@ -26,11 +26,11 @@ export * from './utilities/general/setPathLength.js';
 
 export type {
   Correlation,
-  Options,
   Link,
+  Options,
   State,
-  Values,
   Tolerance,
+  Values,
 } from './types/correlation.js';
 export type {
   CorrelationData,
