@@ -1,6 +1,6 @@
 {
   "name": "nmr-correlation",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "license": "MIT",
   "description": "Build and manipulation of correlations from 1D and 2D NMR data",
   "author": "Michael Wenk",
