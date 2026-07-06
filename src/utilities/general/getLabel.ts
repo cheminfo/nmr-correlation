@@ -4,7 +4,7 @@ export function getLabel(
   correlations: Values,
   correlation: Correlation,
 ): string {
-  const label = Object.keys(correlation.attachment)
+  const values = Object.keys(correlation.attachment)
     .flatMap((otherAtomType) =>
       correlation.attachment[otherAtomType]
         .map((index) =>
@@ -14,16 +14,16 @@ export function getLabel(
         )
         .filter((_label) => _label && _label.length > 0),
     )
-    .filter((_label, i, a) => a.indexOf(_label) === i)
-    .sort((a, b) =>
-      Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) < 0
-        ? -1
-        : Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) === 0 &&
-            a.split(/\d+/)[1] < b.split(/\d+/)[1]
-          ? -1
-          : 1,
-    )
-    .join('/');
+    .filter((_label, i, a) => a.indexOf(_label) === i);
+  values.sort((a, b) =>
+    Number(a.split(/[a-z]+/i, 2)[1]) - Number(b.split(/[a-z]+/i, 2)[1]) < 0 ||
+    (Number(a.split(/[a-z]+/i, 2)[1]) - Number(b.split(/[a-z]+/i, 2)[1]) ===
+      0 &&
+      a.split(/\d+/, 2)[1] < b.split(/\d+/, 2)[1])
+      ? -1
+      : 1,
+  );
+  const label = values.join('/');
 
   if (label.length > 0) {
     return label;
