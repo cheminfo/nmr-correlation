@@ -1,10 +1,11 @@
 export function sortLabels(labels: string[]): string[] {
-  return labels.sort((a, b) =>
-    Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) < 0
+  labels.sort((a, b) =>
+    Number(a.split(/[a-z]+/i, 2)[1]) - Number(b.split(/[a-z]+/i, 2)[1]) < 0 ||
+    (Number(a.split(/[a-z]+/i, 2)[1]) - Number(b.split(/[a-z]+/i, 2)[1]) ===
+      0 &&
+      a.split(/\d+/, 2)[1] < b.split(/\d+/, 2)[1])
       ? -1
-      : Number(a.split(/[a-z]+/i)[1]) - Number(b.split(/[a-z]+/i)[1]) === 0 &&
-          a.split(/\d+/)[1] < b.split(/\d+/)[1]
-        ? -1
-        : 1,
+      : 1,
   );
+  return labels;
 }

@@ -9,7 +9,7 @@ export function getAtomCounts(mf: string): Record<string, number> {
 
   if (elements) {
     for (const elem of elements) {
-      const regex = new RegExp(`(${elem}\\d+)`, 'g');
+      const regex = new RegExp(String.raw`(${elem}\d+)`, 'g');
       const match = regex.exec(mf);
       let count = 1;
       if (match) {

@@ -19,7 +19,7 @@ export function setCorrelation(
     (_correlation) => _correlation.id === id,
   );
   if (correlationIndex !== -1) {
-    _values.splice(correlationIndex, 1, buildCorrelation({ ...correlation }));
+    _values[correlationIndex] = buildCorrelation({ ...correlation });
   } else {
     _values.push(correlation);
   }

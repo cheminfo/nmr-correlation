@@ -43,7 +43,7 @@ export function setAttachmentsAndProtonEquivalences(
       correlation.protonsCount.length === 1 &&
       hasAttachmentAtomType(correlation, 'H')
     ) {
-      const { equivalence, protonsCount } = correlation;
+      const { attachment, equivalence, protonsCount } = correlation;
 
       let equivalences = 1;
       if (protonsCount[0] === 3) {
@@ -52,9 +52,9 @@ export function setAttachmentsAndProtonEquivalences(
         equivalences = 2;
       }
       const sharedEquivalences =
-        (equivalence * equivalences) / correlation.attachment.H.length;
+        (equivalence * equivalences) / attachment.H.length;
 
-      for (const attachedProtonIndex of correlation.attachment.H) {
+      for (const attachedProtonIndex of attachment.H) {
         correlations[attachedProtonIndex].equivalence += sharedEquivalences;
       }
     }

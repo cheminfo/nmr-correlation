@@ -18,12 +18,17 @@ import { sortCorrelations } from './sortCorrelations.js';
  * @param {Options} options
  */
 export function buildValues(spectra: Spectra, options: Options): Values {
-  const { tolerance = {}, mf = '', values: prevValues = [] } = options;
+  const {
+    tolerance = {},
+    mf = '',
+    values: prevValues = [],
+    skipDataUpdate = false,
+  } = options;
   const signals: ExperimentSignals = getSignals(spectra);
 
   let _correlations = prevValues ? prevValues.slice() : [];
 
-  if (options.skipDataUpdate !== true) {
+  if (!skipDataUpdate) {
     // remove obsolete links/correlations
     _correlations = removeObsoleteLinksAndNotLinkedCorrelations(
       _correlations,
