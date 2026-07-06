@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/cheminfo/nmr-correlation/compare/v3.0.1...v3.0.2) (2026-07-06)
+
+
+### Bug Fixes
+
+* update ml-peak-shape-generator to latest major ([d06d8ac](https://github.com/cheminfo/nmr-correlation/commit/d06d8acae35acc16152598d63c3e3f7fdfe08196))
+
 ## [3.0.1](https://github.com/cheminfo/nmr-correlation/compare/v3.0.0...v3.0.1) (2025-08-13)
 
 
