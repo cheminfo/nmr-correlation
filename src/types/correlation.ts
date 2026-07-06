@@ -59,7 +59,7 @@ export interface CorrelationOptions extends CorrelationAndLinkOptions {
 }
 
 export interface Options {
-  tolerance: Tolerance;
+  tolerance?: Tolerance;
   mf?: string;
   values?: Values;
   skipDataUpdate?: boolean;
