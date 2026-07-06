@@ -28,7 +28,7 @@
   "dependencies": {
     "cheminfo-types": "^1.15.0",
     "ml-matrix-peaks-finder": "^2.0.0",
-    "ml-peak-shape-generator": "^4.2.0"
+    "ml-peak-shape-generator": "^5.2.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.0",
